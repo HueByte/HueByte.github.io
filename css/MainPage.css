@@ -1,0 +1,37 @@
+html, body {
+    background-color: rgb(27,27,27);
+    color: white;
+    padding: 0px;
+    margin: 0px;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    min-height: 100vh;
+    font-size: large;
+}
+
+.Hello
+{
+    height: 10vh;
+    /*animation: 1s ease-out 0s 1 slideInFromLeft;*/
+    animation: 3s ease-in-out 0s 1 entryAnimation;
+}
+
+@keyframes entryAnimation {
+    0% {
+        opacity: 0;
+        font-size: medium;
+    }
+
+    100% {
+        opacity: 1;
+        font-size: large;
+    }
+}
