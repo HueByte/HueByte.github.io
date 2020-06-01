@@ -7,6 +7,11 @@ html, body {
     min-height: 100vh;
 }
 
+a, a:hover, a:visited, a:active {
+    text-decoration: none;
+    color: white;
+}
+
 .container
 {
     display: flex;
@@ -15,23 +20,107 @@ html, body {
     width: 100vw;
     min-height: 100vh;
     font-size: large;
+    flex-wrap: wrap;
+}
+
+.middle-container
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .Hello
 {
-    height: 10vh;
+    height: fit-content;
     /*animation: 1s ease-out 0s 1 slideInFromLeft;*/
-    animation: 3s ease-in-out 0s 1 entryAnimation;
+    animation: 1.5s ease-in-out 0s 1 entryAnimation;
+    margin-right: 2em;
+    padding-top: 10px;
+}
+
+.Hello > h1 {
+    margin: 0.5em;
+}
+
+.menu
+{
+    min-height: fit-content;
+    width: 20vw;
+    min-width: fit-content;
+    font-size: 1.5rem;
+    animation: 3s ease-in-out 0s 1 entryMenu;
+    padding: 10px;
+    background-color: rgb(22, 21, 21);
+    border-radius: 15px;
+    border-bottom: 2px solid crimson;
+}
+
+.menu > ul 
+{
+    margin: 0.5em;
+    list-style: disc;
+}
+
+.menu li
+{
+    margin: 1em;
+    transition: 1s ease-in-out;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.menu li > a
+{
+    transition: 1s ease-in-out;
+}
+
+.menu li:hover
+{
+    background-color: white;
+    color: black;
+}
+
+.menu li:hover > a {
+    color: black;
 }
 
 @keyframes entryAnimation {
     0% {
         opacity: 0;
         font-size: medium;
+        transform: translateX(50%);
+    }
+
+    50% {
+        opacity: 1;
+        font-size: large; 
+        transform: translateX(50%);
+    }
+    
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes entryMenu {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
     }
 
     100% {
         opacity: 1;
-        font-size: large;
+    }
+}
+
+@media screen and (max-width: 1150px)
+{
+    .Hello {
+        margin: 0px;
     }
 }
