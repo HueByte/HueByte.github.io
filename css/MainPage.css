@@ -28,13 +28,14 @@ a, a:hover, a:visited, a:active {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .Hello
 {
     height: fit-content;
     /*animation: 1s ease-out 0s 1 slideInFromLeft;*/
-    animation: 1.5s ease-in-out 0s 1 entryAnimation;
+    animation: 1s ease-in-out 0s 1 entryAnimation;
     margin-right: 2em;
     padding-top: 10px;
 }
@@ -49,7 +50,7 @@ a, a:hover, a:visited, a:active {
     width: 20vw;
     min-width: fit-content;
     font-size: 1.5rem;
-    animation: 3s ease-in-out 0s 1 entryMenu;
+    animation: 2s ease-in-out 0s 1 entryMenu;
     padding: 10px;
     background-color: rgb(22, 21, 21);
     border-radius: 15px;
@@ -65,7 +66,7 @@ a, a:hover, a:visited, a:active {
 .menu li
 {
     margin: 1em;
-    transition: 1s ease-in-out;
+    transition: 0.4s ease-in-out;
     cursor: pointer;
     border-radius: 5px;
     padding: 5px;
@@ -73,13 +74,14 @@ a, a:hover, a:visited, a:active {
 
 .menu li > a
 {
-    transition: 1s ease-in-out;
+    transition: 0.4s ease-in-out;
 }
 
 .menu li:hover
 {
     background-color: white;
-    color: black;
+    color: rgb(22, 21, 21);
+    transform: scale(1.1);
 }
 
 .menu li:hover > a {
@@ -118,8 +120,12 @@ a, a:hover, a:visited, a:active {
     }
 }
 
-@media screen and (max-width: 1150px)
+@media screen and (max-width: 1190px)
 {
+    .middle-container{
+        flex-direction: column;
+    }
+
     .Hello {
         margin: 0px;
     }
