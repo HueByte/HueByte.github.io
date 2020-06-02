@@ -1,0 +1,22 @@
+/* width */
+.bot-main::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+/* Track */
+.bot-main::-webkit-scrollbar-track {
+background: #000000;
+border-radius: 10px;
+margin: 1em;
+}
+
+/* Handle */
+.bot-main::-webkit-scrollbar-thumb {
+border-radius: 10px;
+background: rgb(255, 255, 255);
+}
+
+/* Handle on hover */
+.bot-main::-webkit-scrollbar-thumb:hover {
+background: crimson;
+}
