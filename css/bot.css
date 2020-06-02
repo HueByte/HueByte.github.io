@@ -22,7 +22,7 @@
 .bot-menu > ul 
 {
     margin: 0.5em;
-    list-style: disc;
+    list-style: none;
 }
 
 .bot-menu li

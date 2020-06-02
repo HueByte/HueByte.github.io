@@ -12,21 +12,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+        var divs = document.getElementsByClassName("bot-main");
         function changeContent(current) {
-            var divs = document.getElementsByClassName("bot-main");
             var i;
             for (i = 0; i < divs.length; i++) {
                 divs[i].style.display = 'none';
+                var list = document.getElementById(divs[i].id + '-list');
+                list.style.color = null;
             }
             var currentItem = document.getElementById(current);
             currentItem.style.display = 'block';
-            currentItem.style.color = '#0CAADC';
+            var currentList = document.getElementById(current + '-list');
+            currentList.style.color = '#0CAADC';
         }
 
         window.onload = function () {
             var div = document.getElementById('about');
+            var list = document.getElementById(div.id + '-list');
             div.style.display = 'block';
-            div.style.color = '#0CAADC';
+            list.style.color = '#0CAADC';
         }
     </script>
 
@@ -37,17 +41,18 @@
         <menu class="bot-menu">
             <ul>
                 <li><a href="index.html"><i class="fa fa-fire" aria-hidden="true"></i> Home</a></li>
-                <li onclick="changeContent('about')"><i class="fab fa-discord"></i> About</li>
-                <li onclick="changeContent('admin')"><i class="fas fa-user"></i> Admin</li>
-                <li onclick="changeContent('funnies')"><i class="fas fa-smile"></i> Funnies</li>
-                <li onclick="changeContent('announce')"><i class="fa fa-bullhorn" aria-hidden="true"></i> Announce</li>
+                <li id="about-list" onclick="changeContent('about')"><i class="fab fa-discord"></i> About</li>
+                <li id="admin-list" onclick="changeContent('admin')"><i class="fas fa-user"></i> Admin</li>
+                <li id="funnies-list" onclick="changeContent('funnies')"><i class="fas fa-smile"></i> Funnies</li>
+                <li id="announce-list" onclick="changeContent('announce')"><i class="fa fa-bullhorn" aria-hidden="true"></i> Announce</li>
             </ul>
         </menu>
 
         <!-- about -->
 
-        <main class="bot-main" id="about">
-            <h2>bunny best WD</h2>
+        <main class="bot-main" id="about" style="text-align: center;">
+            <h2>Site isn't done yet</h2>
+            <img style="border-radius: 20px;" src="https://i.pinimg.com/originals/d2/3a/25/d23a25e799613ef9e8ddbd2837135de9.gif" alt="catto" />
         </main>
 
         <!-- admin -->
