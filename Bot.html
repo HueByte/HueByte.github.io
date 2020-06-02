@@ -10,65 +10,178 @@
     <link href="css/bot.css" rel="stylesheet" />
     <link href="css/Scroll.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function changeContent(current) {
+            var divs = document.getElementsByClassName("bot-main");
+            var i;
+            for (i = 0; i < divs.length; i++) {
+                divs[i].style.display = 'none';
+            }
+            var currentItem = document.getElementById(current);
+            currentItem.style.display = 'block';
+        }
+
+        window.onload = function () {
+            var div = document.getElementById('about');
+            div.style.display = 'block';
+        }
+    </script>
+
 </head>
 
 <body>
     <div class="bot-container">
         <menu class="bot-menu">
             <ul>
-                <li><i class="fab fa-discord"></i> About</li>
-                <li><i class="fas fa-user"></i> Admin</li>
-                <li><i class="fas fa-smile"></i> Funnies</li>
-                <li><i class="fa fa-bullhorn" aria-hidden="true"></i> Announce</li>
+                <li><a href="index.html"><i class="fa fa-fire" aria-hidden="true"></i> Home</a></li>
+                <li onclick="changeContent('about')"><i class="fab fa-discord"></i> About</li>
+                <li onclick="changeContent('admin')"><i class="fas fa-user"></i> Admin</li>
+                <li onclick="changeContent('funnies')"><i class="fas fa-smile"></i> Funnies</li>
+                <li onclick="changeContent('announce')"><i class="fa fa-bullhorn" aria-hidden="true"></i> Announce</li>
             </ul>
         </menu>
-        <main class="bot-main">
-            <div class="main-item">
-                <div class="item-command">$someCommand</div>
-                <div class="item-description">yyyy</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">$someCommand</div>
-                <div class="item-description">yyyy</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">$someCommand</div>
-                <div class="item-description">yyyy</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">$someCommand</div>
-                <div class="item-description">yyyy</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">$someCommand</div>
-                <div class="item-description">yyyy</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">xxx</div>
-                <div class="item-description">yyyy</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">xxx</div>
-                <div class="item-description">yyyy</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">xxx</div>
-                <div class="item-description">yyyy</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">xxx</div>
-                <div class="item-description">yyyy</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">xxx</div>
-                <div class="item-description">yyyy</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">xxx</div>
-                <div class="item-description">yyyy</div>
-            </div>
+
+        <!-- about -->
+
+        <main class="bot-main" id="about">
+            xxx
         </main>
-    </div>
+
+        <!-- admin -->
+
+        <div class="bot-main" id="admin">
+            <div class="main-item">
+                <div class="item-command">$servers</div>
+                <div class="item-description">Lists servers with this bot</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$purge</div>
+                <div class="item-description">Purges x amount of messages
+                    Syntax: $purge [number]</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$GimmiChannelID</div>
+                <div class="item-description">Gives channel ID</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$ConfigureBot</div>
+                <div class="item-description">Sets the variables and uploads them to database</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$ConfigurePrefix</div>
+                <div class="item-description">Uploads server specified prefix to database - worthless for now
+                    Syntax: $ConfigurePrefix [Character]</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$ConfigureGreeting</div>
+                <div class="item-description">Configures the greeting of the server
+                    Syntax: $ConfigureGreeting [number] "The greeting message where #user will be replaced with new
+                    user"</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$ConfigureRolePost</div>
+                <div class="item-description">Configures the listening for role post reactions</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$CreateRolePost</div>
+                <div class="item-description">Create post for assigning roles
+                    Syntax: [title] [description] [thumbnailUrl]</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Greet</div>
+                <div class="item-description">Activates the greeting option
+                    Syntax: $Greet [ bool value true / false ]</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$ServerInfo</div>
+                <div class="item-description">Gives you information about the server</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$ban</div>
+                <div class="item-description">Bans user</div>
+            </div>
+        </div>
+
+        <!-- Funnies -->
+
+        <div class="bot-main" id="funnies">
+            <div class="main-item">
+                <div class="item-command">$ping</div>
+                <div class="item-description">Check the bot latency</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$random</div>
+                <div class="item-description">rolls the random number from 1 to 100
+                    Syntax: (Optional) $Random minValue maxValue</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$HowYouFeel</div>
+                <div class="item-description">Ask how the bot feels like</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Kys</div>
+                <div class="item-description">Wish death to bot</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$GetAvatarURL</div>
+                <div class="item-description">Get the url of the avatar</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$DailyRun</div>
+                <div class="item-description">Create your bns daily party
+                    Syntax: $DailyRun [time] (Optional)[details]</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$PatHue</div>
+                <div class="item-description">Pat Hue :)</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Fight</div>
+                <div class="item-description">Fight with somebody!
+                    Syntax: $Fight [@user] [@user]</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$UrbanDefine</div>
+                <div class="item-description">Defines a given word
+                    Syntax: $UrbanDefine [word]</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Corona</div>
+                <div class="item-description">Get the latest data about contry</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$UwU</div>
+                <div class="item-description">UwuwuuwuwuU</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Love</div>
+                <div class="item-description">Check how much you're lovely match with somebody</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Time</div>
+                <div class="item-description">Check the CEST time</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$gif</div>
+                <div class="item-description"></div>
+            </div>
+        </div>
+
+        <!-- announce -->
+
+        <div class="bot-main" id="announce">
+            <div class="main-item">
+                <div class="item-command">$Raid</div>
+                <div class="item-description">Create raid announcement
+                    Syntax: $Raid [title] [day] [time]</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Announce</div>
+                <div class="item-description">Create custom announcement
+                    Syntax: $Announce ["title"] ["description"] ["thumbnailUrl"]</div>
+            </div>
+        </div>
 </body>
 
 </html>

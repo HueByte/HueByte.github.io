@@ -35,10 +35,18 @@
     color: #48E5C2;
 }
 
+
 .bot-menu li > a
 {
+    color: #48E5C2;
     transition: 0.4s ease-in-out;
 }
+
+.bot-menu li:hover > a
+{
+    color: black;
+}
+
 
 .bot-menu li:hover
 {
@@ -59,6 +67,7 @@
     overflow: auto;
     border-radius: 15px;
     padding: 5px;
+    display: none;
 }
 
 .main-item
