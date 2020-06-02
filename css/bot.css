@@ -66,7 +66,7 @@
     max-height: 90vh;
     overflow: auto;
     border-radius: 15px;
-    padding: 5px;
+    padding: 10px;
     display: none;
 }
 
@@ -83,6 +83,17 @@
     margin-bottom: 1em;
     color: #0CAADC;
     font-weight: bolder;
+}
+
+::selection 
+{
+    background-color: whitesmoke;
+}
+
+.item-command::selection
+{
+    /* color: black; */
+    background-color: white !important;
 }
 
 .item-description
