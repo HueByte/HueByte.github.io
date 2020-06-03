@@ -18,36 +18,37 @@
     <script>
         var divs = document.getElementsByClassName("bot-main");
         var isCollapsed = true;
-        function changeContent(current) {
-            var i;
-            for (i = 0; i < divs.length; i++) {
-                divs[i].style.display = 'none';
-                var list = document.getElementById(divs[i].id + '-list');
-                list.style.color = null;
-            }
-            var currentItem = document.getElementById(current);
-            currentItem.style.display = 'block';
-            var currentList = document.getElementById(current + '-list');
-            currentList.style.color = '#0CAADC';
+        var isMobile = false;
+        var scheme;
 
-            if(!isCollapsed)
-            {
+        function changeContent(current) {
+            //close menu when selected item
+            if (!isCollapsed) {
                 document.getElementById('mobile-menu').style.height = null;
                 document.getElementById('switcher').className = 'fas fa-bars collapser';
                 isCollapsed = !isCollapsed;
             }
+            //remove color and display
+            var i;
+            for (i = 0; i < divs.length; i++) {
+                divs[i].style.display = 'none';
+                var list = document.getElementById(divs[i].id + '-list' + scheme);
+                list.style.color = null;
+            }
+            //set current item color and display
+            var currentItem = document.getElementById(current);
+            currentItem.style.display = 'block';
+            var currentList = document.getElementById(current + '-list' + scheme);
+            currentList.style.color = '#0CAADC';
         }
 
         function collapse() {
-            console.log('1');
             var menu = document.getElementById('mobile-menu');
-            if (isCollapsed === true)
-            {
+            if (isCollapsed === true) {
                 menu.style.height = '100vh';
                 document.getElementById('switcher').className = 'fas fa-times collapser';
             }
-            else
-            {
+            else {
                 menu.style.height = null;
                 document.getElementById('switcher').className = 'fas fa-bars collapser';
             }
@@ -55,10 +56,15 @@
         }
 
         window.onload = function () {
-            var div = document.getElementById('about');
-            var list = document.getElementById(div.id + '-list');
-            div.style.display = 'block';
-            list.style.color = '#0CAADC';
+            //determine if mobile 
+            var mobile_menu = document.getElementById('mobile-menu');
+            isMobile = window.getComputedStyle(mobile_menu).getPropertyValue('display') === 'none' ? false : true;
+            scheme = isMobile ? '-m' : '';
+
+            console.log('about' + '-list' + scheme);
+            //Set the default color and block
+            document.getElementById('about').style.display = 'block';
+            document.getElementById('about' + '-list' + scheme).style.color = '#0CAADC';
         }
 
     </script>
@@ -66,16 +72,17 @@
 </head>
 
 <body>
-    <menu class="bot-menu-mobile" id="mobile-menu">
+    <menu id="mobile-menu" class="bot-menu-mobile">
         <div style="position: relative; width: 100%;">
             <i class="fas fa-bars collapser" id="switcher" onclick="collapse()"></i>
         </div>
         <ul>
             <li><a href="index.html"><i class="fa fa-fire" aria-hidden="true"></i> Home</a></li>
-            <li id="about-list" onclick="changeContent('about')"><i class="fab fa-discord"></i> About</li>
-            <li id="admin-list" onclick="changeContent('admin')"><i class="fas fa-user"></i> Admin</li>
-            <li id="funnies-list" onclick="changeContent('funnies')"><i class="fas fa-smile"></i> Funnies</li>
-            <li id="announce-list" onclick="changeContent('announce')"><i class="fa fa-bullhorn" aria-hidden="true"></i>
+            <li id="about-list-m" onclick="changeContent('about')"><i class="fab fa-discord"></i> About</li>
+            <li id="admin-list-m" onclick="changeContent('admin')"><i class="fas fa-user"></i> Admin</li>
+            <li id="funnies-list-m" onclick="changeContent('funnies')"><i class="fas fa-smile"></i> Funnies</li>
+            <li id="announce-list-m" onclick="changeContent('announce')"><i class="fa fa-bullhorn"
+                    aria-hidden="true"></i>
                 Announce</li>
         </ul>
     </menu>
