@@ -38,6 +38,7 @@ a, a:hover, a:visited, a:active {
     animation: 1s ease-in-out 0s 1 entryAnimation;
     margin-right: 2em;
     padding-top: 10px;
+    text-align: center;
 }
 
 .Hello > h1 {
@@ -47,7 +48,7 @@ a, a:hover, a:visited, a:active {
 .menu
 {
     min-height: fit-content;
-    width: 20vw;
+    width: fit-content;
     min-width: fit-content;
     font-size: 1.5rem;
     animation: 2s ease-in-out 0s 1 entryMenu;
@@ -120,10 +121,20 @@ a, a:hover, a:visited, a:active {
     }
 }
 
-@media screen and (max-width: 1190px)
+@media screen and (max-width: 1024px)
+{
+    .menu {
+        font-size: 1.2rem;
+    }
+}
+@media screen and (max-width: 1000px)
 {
     .middle-container{
         flex-direction: column;
+    }
+
+    .menu {
+        font-size: 1.2rem;
     }
 
     .Hello {

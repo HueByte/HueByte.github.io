@@ -17,6 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         var divs = document.getElementsByClassName("bot-main");
+        var isCollapsed = true;
         function changeContent(current) {
             var i;
             for (i = 0; i < divs.length; i++) {
@@ -28,6 +29,29 @@
             currentItem.style.display = 'block';
             var currentList = document.getElementById(current + '-list');
             currentList.style.color = '#0CAADC';
+
+            if(!isCollapsed)
+            {
+                document.getElementById('mobile-menu').style.height = null;
+                document.getElementById('switcher').className = 'fas fa-bars collapser';
+                isCollapsed = !isCollapsed;
+            }
+        }
+
+        function collapse() {
+            console.log('1');
+            var menu = document.getElementById('mobile-menu');
+            if (isCollapsed === true)
+            {
+                menu.style.height = '100vh';
+                document.getElementById('switcher').className = 'fas fa-times collapser';
+            }
+            else
+            {
+                menu.style.height = null;
+                document.getElementById('switcher').className = 'fas fa-bars collapser';
+            }
+            isCollapsed = !isCollapsed;
         }
 
         window.onload = function () {
@@ -36,11 +60,26 @@
             div.style.display = 'block';
             list.style.color = '#0CAADC';
         }
+
     </script>
 
 </head>
 
 <body>
+    <menu class="bot-menu-mobile" id="mobile-menu">
+        <div style="position: relative; width: 100%;">
+            <i class="fas fa-bars collapser" id="switcher" onclick="collapse()"></i>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fa fa-fire" aria-hidden="true"></i> Home</a></li>
+            <li id="about-list" onclick="changeContent('about')"><i class="fab fa-discord"></i> About</li>
+            <li id="admin-list" onclick="changeContent('admin')"><i class="fas fa-user"></i> Admin</li>
+            <li id="funnies-list" onclick="changeContent('funnies')"><i class="fas fa-smile"></i> Funnies</li>
+            <li id="announce-list" onclick="changeContent('announce')"><i class="fa fa-bullhorn" aria-hidden="true"></i>
+                Announce</li>
+        </ul>
+    </menu>
+
     <div class="bot-container">
         <menu class="bot-menu">
             <ul>
@@ -48,7 +87,8 @@
                 <li id="about-list" onclick="changeContent('about')"><i class="fab fa-discord"></i> About</li>
                 <li id="admin-list" onclick="changeContent('admin')"><i class="fas fa-user"></i> Admin</li>
                 <li id="funnies-list" onclick="changeContent('funnies')"><i class="fas fa-smile"></i> Funnies</li>
-                <li id="announce-list" onclick="changeContent('announce')"><i class="fa fa-bullhorn" aria-hidden="true"></i> Announce</li>
+                <li id="announce-list" onclick="changeContent('announce')"><i class="fa fa-bullhorn"
+                        aria-hidden="true"></i> Announce</li>
             </ul>
         </menu>
 
@@ -56,7 +96,8 @@
 
         <main class="bot-main" id="about" style="text-align: center;">
             <h2>Site isn't done yet</h2>
-            <img style="border-radius: 20px;" src="https://i.pinimg.com/originals/d2/3a/25/d23a25e799613ef9e8ddbd2837135de9.gif" alt="catto" />
+            <img style="border-radius: 20px; max-width: 80%;"
+                src="https://i.pinimg.com/originals/d2/3a/25/d23a25e799613ef9e8ddbd2837135de9.gif" alt="catto" />
         </main>
 
         <!-- admin -->

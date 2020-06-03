@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     width: 100vw;
-    min-height: 100vh;
+    max-height: 100vh;
     font-size: large;
     flex-wrap: wrap;
     animation: 1s ease-in-out 0s 1 entry;
@@ -59,7 +59,7 @@
 {
     /* background-color: #40434E; */
     background-color: rgb(22, 21, 21);
-    width: 50vw;
+    width: 60vw;
     margin: 1em;
     min-height: 50vh;
     height: fit-content;
@@ -101,16 +101,88 @@
 
 }
 
-@media screen and (max-width: 1190px)
+.bot-menu-mobile
+{
+    display: none;
+    position: fixed;
+    width: 100%;
+    background-color: #48E5C2;
+    color: white;
+    overflow: hidden;
+    height: 1em;
+    padding: 10px 0px 10px 0px;
+    margin-top: 0px;
+    z-index: 999;
+    transition: 0.4s ease-in-out;
+}
+
+.bot-menu-mobile ul
+{
+    margin: 1.5em;
+    list-style: none;
+    padding: 0px;
+}
+
+.bot-menu-mobile li
+{
+    margin: 10px;
+}
+
+.bot-menu-mobile .collapser
+{
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1024px)
 {
     .bot-container
     {
-        flex-direction: column;
+        margin-top: 0em;
     }
 
     .bot-menu
     {
         margin-right: 0px;
+        font-size: 0.7rem;
+    }
+
+    .bot-main
+    {
+        font-size: medium;
+    }
+}
+
+@media screen and (max-width: 1000px)
+{
+    .bot-container
+    {
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        padding-top: 2em;
+    }
+
+    .bot-main
+    {
+        font-size: 0.7rem;
+        width: 80vw;
+        max-height: 80vh;
+    }
+
+    .bot-menu
+    {
+        margin-right: 0px;
+        font-size: 1rem;
+        display: none;
+    }
+
+    .bot-menu-mobile
+    {
+        top: 0px;
+        display: block;
+        animation: 1s ease-in-out 0s 1 entry;
     }
 }
 
