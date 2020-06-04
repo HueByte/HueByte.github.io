@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
     <title>Hue Bot!</title>
     <link rel="shortcut icon" href="favicon.jpg" />
@@ -86,6 +86,8 @@
             <li id="announce-list-m" onclick="changeContent('announce')"><i class="fa fa-bullhorn"
                     aria-hidden="true"></i>
                 Announce</li>
+            <li id="music-list-m" onclick="changeContent('music')"><i class="fas fa-headphones"></i> music</li>
+            <li id="other-list-m" onclick="changeContent('other')"><i class="fab fa-blogger-b"></i> other</li>
         </ul>
     </menu>
 
@@ -98,6 +100,8 @@
                 <li id="funnies-list" onclick="changeContent('funnies')"><i class="fas fa-smile"></i> Funnies</li>
                 <li id="announce-list" onclick="changeContent('announce')"><i class="fa fa-bullhorn"
                         aria-hidden="true"></i> Announce</li>
+                <li id="music-list" onclick="changeContent('music')"><i class="fas fa-headphones"></i> music</li>
+                <li id="other-list" onclick="changeContent('other')"><i class="fab fa-blogger-b"></i> other</li>
             </ul>
         </menu>
 
@@ -241,6 +245,68 @@
                 <div class="item-command">$Announce</div>
                 <div class="item-description">Create custom announcement
                     Syntax: $Announce ["title"] ["description"] ["thumbnailUrl"]</div>
+            </div>
+        </div>
+
+        <!-- Music -->
+
+        <div class="bot-main" id="music">
+            <div class="main-item">
+                <div class="item-command">$Join</div>
+                <div class="item-description">Joins the voice chat</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Leave</div>
+                <div class="item-description">Leaves the voice chat</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Play</div>
+                <div class="item-description">Plays the track</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Resume</div>
+                <div class="item-description">Resumes the track</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Pause</div>
+                <div class="item-description">Pauses the track</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Stop</div>
+                <div class="item-description">Stops the music</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Skip</div>
+                <div class="item-description">Skips the track</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Seek</div>
+                <div class="item-description">Check thes status</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Volume</div>
+                <div class="item-description">Change the volume</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$NowPlaying</div>
+                <div class="item-description">Get current track</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Genius</div>
+                <div class="item-description">Get Genius lyrics</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$OVH</div>
+                <div class="item-description">Get OVH lyrics</div>
+            </div>
+        </div>
+
+        <!-- Other -->
+
+        <div class="bot-main" id="other">
+            <div class="main-item">
+                <div class="item-command">$gear</div>
+                <div class="item-description">Fetch the gear by character nickname</div>
             </div>
         </div>
 </body>
