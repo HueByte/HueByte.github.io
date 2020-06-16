@@ -136,6 +136,17 @@
     font-size: 1.5em;
 }
 
+.picture-box
+{
+    margin: 1em;
+}
+
+.picture-box-img
+{
+    width: 500px;
+    border-radius: 20px;
+}
+
 @media screen and (max-width: 1024px)
 {
     .bot-container
@@ -167,7 +178,7 @@
 
     .bot-main
     {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         width: 80vw;
         max-height: 80vh;
     }
@@ -188,6 +199,11 @@
         top: 0px;
         display: block;
         animation: 1s ease-in-out 0s 1 entry;
+    }
+
+    .picture-box
+    {
+        text-align: center;
     }
 }
 
