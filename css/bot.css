@@ -143,7 +143,7 @@
 
 .picture-box-img
 {
-    width: 500px;
+    width: 60%;
     border-radius: 20px;
 }
 
@@ -179,7 +179,7 @@
     .bot-main
     {
         font-size: 0.8rem;
-        width: 80vw;
+        width: 100vw;
         max-height: 80vh;
     }
 
@@ -204,6 +204,11 @@
     .picture-box
     {
         text-align: center;
+    }
+
+    .picture-box-img
+    {
+        width: 100%;
     }
 }
 
