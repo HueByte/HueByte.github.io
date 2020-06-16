@@ -105,13 +105,16 @@
 {
     display: none;
     position: fixed;
-    width: 100%;
+    max-width: 100vw;
+    width: 100vw;
+    height: 1.5em;
+    padding: 20px 0px 20px 0px;
+    margin-top: 0px; 
+    padding: 0px;
+    box-sizing: border-box;
     background-color: #48E5C2;
     color: white;
     overflow: hidden;
-    height: 1.5em;
-    padding: 20px 0px 20px 0px;
-    margin-top: 0px;
     z-index: 999;
     transition: 0.4s ease-in-out;
 }
@@ -119,13 +122,14 @@
 .bot-menu-mobile ul
 {
     margin: 2.5em;
-    list-style: none;
     padding: 0px;
+    list-style: none;
 }
 
 .bot-menu-mobile li
 {
     margin: 10px;
+    /* margin: 10px; */
 }
 
 .bot-menu-mobile .collapser
@@ -133,7 +137,7 @@
     position: absolute;
     right: 10px;
     cursor: pointer;
-    font-size: 1.5em;
+    font-size: 1.5em; 
 }
 
 .picture-box
@@ -173,14 +177,22 @@
         flex-direction: column;
         align-items: center;
         justify-content: start;
-        padding-top: 4em;
+        padding-top: 1.5em;
+        height: fit-content;
+        max-height: fit-content;
     }
 
     .bot-main
     {
+        border-radius: 0;
         font-size: 0.8rem;
+        margin: 0;
+        padding: 0;
+        overflow: unset;
         width: 100vw;
-        max-height: 80vh;
+        max-width: 100vw;
+        height: fit-content;
+        max-height: fit-content;
     }
 
     .bot-menu
