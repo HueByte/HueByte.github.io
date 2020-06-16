@@ -10,8 +10,8 @@
     <meta name="author" content="Hue">
     <meta name="description" content="This is Hue portfolio/informational website" />
     <link href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" rel="stylesheet">
-    <link href="css/MainPage.css" rel="stylesheet" />
     <link href="css/bot.css" rel="stylesheet" />
+    <link href="css/MainPage.css" rel="stylesheet" />
     <link href="css/Scroll.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans" />
@@ -128,7 +128,8 @@
                     <img class="picture-box-img" src="pics/dailyrunExample.png" alt="DailyRun Example" />
                 </div>
                 <p>
-                    In Some commands which intentionally take sentense you can skip quotes because they're taking only one argument<br>
+                    In Some commands which intentionally take sentense you can skip quotes because they're taking only
+                    one argument<br>
                     Example: <span style="color: #48E5C2;">$UrbanDefine</span> <span style="color: orange;">blue
                         car</span>
                 </p>
@@ -137,7 +138,8 @@
                 </div>
                 <p>
                     When commands require user as argument you should use @user mention<br>
-                    Example: <span style="color: #48E5C2;">$GetAvatarUrl</span> <span style="color: orange;">@H.u.e.</span>
+                    Example: <span style="color: #48E5C2;">$GetAvatarUrl</span> <span
+                        style="color: orange;">@H.u.e.</span>
                 </p>
                 <div class="picture-box">
                     <img class="picture-box-img" src="pics/GetAvatarUrlExample.png" alt="DailyRun Example" />
@@ -154,11 +156,13 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$purge</div>
+                <div class="item-alias">$pur</div>
                 <div class="item-description">Purges x amount of messages
                     Syntax: $purge [number]</div>
             </div>
             <div class="main-item">
-                <div class="item-command">$GimmiChannelID</div>
+                <div class="item-command">$GiveChannelID</div>
+                <div class="item-alias">$chanid</div>
                 <div class="item-description">Gives channel ID</div>
             </div>
             <div class="main-item">
@@ -178,7 +182,8 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$ConfigureRolePost</div>
-                <div class="item-description">Configures the listening for role post reactions</div>
+                <div class="item-description">Configures the listening for role post reactions (Require channel ID)
+                </div>
             </div>
             <div class="main-item">
                 <div class="item-command">$CreateRolePost</div>
@@ -204,6 +209,7 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$RemoveStrike</div>
+                <div class="item-alias">$rmstrike</div>
                 <div class="item-description">Removes strike from user</div>
             </div>
             <div class="main-item">
@@ -212,14 +218,17 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$RemoveWarn</div>
+                <div class="item-alias">$rmwarn</div>
                 <div class="item-description">Removes warn from user</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$ShowStrikes</div>
+                <div class="item-alias">$shows</div>
                 <div class="item-description">Shows amount of strikes that user has</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$ShowWarns</div>
+                <div class="item-alias">$showw</div>
                 <div class="item-description">Shows amount of warns that user has</div>
             </div>
         </div>
@@ -233,6 +242,7 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$random</div>
+                <div class="item-alias">$rnd</div>
                 <div class="item-description">rolls the random number from 1 to 100
                     Syntax: (Optional) $Random minValue maxValue</div>
             </div>
@@ -246,10 +256,12 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$GetAvatarURL</div>
+                <div class="item-alias">$gau</div>
                 <div class="item-description">Get the url of the avatar</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$DailyRun</div>
+                <div class="item-alias">$drun</div>
                 <div class="item-description">Create your bns daily party
                     Syntax: $DailyRun [time] (Optional)[details]</div>
             </div>
@@ -264,16 +276,17 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$UrbanDefine</div>
+                <div class="item-alias">$ud</div>
                 <div class="item-description">Defines a given word
                     Syntax: $UrbanDefine [word]</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$Corona</div>
-                <div class="item-description">Get the latest data about contry</div>
+                <div class="item-description">Get the latest data about country</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$UwU</div>
-                <div class="item-description">UwuwuuwuwuU</div>
+                <div class="item-description">UwU this text</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$Love</div>
@@ -285,6 +298,10 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$gif</div>
+                <div class="item-description"></div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Download</div>
                 <div class="item-description"></div>
             </div>
         </div>
@@ -299,6 +316,7 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$Announce</div>
+                <div class="item-alias">$ann</div>
                 <div class="item-description">Create custom announcement
                     Syntax: $Announce ["title"] ["description"] ["thumbnailUrl"]</div>
             </div>
@@ -317,6 +335,7 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$Play</div>
+                <div class="item-alias">$$p</div>
                 <div class="item-description">Plays the track</div>
             </div>
             <div class="main-item">
@@ -333,6 +352,7 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$Skip</div>
+                <div class="item-alias">$$s</div>
                 <div class="item-description">Skips the track</div>
             </div>
             <div class="main-item">
@@ -345,6 +365,7 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$NowPlaying</div>
+                <div class="item-alias">$np</div>
                 <div class="item-description">Get current track</div>
             </div>
             <div class="main-item">

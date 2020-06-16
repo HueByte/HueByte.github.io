@@ -80,9 +80,15 @@
 
 .item-command
 {
-    margin-bottom: 1em;
     color: #0CAADC;
     font-weight: bolder;
+    margin-bottom: 0.5em;
+}
+
+.item-alias
+{
+    color: orange;
+    margin-bottom: 0.5em;
 }
 
 ::selection 
@@ -107,7 +113,7 @@
     position: fixed;
     max-width: 100vw;
     width: 100vw;
-    height: 2em;
+    height: 3em;
     padding: 20px 0px 20px 0px;
     margin-top: 0px; 
     padding: 0px;
@@ -121,7 +127,7 @@
 
 .bot-menu-mobile ul
 {
-    margin: 2.5em;
+    margin: 3em 2.5em 2.5em 2.5em;
     padding: 0px;
     list-style: none;
 }
@@ -135,7 +141,7 @@
 .bot-menu-mobile .collapser
 {
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 10px;
     cursor: pointer;
     font-size: 1.5em; 
@@ -178,7 +184,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: start;
-        padding-top: 1.5em;
+        margin-top: 3em;
         height: fit-content;
         max-height: fit-content;
     }
@@ -192,7 +198,6 @@
         overflow: unset;
         width: 100vw;
         max-width: 100vw;
-        height: fit-content;
         max-height: fit-content;
     }
 
