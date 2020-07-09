@@ -3,17 +3,19 @@
 
 <head>
     <title>Hue Bot!</title>
-    <link rel="shortcut icon" href="favicon.jpg" />
+    <link rel="shortcut icon" href="favicon.png" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Hue">
     <meta name="description" content="HueBot informational website" />
-    <meta property="og:image" content="favicon.jpg">
-    <meta property="og:image:width" content="128">
-    <meta property="og:image:height" content="128">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hue website" />
+    <meta property="og:url" content="https://huebyte.github.io/" />
+    <meta property="og:image" content="https://cf.shopee.vn/file/9c9270cffd50f643a176389933d3dbfa" />
     <meta name="theme-color" content="#48E5C2">
     <link href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link href="css/bot.css" rel="stylesheet" />
     <link href="css/MainPage.css" rel="stylesheet" />
     <link href="css/Scroll.css" rel="stylesheet" />
@@ -86,12 +88,13 @@
             <li><a href="index.html"><i class="fa fa-fire" aria-hidden="true"></i> Home</a></li>
             <li id="about-list-m" onclick="changeContent('about')"><i class="fab fa-discord"></i> About</li>
             <li id="admin-list-m" onclick="changeContent('admin')"><i class="fas fa-user"></i> Admin</li>
-            <li id="funnies-list-m" onclick="changeContent('funnies')"><i class="fas fa-smile"></i> Funnies</li>
-            <li id="announce-list-m" onclick="changeContent('announce')"><i class="fa fa-bullhorn"
+            <li id="fun-list-m" onclick="changeContent('fun')"><i class="fas fa-smile"></i> fun</li>
+            <li id="announcement-list-m" onclick="changeContent('announcement')"><i class="fa fa-bullhorn"
                     aria-hidden="true"></i>
-                Announce</li>
-            <li id="music-list-m" onclick="changeContent('music')"><i class="fas fa-headphones"></i> music</li>
+                announcement</li>
+            <li id="audio-list-m" onclick="changeContent('audio')"><i class="fas fa-headphones"></i> music</li>
             <li id="other-list-m" onclick="changeContent('other')"><i class="fab fa-blogger-b"></i> other</li>
+            <li id="economy-list-m" onclick="changeContent('economy')"><i class='fas fa-coins'></i> Economy</li>
         </ul>
     </menu>
 
@@ -101,11 +104,12 @@
                 <li><a href="index.html"><i class="fa fa-fire" aria-hidden="true"></i> Home</a></li>
                 <li id="about-list" onclick="changeContent('about')"><i class="fab fa-discord"></i> About</li>
                 <li id="admin-list" onclick="changeContent('admin')"><i class="fas fa-user"></i> Admin</li>
-                <li id="funnies-list" onclick="changeContent('funnies')"><i class="fas fa-smile"></i> Funnies</li>
-                <li id="announce-list" onclick="changeContent('announce')"><i class="fa fa-bullhorn"
-                        aria-hidden="true"></i> Announce</li>
-                <li id="music-list" onclick="changeContent('music')"><i class="fas fa-headphones"></i> music</li>
+                <li id="fun-list" onclick="changeContent('fun')"><i class="fas fa-smile"></i> fun</li>
+                <li id="announcement-list" onclick="changeContent('announcement')"><i class="fa fa-bullhorn"
+                        aria-hidden="true"></i> announcement</li>
+                <li id="audio-list" onclick="changeContent('audio')"><i class="fas fa-headphones"></i> music</li>
                 <li id="other-list" onclick="changeContent('other')"><i class="fab fa-blogger-b"></i> other</li>
+                <li id="economy-list" onclick="changeContent('economy')"><i class='fas fa-coins'></i> Economy</li>
             </ul>
         </menu>
 
@@ -151,53 +155,37 @@
             </div>
         </main>
 
-        <!-- admin -->
-
+        <!-- Admin -->
         <div class="bot-main" id="admin">
             <div class="main-item">
-                <div class="item-command">$servers</div>
-                <div class="item-description">Lists servers with this bot</div>
-            </div>
-            <div class="main-item">
                 <div class="item-command">$purge</div>
-                <div class="item-alias">$pur</div>
-                <div class="item-description">Purges x amount of messages
-                    Syntax: $purge [number]</div>
+                <div class="item-alias">Alias: $pur</div>
+                <div class="item-description">Purges x amount of messages<br>Usage: $purge [number]</div>
             </div>
             <div class="main-item">
-                <div class="item-command">$GiveChannelID</div>
-                <div class="item-alias">$chanid</div>
+                <div class="item-command">$GetChannel</div>
+                <div class="item-alias">Alias: $chanid</div>
                 <div class="item-description">Gives channel ID</div>
             </div>
             <div class="main-item">
-                <div class="item-command">$ConfigureBot</div>
-                <div class="item-description">Sets the variables and uploads them to database</div>
-            </div>
-            <div class="main-item">
                 <div class="item-command">$ConfigurePrefix</div>
-                <div class="item-description">Uploads server specified prefix to database - worthless for now
-                    Syntax: $ConfigurePrefix [Character]</div>
+                <div class="item-description">Uploads server specified prefix to database - worthless for now<br>Usage:
+                    $ConfigurePrefix [Character]</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$ConfigureGreeting</div>
-                <div class="item-description">Configures the greeting of the server
-                    Syntax: $ConfigureGreeting [number] "The greeting message where #user will be replaced with new
-                    user"</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">$ConfigureRolePost</div>
-                <div class="item-description">Configures the listening for role post reactions (Require channel ID)
-                </div>
+                <div class="item-description">Configures the greeting of the server<br>Usage: $ConfigureGreeting
+                    [Channel ID] "The greeting message where #user will be replaced with new user"</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$CreateRolePost</div>
-                <div class="item-description">Create post for assigning roles
-                    Syntax: [title] [description] [thumbnailUrl]</div>
+                <div class="item-description">Create post for assigning roles<br>Usage: [title] [description]
+                    [thumbnailUrl]</div>
             </div>
             <div class="main-item">
-                <div class="item-command">$Greet</div>
-                <div class="item-description">Activates the greeting option
-                    Syntax: $Greet [ bool value true / false ]</div>
+                <div class="item-command">$ToggleWelcoming</div>
+                <div class="item-alias">Alias: $togglegreeting</div>
+                <div class="item-description">Activates or disables the greeting option</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$ServerInfo</div>
@@ -205,50 +193,67 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$ban</div>
-                <div class="item-description">Bans user</div>
+                <div class="item-description">Bans user<br>Usage: $Ban @user</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$strike</div>
-                <div class="item-description">Gives user a strike</div>
+                <div class="item-description">Gives user a strike<br>Usage: $strike @user</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$RemoveStrike</div>
-                <div class="item-alias">$rmstrike</div>
-                <div class="item-description">Removes strike from user</div>
+                <div class="item-alias">Alias: $rmstrike</div>
+                <div class="item-description">Removes oldest strike from user<br>Usage: $RemoveStrike @user</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$warn</div>
-                <div class="item-description">Gives user a warn</div>
+                <div class="item-description">Gives user a warn<br>Usage: $Warn @user</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$RemoveWarn</div>
-                <div class="item-alias">$rmwarn</div>
-                <div class="item-description">Removes warn from user</div>
+                <div class="item-alias">Alias: $rmwarn</div>
+                <div class="item-description">Removes oldest warn from user<br> Usage: $RemoveWarn @user</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$ClearStrikes</div>
+                <div class="item-alias">Alias: $clears</div>
+                <div class="item-description">Clears strikes of mentioned user<br>Usage: $ClearStrikes @user</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$ClearWarns</div>
+                <div class="item-alias">Alias: $clearw</div>
+                <div class="item-description">Clears warns of mentioned user<br>Usage: $ClearWarns @user</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$ShowStrikes</div>
-                <div class="item-alias">$shows</div>
-                <div class="item-description">Shows amount of strikes that user has</div>
+                <div class="item-alias">Alias: $shows</div>
+                <div class="item-description">Shows strikes that user has<br>Usage: $ShowStrikes @user</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$ShowWarns</div>
-                <div class="item-alias">$showw</div>
-                <div class="item-description">Shows amount of warns that user has</div>
+                <div class="item-alias">Alias: $showw</div>
+                <div class="item-description">Shows warns that user has<br>Usage: $ShowWarns @user</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$RemoveWarnByID</div>
+                <div class="item-alias">Alias: $rwid</div>
+                <div class="item-description">Removes the warn by it's ID - You can check the ID's by $ShowWarns @user
+                    command</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$RemoveStrikeByID</div>
+                <div class="item-alias">Alias: $rsid</div>
+                <div class="item-description">Removes the warn by it's ID - You can check the ID's by $ShowWarns @user
+                    command</div>
             </div>
         </div>
-
-        <!-- Funnies -->
-
-        <div class="bot-main" id="funnies">
-            <div class="main-item">
-                <div class="item-command">$ping</div>
-                <div class="item-description">Check the bot latency</div>
-            </div>
+        <!-- End Admin -->
+        <!-- Fun -->
+        <div class="bot-main" id="fun">
             <div class="main-item">
                 <div class="item-command">$random</div>
-                <div class="item-alias">$rnd</div>
-                <div class="item-description">rolls the random number from 1 to 100
-                    Syntax: (Optional) $Random minValue maxValue</div>
+                <div class="item-alias">Alias: $rnd</div>
+                <div class="item-description">rolls the random number from 1 to 100. If you want custom numbers to roll
+                    from look at usage.<br>Usage: $Random minValue maxValue</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$HowYouFeel</div>
@@ -260,14 +265,8 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$GetAvatarURL</div>
-                <div class="item-alias">$gau</div>
-                <div class="item-description">Get the url of the avatar</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">$DailyRun</div>
-                <div class="item-alias">$drun</div>
-                <div class="item-description">Create your bns daily party
-                    Syntax: $DailyRun [time] (Optional)[details]</div>
+                <div class="item-alias">Alias: $gau</div>
+                <div class="item-description">Get the url of the avatar<br>Usage: $GetAvatarUrl @user</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$PatHue</div>
@@ -275,14 +274,12 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$Fight</div>
-                <div class="item-description">Fight with somebody!
-                    Syntax: $Fight [@user] [@user]</div>
+                <div class="item-description">Fight with somebody!<br>Usage: $Fight @user @user</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$UrbanDefine</div>
-                <div class="item-alias">$ud</div>
-                <div class="item-description">Defines a given word
-                    Syntax: $UrbanDefine [word]</div>
+                <div class="item-alias">Alias: $ud</div>
+                <div class="item-description">Defines a given word<br>Usage: $UrbanDefine [word]</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$Corona</div>
@@ -290,11 +287,12 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$UwU</div>
-                <div class="item-description">UwU this text</div>
+                <div class="item-description">UwU the text<br>Usage: $UwU text</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$Love</div>
-                <div class="item-description">Check how much you're lovely match with somebody</div>
+                <div class="item-description">Check how much you're lovely match with somebody<br>Usage: $love @user
+                    @user</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$Time</div>
@@ -302,45 +300,48 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$gif</div>
-                <div class="item-description"></div>
+                <div class="item-description">Work in progress</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$Download</div>
                 <div class="item-description"></div>
             </div>
         </div>
-
-        <!-- announce -->
-
-        <div class="bot-main" id="announce">
+        <!-- End Fun -->
+        <!-- Announcement -->
+        <div class="bot-main" id="announcement">
             <div class="main-item">
                 <div class="item-command">$Raid</div>
-                <div class="item-description">Create raid announcement
-                    Syntax: $Raid [title] [day] [time]</div>
+                <div class="item-description">Set up the raid! The user limit is optional parameter<br>Usage: $Raid
+                    [title] [time details] [Player limit]</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Party</div>
+                <div class="item-description">Set up the party! The user limit is optional parameter<br>Usage: $Party
+                    [time] [details] [Player limit]</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$Announce</div>
-                <div class="item-alias">$ann</div>
-                <div class="item-description">Create custom announcement
-                    Syntax: $Announce ["title"] ["description"] ["thumbnailUrl"]</div>
+                <div class="item-alias">Alias: $ann</div>
+                <div class="item-description">Create custom announcement. Thumbnail is optional and it's your avatar by
+                    default<br>Usage: $Announce [title] [description] [thumbnailUrl]</div>
             </div>
         </div>
-
-        <!-- Music -->
-
-        <div class="bot-main" id="music">
+        <!-- End Announcement -->
+        <!-- Audio -->
+        <div class="bot-main" id="audio">
             <div class="main-item">
                 <div class="item-command">$Join</div>
-                <div class="item-description">Joins the voice chat</div>
+                <div class="item-description">Makes the bot join the voice chat</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$Leave</div>
-                <div class="item-description">Leaves the voice chat</div>
+                <div class="item-description">Makes the bot Leave the voice chat</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$Play</div>
-                <div class="item-alias">$p</div>
-                <div class="item-description">Plays the track</div>
+                <div class="item-alias">Alias: $p</div>
+                <div class="item-description">Plays the track<br>Usage: $Play [link]</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$Resume</div>
@@ -356,7 +357,7 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$Skip</div>
-                <div class="item-alias">$s</div>
+                <div class="item-alias">Alias: $s</div>
                 <div class="item-description">Skips the track</div>
             </div>
             <div class="main-item">
@@ -365,11 +366,11 @@
             </div>
             <div class="main-item">
                 <div class="item-command">$Volume</div>
-                <div class="item-description">Change the volume</div>
+                <div class="item-description">Change the volume with max of 100<br>Usage: $Volume [number]</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$NowPlaying</div>
-                <div class="item-alias">$np</div>
+                <div class="item-alias">Alias: $np</div>
                 <div class="item-description">Get current track</div>
             </div>
             <div class="main-item">
@@ -381,15 +382,34 @@
                 <div class="item-description">Get OVH lyrics</div>
             </div>
         </div>
-
+        <!-- End Audio -->
         <!-- Other -->
-
         <div class="bot-main" id="other">
             <div class="main-item">
-                <div class="item-command">$gear</div>
-                <div class="item-description">Fetch the gear by character nickname</div>
+                <div class="item-command">$BnsGear</div>
+                <div class="item-description">Fetch the gear by character nickname<br>Usage: $BnsGear [NameOfCharacter]
+                </div>
             </div>
         </div>
+        <!-- End Other -->
+        <!-- Economy -->
+        <div class="bot-main" id="economy">
+            <div class="main-item">
+                <div class="item-command">$Coins</div>
+                <div class="item-description">Shows your balance</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$GiveCoins</div>
+                <div class="item-description">Give other user coins<br>Usage: $GiveCoins @user</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Daily</div>
+                <div class="item-description">Get your daily coins!<br>Daily resets at 00:00</div>
+            </div>
+        </div>
+        <!-- End Economy -->
+
+    </div>
 </body>
 
 </html>
