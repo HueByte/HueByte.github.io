@@ -12,7 +12,8 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Hue website" />
     <meta property="og:url" content="https://huebyte.github.io/Bot" />
-    <meta property="og:description" content="You can find here list of the commands for the H.u.e bot and guide how to use it!" />
+    <meta property="og:description"
+        content="You can find here list of the commands for the H.u.e bot and guide how to use it!" />
     <meta property="og:image" content="https://cf.shopee.vn/file/9c9270cffd50f643a176389933d3dbfa" />
     <meta name="theme-color" content="#48E5C2">
     <link href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" rel="stylesheet">
@@ -122,8 +123,9 @@
             </div>
             <div style="text-align: left; width: 80%; margin: auto;">
                 <h2>You can find here the command list for the bot or my github with other projects!</h2>
-                <p style="color: #48E5C2;"><i class="fa fa-user-plus" aria-hidden="true"></i> Invite link: <a href="https://discord.com/api/oauth2/authorize?client_id=704857702953779210&permissions=2146958454&scope=bot"
-                                                           target="_blank">Here</a>
+                <p style="color: #48E5C2;"><i class="fa fa-user-plus" aria-hidden="true"></i> Invite link: <a
+                        href="https://discord.com/api/oauth2/authorize?client_id=704857702953779210&permissions=2146958454&scope=bot"
+                        target="_blank">Here</a>
                 </p>
                 <p>
                 <h4 style="color:orange;"><i class="fa fa-book" aria-hidden="true"></i> Quick command guide</h4>
@@ -162,16 +164,6 @@
         <!-- Admin -->
         <div class="bot-main" id="admin">
             <div class="main-item">
-                <div class="item-command">$purge</div>
-                <div class="item-alias">Alias: $pur</div>
-                <div class="item-description">Purges x amount of messages<br>Usage: $purge [number]</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">$GetChannel</div>
-                <div class="item-alias">Alias: $chanid</div>
-                <div class="item-description">Gives channel ID</div>
-            </div>
-            <div class="main-item">
                 <div class="item-command">$ConfigurePrefix</div>
                 <div class="item-description">Uploads server specified prefix to database - worthless for now<br>Usage:
                     $ConfigurePrefix [Character]</div>
@@ -182,22 +174,35 @@
                     [Channel ID] "The greeting message where #user will be replaced with new user"</div>
             </div>
             <div class="main-item">
+                <div class="item-command">$ToggleWelcoming</div>
+                <div class="item-description">Activates or disables the greeting option</div>
+            </div>
+            <div class="main-item">
                 <div class="item-command">$CreateRolePost</div>
                 <div class="item-description">Create post for assigning roles<br>Usage: [title] [description]
                     [thumbnailUrl]</div>
             </div>
             <div class="main-item">
-                <div class="item-command">$ToggleWelcoming</div>
-                <div class="item-alias">Alias: $togglegreeting</div>
-                <div class="item-description">Activates or disables the greeting option</div>
+                <div class="item-command">$ToggleBirthdays</div>
+                <div class="item-description">Switch on/off displaying birthdays at your server</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$BirthdayRoom</div>
+                <div class="item-description">Set birthday room for birthdays</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$purge</div>
+                <div class="item-alias">Alias: $pur</div>
+                <div class="item-description">Purges x amount of messages<br>Usage: $purge [number]</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$GetChannel</div>
+                <div class="item-alias">Alias: $chanid</div>
+                <div class="item-description">Gives channel ID</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$ServerInfo</div>
                 <div class="item-description">Gives you information about the server</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">$ban</div>
-                <div class="item-description">Bans user<br>Usage: $Ban @user</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$strike</div>
@@ -209,23 +214,9 @@
                 <div class="item-description">Removes oldest strike from user<br>Usage: $RemoveStrike @user</div>
             </div>
             <div class="main-item">
-                <div class="item-command">$warn</div>
-                <div class="item-description">Gives user a warn<br>Usage: $Warn @user</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">$RemoveWarn</div>
-                <div class="item-alias">Alias: $rmwarn</div>
-                <div class="item-description">Removes oldest warn from user<br> Usage: $RemoveWarn @user</div>
-            </div>
-            <div class="main-item">
                 <div class="item-command">$ClearStrikes</div>
                 <div class="item-alias">Alias: $clears</div>
                 <div class="item-description">Clears strikes of mentioned user<br>Usage: $ClearStrikes @user</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">$ClearWarns</div>
-                <div class="item-alias">Alias: $clearw</div>
-                <div class="item-description">Clears warns of mentioned user<br>Usage: $ClearWarns @user</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$ShowStrikes</div>
@@ -233,21 +224,14 @@
                 <div class="item-description">Shows strikes that user has<br>Usage: $ShowStrikes @user</div>
             </div>
             <div class="main-item">
-                <div class="item-command">$ShowWarns</div>
-                <div class="item-alias">Alias: $showw</div>
-                <div class="item-description">Shows warns that user has<br>Usage: $ShowWarns @user</div>
-            </div>
-            <div class="main-item">
-                <div class="item-command">$RemoveWarnByID</div>
-                <div class="item-alias">Alias: $rwid</div>
-                <div class="item-description">Removes the warn by it's ID - You can check the ID's by $ShowWarns @user
-                    command</div>
-            </div>
-            <div class="main-item">
                 <div class="item-command">$RemoveStrikeByID</div>
                 <div class="item-alias">Alias: $rsid</div>
                 <div class="item-description">Removes the warn by it's ID - You can check the ID's by $ShowWarns @user
                     command</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$ServerSettings</div>
+                <div class="item-description">Show your server settings</div>
             </div>
         </div>
         <!-- End Admin -->
@@ -281,8 +265,8 @@
                 <div class="item-description">Fight with somebody!<br>Usage: $Fight @user @user</div>
             </div>
             <div class="main-item">
-                <div class="item-command">$UrbanDefine</div>
-                <div class="item-alias">Alias: $ud</div>
+                <div class="item-command">$Urban</div>
+                <div class="item-alias">Alias: $ub</div>
                 <div class="item-description">Defines a given word<br>Usage: $UrbanDefine [word]</div>
             </div>
             <div class="main-item">
@@ -303,12 +287,16 @@
                 <div class="item-description">Check the CEST time</div>
             </div>
             <div class="main-item">
-                <div class="item-command">$gif</div>
-                <div class="item-description">Work in progress</div>
-            </div>
-            <div class="main-item">
                 <div class="item-command">$Download</div>
                 <div class="item-description"></div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$EggPlant</div>
+                <div class="item-description">Show how big your eggplant is!</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Grow</div>
+                <div class="item-description">Grow your eggplant</div>
             </div>
         </div>
         <!-- End Fun -->
@@ -317,7 +305,7 @@
             <div class="main-item">
                 <div class="item-command">$Raid</div>
                 <div class="item-description">Set up the raid! The user limit is optional parameter<br>Usage: $Raid
-                    [title] [time details] [Player limit]</div>
+                    [title] [time] [details] [Player limit]</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$Party</div>
@@ -362,7 +350,7 @@
             <div class="main-item">
                 <div class="item-command">$Skip</div>
                 <div class="item-alias">Alias: $s</div>
-                <div class="item-description">Skips the track</div>
+                <div class="item-description">Skips the track or entered amount of tracks<br>Usage: $Skip 10</div>
             </div>
             <div class="main-item">
                 <div class="item-command">$Seek</div>
@@ -391,8 +379,24 @@
         <div class="bot-main" id="other">
             <div class="main-item">
                 <div class="item-command">$BnsGear</div>
-                <div class="item-description">Fetch the gear by character nickname<br>Usage: $BnsGear [NameOfCharacter]
-                </div>
+                <div class="item-description">Fetch the gear by character nickname from EU server<br>Usage: $BnsGear
+                    [NameOfCharacter]</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Invite</div>
+                <div class="item-description">Get invite link for bot</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Link</div>
+                <div class="item-description"></div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$Birthday</div>
+                <div class="item-description">Add your birthday!</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">$ToggleBirthday</div>
+                <div class="item-description">Turn on/off displaying your birthday</div>
             </div>
         </div>
         <!-- End Other -->
@@ -412,7 +416,6 @@
             </div>
         </div>
         <!-- End Economy -->
-
     </div>
 </body>
 
