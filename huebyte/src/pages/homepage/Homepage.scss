@@ -12,32 +12,162 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    position: relative;
+    background: linear-gradient(
+      theme.$swamp,
+      theme.$swamp-lighter,
+      theme.$orange
+    );
 
     .avatar {
       height: 300px;
-      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       img {
         width: 100%;
         height: 100%;
+        border-radius: 100%;
+        border: 2px solid theme.$accent;
+        box-shadow: 0 5px 10px theme.$accent;
       }
     }
 
     .buttons-container {
-      width: 300px;
+      max-width: 300px;
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
+      justify-content: space-around;
 
       .button {
         margin: 1em;
         font-size: larger;
-        background-color: theme.$eerie-black;
-        width: 150px;
+        width: 40%;
+        min-width: 120px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+
+        svg {
+          margin-right: 0.5em;
+        }
       }
     }
 
-    background-color: grey;
+    .spacer-intro {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      aspect-ratio: 960/300;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+
+    .content-container {
+      width: 700px;
+      padding: 2em;
+    }
+  }
+
+  .whoami {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .title {
+      h1 {
+        font-size: 4rem;
+      }
+    }
+
+    .text {
+      font-size: 1.3rem;
+      text-align: center;
+    }
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: row;
+
+    .title {
+      margin-right: 3rem;
+
+      h1 {
+        font-size: 4rem;
+        width: 20%;
+      }
+    }
+
+    .skills {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      min-width: 80%;
+      width: 80%;
+
+      .item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        min-width: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5em;
+
+        .text {
+          width: 30%;
+          //   flex: 1;
+          margin-right: 0.5em;
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+
+        .bar {
+          height: 20px;
+          width: 300px;
+          background-color: theme.$swamp-lighter;
+          border-radius: 3px;
+
+          .progress {
+            // min-height: 100%;
+            // height: 100%;
+            height: 100%;
+            background-color: theme.$maron;
+            border-radius: 3px;
+
+            &::after {
+              content: ".";
+              visibility: hidden;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .spacer-ver1 {
+    aspect-ratio: 960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
 }

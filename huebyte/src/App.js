@@ -3,6 +3,7 @@ import { createBrowserHistory } from "history";
 import ClientRoutes from "./router/Routes";
 import { Suspense } from "react";
 import Loader from "./loader/Loader";
+import "./App.scss";
 
 function App() {
   const history = createBrowserHistory();

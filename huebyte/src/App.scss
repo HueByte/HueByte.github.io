@@ -1,0 +1,9 @@
+@use "./styles/theme" as theme;
+
+.maron {
+  background-color: theme.$maron;
+}
+
+.swamp {
+  background-color: theme.$swamp;
+}
