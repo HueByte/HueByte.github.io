@@ -212,7 +212,7 @@ const HomePage = () => {
               </div>
               <div className="background"></div>
               <div className="title">
-                <h2>Print it 3D</h2>
+                <h2>HueBot</h2>
               </div>
               <div className="description">
                 One of my first bigger projects, bot made for fun with quite a
@@ -226,7 +226,7 @@ const HomePage = () => {
             >
               <div className="icon">
                 <img
-                  src="https://camo.githubusercontent.com/9ccc5063ed331c7a045ed05b7c37d9764228bb5ec6744571ad5bc8c469c7d356/68747470733a2f2f692e70696e696d672e636f6d2f6f726967696e616c732f30632f36372f35612f30633637356138653130363134373864326237623231623333303039333434342e676966"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Circle-icons-cloud.svg/2048px-Circle-icons-cloud.svg.png"
                   alt="huppy"
                 />
               </div>

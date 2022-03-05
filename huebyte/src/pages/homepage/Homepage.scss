@@ -187,7 +187,11 @@
         height: 220px;
         margin: 1.5em;
         border-radius: 10px;
-        background-color: theme.$maron;
+        transition: 200ms ease-in-out;
+
+        &:hover {
+          transform: scale(1.1);
+        }
 
         .icon {
           position: absolute;
@@ -219,7 +223,7 @@
         .title {
           height: 40px;
           padding: 5px;
-          background-color: theme.$eerie-black;
+          background-color: theme.$swamp-lighter;
           z-index: 110;
           color: theme.$ghost-white;
           h2 {
@@ -228,7 +232,9 @@
         }
 
         .description {
-          background-color: theme.$eerie-black;
+          display: flex;
+          align-items: center;
+          background-color: theme.$swamp-lighter;
           text-align: center;
           padding: 10px;
           overflow: hidden;
