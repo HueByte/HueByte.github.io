@@ -5,6 +5,7 @@ import { AiFillGithub } from "react-icons/ai";
 import { FaDiscord } from "react-icons/fa";
 import layer1 from "../../assets/layer1.svg";
 import layer2 from "../../assets/layer2.svg";
+import layer3 from "../../assets/layer3.svg";
 
 const HomePage = () => {
   return (
@@ -27,6 +28,7 @@ const HomePage = () => {
           style={{ backgroundImage: `url(${layer1}` }}
         ></div>
       </div>
+
       <section className="maron">
         <div className="content-container">
           <div className="whoami">
@@ -50,12 +52,14 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
       <div
         className="spacer-ver1"
         style={{ backgroundImage: `url(${layer2}` }}
       ></div>
+
       <section className="swamp">
-        <div className="projects">
+        <div className="skills-container">
           <div className="title">
             <h1>Skills</h1>
           </div>
@@ -106,6 +110,101 @@ const HomePage = () => {
               <div className="text">Blazor</div>
               <div className="bar">
                 <div className="progress" style={{ width: "70%" }}></div>
+              </div>
+            </div>
+            <div className="item">
+              <div className="text">SQL</div>
+              <div className="bar">
+                <div className="progress" style={{ width: "70%" }}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div
+        className="spacer-ver1"
+        style={{ backgroundImage: `url(${layer3}` }}
+      ></div>
+
+      <section className="swamp">
+        <div className="projects">
+          <div className="title">
+            <h1>Personal Projects</h1>
+          </div>
+          <div className="projects-container">
+            <div className="item">
+              <div className="icon">
+                <img
+                  src="https://i.pinimg.com/564x/ff/c1/59/ffc1594020481a2e64f285f6b4d7ea06.jpg"
+                  alt="huppy"
+                />
+              </div>
+              <div className="background"></div>
+              <div className="description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
+                ullam error numquam. Autem ipsa est, reiciendis corporis
+                voluptatem commodi porro pariatur eum veniam. Maxime provident
+              </div>
+            </div>
+            <div className="item">
+              <div className="icon">
+                <img
+                  src="https://i.pinimg.com/564x/ff/c1/59/ffc1594020481a2e64f285f6b4d7ea06.jpg"
+                  alt="huppy"
+                />
+              </div>
+              <div className="background"></div>
+              <div className="description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
+                ullam error numquam. Autem ipsa est, reiciendis corporis
+                voluptatem commodi porro pariatur eum veniam. Maxime provident
+                adipisci assumenda sed ratione culpa?
+              </div>
+            </div>
+            <div className="item">
+              <div className="icon">
+                <img
+                  src="https://i.pinimg.com/564x/ff/c1/59/ffc1594020481a2e64f285f6b4d7ea06.jpg"
+                  alt="huppy"
+                />
+              </div>
+              <div className="background"></div>
+              <div className="description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
+                ullam error numquam. Autem ipsa est, reiciendis corporis
+                voluptatem commodi porro pariatur eum veniam. Maxime provident
+                adipisci assumenda sed ratione culpa?
+              </div>
+            </div>
+            <div className="item">
+              <div className="icon">
+                <img
+                  src="https://i.pinimg.com/564x/ff/c1/59/ffc1594020481a2e64f285f6b4d7ea06.jpg"
+                  alt="huppy"
+                />
+              </div>
+              <div className="background"></div>
+              <div className="description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
+                ullam error numquam. Autem ipsa est, reiciendis corporis
+                voluptatem commodi porro pariatur eum veniam. Maxime provident
+                adipisci assumenda sed ratione culpa?
+              </div>
+            </div>
+            <div className="item">
+              <div className="icon">
+                <img
+                  src="https://i.pinimg.com/564x/ff/c1/59/ffc1594020481a2e64f285f6b4d7ea06.jpg"
+                  alt="huppy"
+                />
+              </div>
+              <div className="background"></div>
+              <div className="description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
+                ullam error numquam. Autem ipsa est, reiciendis corporis
+                voluptatem commodi porro pariatur eum veniam. Maxime provident
+                adipisci assumenda sed ratione culpa?
               </div>
             </div>
           </div>

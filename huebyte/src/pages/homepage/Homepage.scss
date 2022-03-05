@@ -101,9 +101,10 @@
     }
   }
 
-  .projects {
+  .skills-container {
     display: flex;
     flex-direction: row;
+    margin-bottom: 2em;
 
     .title {
       margin-right: 3rem;
@@ -134,7 +135,6 @@
 
         .text {
           width: 30%;
-          //   flex: 1;
           margin-right: 0.5em;
           font-size: 1.5rem;
           font-weight: bold;
@@ -147,8 +147,6 @@
           border-radius: 3px;
 
           .progress {
-            // min-height: 100%;
-            // height: 100%;
             height: 100%;
             background-color: theme.$maron;
             border-radius: 3px;
@@ -158,6 +156,74 @@
               visibility: hidden;
             }
           }
+        }
+      }
+    }
+  }
+
+  .projects {
+    width: 90vw;
+
+    .title {
+      text-align: center;
+      h1 {
+        font-size: 4rem;
+      }
+    }
+
+    .projects-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 300px;
+        height: 200px;
+        margin: 1.5em;
+        border-radius: 10px;
+        background-color: theme.$maron;
+
+        .icon {
+          position: absolute;
+          top: -30px;
+          left: 50%;
+          transform: translate(-50%);
+          width: 96px;
+          height: 96px;
+          z-index: 100;
+
+          img {
+            border-radius: 100%;
+            // border: 2px solid theme.$maron;
+            height: 100%;
+            width: 100%;
+          }
+        }
+
+        .background {
+          height: 60px;
+
+          //   backdrop-filter: blur(0.8px);
+          //   background-color: rgba(33, 33, 39, 0.8);
+        }
+
+        .description {
+          background-color: theme.$eerie-black;
+          border-top: 2px solid theme.$maron;
+          padding: 5px;
+          //   margin-top: 70px;
+          height: calc(200px - 60px);
+          overflow: hidden;
+          //   white-space: normal;
+          text-overflow: ellipsis;
+          width: 100%;
+          z-index: 110;
         }
       }
     }
