@@ -1,0 +1,23 @@
+@use "../styles/transitions" as transitions;
+@use "../styles/theme" as theme;
+
+.basic-button {
+  color: white;
+  padding: 10px;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  font-weight: bold;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background-size: 100% 200%;
+  background-image: transitions.$linear-gradient-bottom-top;
+  transition: background-position 0.2s ease-in-out, color 0.2s ease-in-out,
+    transform 0.2s ease-in-out;
+
+  &:hover {
+    background-position: 0 100%;
+    color: #fff;
+    border-color: theme.$pictorial-carmine;
+  }
+}

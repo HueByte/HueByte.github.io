@@ -1,0 +1,13 @@
+@use "../styles/theme" as theme;
+
+// animated
+$linear-gradient-bottom-top: linear-gradient(
+  to bottom,
+  theme.$eerie-black 50%,
+  theme.$pictorial-carmine 50%
+) !important;
+
+// basic transition
+$fast: 200ms ease-out;
+$default: 300ms ease-out;
+$medium: 400ms ease-out;

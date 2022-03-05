@@ -1,0 +1,43 @@
+@use "../../styles/theme" as theme;
+
+.homepage-container {
+  width: 100%;
+  height: 100%;
+
+  .intro {
+    width: 100%;
+    height: 100vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .avatar {
+      height: 300px;
+      border-radius: 5px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .buttons-container {
+      width: 300px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      .button {
+        margin: 1em;
+        font-size: larger;
+        background-color: theme.$eerie-black;
+        width: 150px;
+      }
+    }
+
+    background-color: grey;
+  }
+}
