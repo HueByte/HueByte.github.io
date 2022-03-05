@@ -6,6 +6,7 @@ import { FaDiscord } from "react-icons/fa";
 import layer1 from "../../assets/layer1.svg";
 import layer2 from "../../assets/layer2.svg";
 import layer3 from "../../assets/layer3.svg";
+import { NavLink as a } from "react-router-dom";
 
 const HomePage = () => {
   return (
@@ -19,9 +20,13 @@ const HomePage = () => {
             <FaDiscord />
             Discord
           </div>
-          <div className="basic-button button">
+          <a
+            href="https://github.com/HueByte"
+            target="_blank"
+            className="basic-button button"
+          >
             <AiFillGithub /> Github
-          </div>
+          </a>
         </div>
         <div
           className="spacer-intro"
@@ -38,8 +43,8 @@ const HomePage = () => {
             <div className="text">
               <p>
                 <strong>
-                  I'm Hue, as for now 20 years old Fullstack developer &&
-                  Computer Science student.
+                  I'm Hue, as for now 20 years old professional Fullstack
+                  developer && Computer Science student.
                 </strong>
                 <br />
                 I'm passionate about coding and though I consider .NET as my
@@ -133,7 +138,11 @@ const HomePage = () => {
             <h1>Personal Projects</h1>
           </div>
           <div className="projects-container">
-            <div className="item">
+            <a
+              href="https://github.com/HueByte/Huppy"
+              target="_blank"
+              className="item"
+            >
               <div className="icon">
                 <img
                   src="https://i.pinimg.com/564x/ff/c1/59/ffc1594020481a2e64f285f6b4d7ea06.jpg"
@@ -141,90 +150,98 @@ const HomePage = () => {
                 />
               </div>
               <div className="background"></div>
-              <div className="description">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
-                ullam error numquam. Autem ipsa est, reiciendis corporis
-                voluptatem commodi porro pariatur eum veniam. Maxime provident
+              <div className="title">
+                <h2>Huppy</h2>
               </div>
-            </div>
-            <div className="item">
+              <div className="description">
+                Discord bot where I'm using my experience from ASP.NET to reach
+                its full potential and performance.
+              </div>
+            </a>
+            <a
+              href="https://huebyte.github.io/MyThingsSaver/"
+              target="_blank"
+              className="item"
+            >
               <div className="icon">
                 <img
-                  src="https://i.pinimg.com/564x/ff/c1/59/ffc1594020481a2e64f285f6b4d7ea06.jpg"
+                  src="https://raw.githubusercontent.com/HueByte/MyThingsSaver/master/backend/App/client/public/favicon.png"
                   alt="huppy"
                 />
               </div>
               <div className="background"></div>
-              <div className="description">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
-                ullam error numquam. Autem ipsa est, reiciendis corporis
-                voluptatem commodi porro pariatur eum veniam. Maxime provident
-                adipisci assumenda sed ratione culpa?
+              <div className="title">
+                <h2>My Things Saver</h2>
               </div>
-            </div>
-            <div className="item">
+              <div className="description">
+                Application for saving your things! Modern and comfortable UI
+                with a powerful markdown editor. Also an easily configurable and
+                self-hostable app on windows, Linux and MacOS
+              </div>
+            </a>
+            <a
+              href="https://huebyte.github.io/PrintIt3D/"
+              target="_blank"
+              className="item"
+            >
               <div className="icon">
                 <img
-                  src="https://i.pinimg.com/564x/ff/c1/59/ffc1594020481a2e64f285f6b4d7ea06.jpg"
+                  src="https://huebyte.github.io/PrintIt3D/logo.png"
                   alt="huppy"
                 />
               </div>
               <div className="background"></div>
-              <div className="description">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
-                ullam error numquam. Autem ipsa est, reiciendis corporis
-                voluptatem commodi porro pariatur eum veniam. Maxime provident
-                adipisci assumenda sed ratione culpa?
+              <div className="title">
+                <h2>Print it 3D</h2>
               </div>
-            </div>
-            <div className="item">
+              <div className="description">
+                Website I've made for university project about imaginary
+                business. I'm quite happy with the result (Desktop Only)
+              </div>
+            </a>
+            <a
+              href="https://github.com/HueByte/HueBot-Public"
+              target="_blank"
+              className="item"
+            >
               <div className="icon">
                 <img
-                  src="https://i.pinimg.com/564x/ff/c1/59/ffc1594020481a2e64f285f6b4d7ea06.jpg"
+                  src="https://camo.githubusercontent.com/9ccc5063ed331c7a045ed05b7c37d9764228bb5ec6744571ad5bc8c469c7d356/68747470733a2f2f692e70696e696d672e636f6d2f6f726967696e616c732f30632f36372f35612f30633637356138653130363134373864326237623231623333303039333434342e676966"
                   alt="huppy"
                 />
               </div>
               <div className="background"></div>
-              <div className="description">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
-                ullam error numquam. Autem ipsa est, reiciendis corporis
-                voluptatem commodi porro pariatur eum veniam. Maxime provident
-                adipisci assumenda sed ratione culpa?
+              <div className="title">
+                <h2>Print it 3D</h2>
               </div>
-            </div>
-            <div className="item">
+              <div className="description">
+                One of my first bigger projects, bot made for fun with quite a
+                few random ideas
+              </div>
+            </a>
+            <a
+              href="https://github.com/HueByte/CapitalCloud"
+              target="_blank"
+              className="item"
+            >
               <div className="icon">
                 <img
-                  src="https://i.pinimg.com/564x/ff/c1/59/ffc1594020481a2e64f285f6b4d7ea06.jpg"
+                  src="https://camo.githubusercontent.com/9ccc5063ed331c7a045ed05b7c37d9764228bb5ec6744571ad5bc8c469c7d356/68747470733a2f2f692e70696e696d672e636f6d2f6f726967696e616c732f30632f36372f35612f30633637356138653130363134373864326237623231623333303039333434342e676966"
                   alt="huppy"
                 />
               </div>
               <div className="background"></div>
-              <div className="description">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
-                ullam error numquam. Autem ipsa est, reiciendis corporis
-                voluptatem commodi porro pariatur eum veniam. Maxime provident
-                adipisci assumenda sed ratione culpa?
+              <div className="title">
+                <h2>Capital Cloud</h2>
               </div>
-            </div>
+              <div className="description">
+                Project I've used for discovering SignalR technology &
+                implemented chat feature
+              </div>
+            </a>
           </div>
         </div>
       </section>
-
-      <div className="div">
-        <h1>something</h1>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis sit
-        similique tempora consequuntur velit quisquam fugiat suscipit qui
-        expedita accusamus autem temporibus, iusto voluptas illo earum, fugit
-        ipsa quas sunt.
-      </div>
-      <div className="div">
-        <h1>gallery</h1>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque,
-        consectetur voluptatem vel magni possimus ullam similique harum alias
-        impedit sed itaque provident repellat delectus ipsum obcaecati sit iure,
-        quod accusantium.
-      </div>
       <div className="footer">footer</div>
     </div>
   );

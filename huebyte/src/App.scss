@@ -7,3 +7,12 @@
 .swamp {
   background-color: theme.$swamp;
 }
+
+a,
+a:hover,
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: white;
+}
