@@ -6,7 +6,8 @@ import { FaDiscord } from "react-icons/fa";
 import layer1 from "../../assets/layer1.svg";
 import layer2 from "../../assets/layer2.svg";
 import layer3 from "../../assets/layer3.svg";
-import { NavLink as a } from "react-router-dom";
+// import KUTE from "kute.js";
+// import { useEffect } from "react";
 
 const HomePage = () => {
   return (

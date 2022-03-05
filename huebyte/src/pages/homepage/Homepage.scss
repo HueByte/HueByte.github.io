@@ -260,3 +260,62 @@
     background-size: cover;
   }
 }
+
+@media screen and (max-width: 900px) {
+  .homepage-container {
+    section {
+      .content-container {
+        width: 95%;
+      }
+    }
+    .skills-container {
+      align-content: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+
+      .title {
+        margin: 0;
+        h1 {
+          text-align: center;
+          width: 100%;
+        }
+      }
+
+      .skills {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .homepage-container {
+    .skills-container {
+      .skills {
+        .item {
+          .bar {
+            width: 200px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .homepage-container {
+    .skills-container {
+      .skills {
+        .item {
+          .text {
+            font-size: 1rem;
+          }
+          .bar {
+            width: 100px;
+          }
+        }
+      }
+    }
+  }
+}
