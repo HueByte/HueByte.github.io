@@ -16,10 +16,14 @@ const HomePage = () => {
           <img src="https://github.com/huebyte.png" alt="huebyte" />
         </div>
         <div className="buttons-container">
-          <div className="basic-button button">
+          <a
+            href="https://discordapp.com/users/215556401467097088"
+            target="_blank"
+            className="basic-button button"
+          >
             <FaDiscord />
             Discord
-          </div>
+          </a>
           <a
             href="https://github.com/HueByte"
             target="_blank"
