@@ -343,6 +343,12 @@
 
 @media screen and (max-width: 540px) {
   .homepage-container {
+    .whoami {
+      .text {
+        font-size: 1rem;
+      }
+    }
+
     .skills-container {
       .skills {
         .item {
