@@ -164,6 +164,7 @@
   .projects {
     width: 90vw;
     margin-bottom: 4em;
+    max-width: 1200px;
 
     .title {
       text-align: center;
@@ -261,6 +262,10 @@
     background-attachment: fixed;
     background-size: cover;
     overflow: hidden;
+
+    .content {
+      z-index: 999;
+    }
   }
 
   .spacer-ver1 {

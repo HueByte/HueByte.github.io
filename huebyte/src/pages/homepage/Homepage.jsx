@@ -257,7 +257,7 @@ const HomePage = () => {
           className="spacer-ver2"
           style={{ backgroundImage: `url(${layer4}` }}
         ></div>
-        © Copyright 2022 by HueByte
+        <div className="content"> © Copyright 2022 by HueByte</div>
       </div>
     </div>
   );
