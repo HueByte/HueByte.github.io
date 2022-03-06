@@ -6,6 +6,7 @@ import { FaDiscord } from "react-icons/fa";
 import layer1 from "../../assets/layer1.svg";
 import layer2 from "../../assets/layer2.svg";
 import layer3 from "../../assets/layer3.svg";
+import layer4 from "../../assets/layer4.svg";
 // import KUTE from "kute.js";
 // import { useEffect } from "react";
 
@@ -48,8 +49,9 @@ const HomePage = () => {
             <div className="text">
               <p>
                 <strong>
-                  I'm Hue, as for now 20 years old professional Fullstack
-                  developer && Computer Science student.
+                  Hello! On the internet I appear under the name Hue, as for now
+                  20 years old professional Fullstack developer && Computer
+                  Science student.
                 </strong>
                 <br />
               </p>
@@ -249,7 +251,14 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <div className="footer">footer</div>
+
+      <div className="footer">
+        <div
+          className="spacer-ver2"
+          style={{ backgroundImage: `url(${layer4}` }}
+        ></div>
+        © Copyright 2022 by HueByte
+      </div>
     </div>
   );
 };
