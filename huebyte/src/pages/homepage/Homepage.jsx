@@ -52,6 +52,8 @@ const HomePage = () => {
                   developer && Computer Science student.
                 </strong>
                 <br />
+              </p>
+              <p>
                 I'm passionate about coding and though I consider .NET as my
                 main technology I'm always open for learning and mastering new
                 ones!
