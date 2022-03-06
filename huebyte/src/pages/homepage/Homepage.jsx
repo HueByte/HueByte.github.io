@@ -7,10 +7,36 @@ import layer1 from "../../assets/layer1.svg";
 import layer2 from "../../assets/layer2.svg";
 import layer3 from "../../assets/layer3.svg";
 import layer4 from "../../assets/layer4.svg";
-// import KUTE from "kute.js";
-// import { useEffect } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const HomePage = () => {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries[0].isIntersecting
+      ? setIsIntersecting(true)
+      : setIsIntersecting(false);
+  });
+
+  useEffect(() => {
+    let element = document.querySelector(".skills");
+    observer.observe(element);
+
+    var projectTiles = document.querySelectorAll(".projects-container .item");
+    console.log(projectTiles);
+    projectTiles.forEach((el) => {
+      el.style.animationDelay = getRandomDelay();
+      console.log(el.style.animationDelay);
+    });
+
+    return () => observer.unobserve(element);
+  }, []);
+
+  const getRandomDelay = () => {
+    return `${Math.floor(Math.random() * 1000) + 1}ms`;
+  };
+
   return (
     <div className="homepage-container">
       <div className="intro">
@@ -81,55 +107,100 @@ const HomePage = () => {
             <div className="item">
               <div className="text">.NET</div>
               <div className="bar">
-                <div className="progress" style={{ width: "100%" }}></div>
+                <div
+                  className={`progress${
+                    isIntersecting ? " enter-animation" : ""
+                  }`}
+                  style={{ width: "100%" }}
+                ></div>
               </div>
             </div>
             <div className="item">
               <div className="text">ASP.NET</div>
               <div className="bar">
-                <div className="progress" style={{ width: "100%" }}></div>
+                <div
+                  className={`progress${
+                    isIntersecting ? " enter-animation" : ""
+                  }`}
+                  style={{ width: "100%" }}
+                ></div>
               </div>
             </div>
             <div className="item">
               <div className="text">HTML & CSS</div>
               <div className="bar">
-                <div className="progress" style={{ width: "90%" }}></div>
+                <div
+                  className={`progress${
+                    isIntersecting ? " enter-animation" : ""
+                  }`}
+                  style={{ width: "90%" }}
+                ></div>
               </div>
             </div>
             <div className="item">
               <div className="text">React</div>
               <div className="bar">
-                <div className="progress" style={{ width: "85%" }}></div>
+                <div
+                  className={`progress${
+                    isIntersecting ? " enter-animation" : ""
+                  }`}
+                  style={{ width: "85%" }}
+                ></div>
               </div>
             </div>
             <div className="item">
               <div className="text">JavaScript</div>
               <div className="bar">
-                <div className="progress" style={{ width: "80%" }}></div>
+                <div
+                  className={`progress${
+                    isIntersecting ? " enter-animation" : ""
+                  }`}
+                  style={{ width: "80%" }}
+                ></div>
               </div>
             </div>
             <div className="item">
               <div className="text">NodeJS</div>
               <div className="bar">
-                <div className="progress" style={{ width: "75%" }}></div>
+                <div
+                  className={`progress${
+                    isIntersecting ? " enter-animation" : ""
+                  }`}
+                  style={{ width: "75%" }}
+                ></div>
               </div>
             </div>
             <div className="item">
               <div className="text">TypeScript</div>
               <div className="bar">
-                <div className="progress" style={{ width: "70%" }}></div>
+                <div
+                  className={`progress${
+                    isIntersecting ? " enter-animation" : ""
+                  }`}
+                  style={{ width: "70%" }}
+                ></div>
               </div>
             </div>
             <div className="item">
               <div className="text">Blazor</div>
               <div className="bar">
-                <div className="progress" style={{ width: "70%" }}></div>
+                <div
+                  className={`progress${
+                    isIntersecting ? " enter-animation" : ""
+                  }`}
+                  style={{ width: "70%" }}
+                ></div>
               </div>
             </div>
             <div className="item">
               <div className="text">SQL</div>
               <div className="bar">
-                <div className="progress" style={{ width: "70%" }}></div>
+                <div
+                  className={`progress${
+                    isIntersecting ? " enter-animation" : ""
+                  }`}
+                  style={{ width: "70%" }}
+                ></div>
               </div>
             </div>
           </div>

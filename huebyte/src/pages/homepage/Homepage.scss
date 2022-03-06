@@ -116,9 +116,6 @@
     }
 
     .skills {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
       min-width: 80%;
       width: 80%;
 
@@ -127,10 +124,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: row;
-        min-width: 100%;
         width: 100%;
-        display: flex;
-        align-items: center;
         margin-bottom: 0.5em;
 
         .text {
@@ -150,11 +144,17 @@
             height: 100%;
             background-color: theme.$maron;
             border-radius: 3px;
+            visibility: hidden;
 
             &::after {
               content: ".";
               visibility: hidden;
             }
+          }
+
+          .enter-animation {
+            visibility: visible;
+            animation: wipe-enter 1s 1;
           }
         }
       }
@@ -190,6 +190,7 @@
         margin: 1.5em;
         border-radius: 10px;
         transition: 200ms ease-in-out;
+        animation: project-panel 10s infinite;
 
         &:hover {
           transform: scale(1.1);
@@ -210,7 +211,6 @@
           overflow: hidden;
 
           img {
-            // height: 100%;
             width: 100%;
           }
         }
@@ -285,6 +285,31 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+  }
+}
+
+@keyframes wipe-enter {
+  0% {
+    transform: scale(0, 0.25);
+  }
+  50% {
+    transform: scale(1, 0.25);
+  }
+}
+
+@keyframes project-panel {
+  0% {
+    transform: translateY(-2%);
+    transition: ease 0.5s;
+  }
+  50% {
+    transform: translateY(2%);
+    transition: ease 0.5s;
+  }
+
+  100% {
+    transform: translateY(-2%);
+    transition: ease 0.5s;
   }
 }
 
