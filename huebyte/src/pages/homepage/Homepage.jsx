@@ -133,7 +133,7 @@ const HomePage = () => {
                   className={`progress${
                     isIntersecting ? " enter-animation" : ""
                   }`}
-                  style={{ width: "90%" }}
+                  style={{ width: "100%" }}
                 ></div>
               </div>
             </div>
@@ -183,6 +183,17 @@ const HomePage = () => {
             </div>
             <div className="item">
               <div className="text">Blazor</div>
+              <div className="bar">
+                <div
+                  className={`progress${
+                    isIntersecting ? " enter-animation" : ""
+                  }`}
+                  style={{ width: "70%" }}
+                ></div>
+              </div>
+            </div>
+            <div className="item">
+              <div className="text">Vue</div>
               <div className="bar">
                 <div
                   className={`progress${
@@ -254,9 +265,8 @@ const HomePage = () => {
                 <h2>My Things Saver</h2>
               </div>
               <div className="description">
-                Application for saving your things! Modern and comfortable UI
-                with a powerful markdown editor. Also an easily configurable and
-                self-hostable app on windows, Linux and MacOS
+                Modern and comfortable application with a powerful markdown
+                editor.
               </div>
             </a>
             <a

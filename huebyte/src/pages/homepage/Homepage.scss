@@ -24,6 +24,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      animation: avatar-entry 2s 1;
 
       img {
         width: 100%;
@@ -31,6 +32,7 @@
         border-radius: 100%;
         border: 2px solid theme.$accent;
         box-shadow: 0 5px 10px theme.$accent;
+        z-index: 999;
       }
     }
 
@@ -40,6 +42,8 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-around;
+      z-index: 999;
+      animation: avatar-entry 2s 1;
 
       .button {
         margin: 1em;
@@ -238,7 +242,7 @@
           align-items: center;
           background-color: theme.$swamp-lighter;
           text-align: center;
-          padding: 10px;
+          padding: 15px;
           overflow: hidden;
           text-overflow: ellipsis;
           width: 100%;
@@ -310,6 +314,17 @@
   100% {
     transform: translateY(-2%);
     transition: ease 0.5s;
+  }
+}
+
+@keyframes avatar-entry {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
