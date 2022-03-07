@@ -30,9 +30,9 @@ const Menu = () => {
             >
               Github
             </a>
-            <div className="item">Repositories</div>
-            <div className="item">Code Showcase</div>
-            <div className="item">Research</div>
+            <div className="item">Repositories (in progress)</div>
+            <div className="item">Code Showcase (in progress)</div>
+            <div className="item">Research (in progress)</div>
           </div>
         </div>
       </div>
