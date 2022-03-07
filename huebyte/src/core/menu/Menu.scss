@@ -1,0 +1,47 @@
+@use "../../styles/theme" as theme;
+
+.menu-expander {
+  position: absolute;
+  z-index: 999;
+  top: 15px;
+  // left: 15px;
+  cursor: pointer;
+  font-size: xx-large;
+  transition: 200ms ease-in-out;
+
+  &:hover {
+    transform: scale(1.4);
+  }
+
+  &.open {
+    left: 15px;
+  }
+  &.close {
+    right: 15px;
+  }
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 100vh;
+  z-index: 999;
+  background-color: rgba(theme.$swamp-lighter, 0.5);
+  transition: 400ms ease-out;
+
+  .menu-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.hide {
+  opacity: 0;
+}
+
+.menu-hidden {
+  transform: translateX(-500px);
+}

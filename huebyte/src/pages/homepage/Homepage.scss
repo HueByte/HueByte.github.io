@@ -27,12 +27,13 @@
       animation: avatar-entry 2s 1;
 
       img {
+        min-width: 100px;
         width: 100%;
         height: 100%;
         border-radius: 100%;
         border: 2px solid theme.$accent;
         box-shadow: 0 5px 10px theme.$accent;
-        z-index: 999;
+        z-index: 900;
       }
     }
 
@@ -42,7 +43,7 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-around;
-      z-index: 999;
+      z-index: 900;
       animation: avatar-entry 2s 1;
 
       .button {
@@ -194,7 +195,6 @@
         margin: 1.5em;
         border-radius: 10px;
         transition: 200ms ease-in-out;
-        animation: project-panel 10s infinite;
 
         &:hover {
           transform: scale(1.1);
@@ -290,22 +290,6 @@
   }
   50% {
     transform: scale(1, 0.25);
-  }
-}
-
-@keyframes project-panel {
-  0% {
-    transform: translateY(-2%);
-    transition: ease 0.5s;
-  }
-  50% {
-    transform: translateY(2%);
-    transition: ease 0.5s;
-  }
-
-  100% {
-    transform: translateY(-2%);
-    transition: ease 0.5s;
   }
 }
 
