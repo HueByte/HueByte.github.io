@@ -29,7 +29,7 @@
   height: 100vh;
   z-index: 999;
   background-color: rgba(theme.$swamp-lighter, 0.5);
-  transition: 400ms ease-out;
+  transition: 450ms ease-out;
 
   .menu-container {
     position: relative;
@@ -44,4 +44,10 @@
 
 .menu-hidden {
   transform: translateX(-500px);
+}
+
+@media screen and (max-width: 500px) {
+  .menu {
+    width: 100%;
+  }
 }

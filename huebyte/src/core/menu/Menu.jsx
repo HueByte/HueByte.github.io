@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { HiMenu } from "react-icons/hi";
+import { HiMenu, HiOutlineX } from "react-icons/hi";
 import "./Menu.scss";
 
 const Menu = () => {
@@ -17,7 +17,7 @@ const Menu = () => {
       <div className={`menu${isExpanded ? "" : " menu-hidden"}`}>
         <div className="menu-container">
           <div className="menu-expander close" onClick={ToggleMenu}>
-            <HiMenu />
+            <HiOutlineX />
           </div>
         </div>
       </div>
