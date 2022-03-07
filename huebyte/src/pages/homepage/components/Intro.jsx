@@ -27,7 +27,7 @@ const Intro = () => {
         </a>
       </div>
       <div
-        className="spacer-intro"
+        className="intro-spacer"
         style={{ backgroundImage: `url(${layer1}` }}
       ></div>
     </div>

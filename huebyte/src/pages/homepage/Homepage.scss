@@ -62,7 +62,7 @@
       }
     }
 
-    .spacer-intro {
+    .intro-spacer {
       position: absolute;
       left: 0;
       bottom: 0;
@@ -270,25 +270,17 @@
     .content {
       z-index: 999;
     }
-  }
 
-  .spacer-ver1 {
-    aspect-ratio: 960/300;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
-
-  .spacer-ver2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    aspect-ratio: 960/300;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    .footer-spacer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      aspect-ratio: 960/300;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
   }
 }
 

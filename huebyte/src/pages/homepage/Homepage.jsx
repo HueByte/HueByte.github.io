@@ -8,10 +8,9 @@ import layer2 from "../../assets/layer2.svg";
 import layer3 from "../../assets/layer3.svg";
 import layer4 from "../../assets/layer4.svg";
 import { useEffect } from "react";
-import { useState } from "react";
 import Intro from "./components/Intro";
 import WhoAmI from "./components/WhoAmI";
-import SpacerFirst from "../../core/Spacers/SpacerFirst";
+import Spacer from "../../core/Spacers/Spacer";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
@@ -36,11 +35,11 @@ const HomePage = () => {
 
       <WhoAmI />
 
-      <SpacerFirst layerSvg={layer2} />
+      <Spacer layerSvg={layer2} />
 
       <Skills />
 
-      <SpacerFirst layerSvg={layer3} />
+      <Spacer layerSvg={layer3} />
 
       <Projects />
 

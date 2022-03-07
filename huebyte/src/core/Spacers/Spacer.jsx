@@ -1,12 +1,13 @@
 import React from "react";
+import "./Spacer.scss";
 
-const SpacerFirst = ({ layerSvg }) => {
+const Spacer = ({ layerSvg }) => {
   return (
     <div
-      className="spacer-ver1"
+      className="spacer"
       style={{ backgroundImage: `url(${layerSvg}` }}
     ></div>
   );
 };
 
-export default SpacerFirst;
+export default Spacer;

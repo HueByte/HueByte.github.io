@@ -1,10 +1,13 @@
 import React from "react";
-import SpacerSecond from "../../../core/Spacers/SpacerSecond";
+import layer4 from "../../../assets/layer4.svg";
 
 const Footer = () => {
   return (
     <div className="footer">
-      <SpacerSecond />
+      <div
+        className="footer-spacer"
+        style={{ backgroundImage: `url(${layer4}` }}
+      ></div>
       <div className="content"> © Copyright 2022 by HueByte</div>
     </div>
   );
