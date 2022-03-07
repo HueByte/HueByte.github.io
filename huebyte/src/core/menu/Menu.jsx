@@ -16,8 +16,23 @@ const Menu = () => {
       </div>
       <div className={`menu${isExpanded ? "" : " menu-hidden"}`}>
         <div className="menu-container">
-          <div className="menu-expander close" onClick={ToggleMenu}>
+          <div
+            className={`menu-expander close ${isExpanded ? "" : " hide"}`}
+            onClick={ToggleMenu}
+          >
             <HiOutlineX />
+          </div>
+          <div className="menu-items">
+            <a
+              href="https://github.com/HueByte"
+              target="_blank"
+              className="item"
+            >
+              Github
+            </a>
+            <div className="item">Repositories</div>
+            <div className="item">Code Showcase</div>
+            <div className="item">Research</div>
           </div>
         </div>
       </div>
