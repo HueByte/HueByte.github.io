@@ -192,12 +192,13 @@
         position: relative;
         width: 300px;
         height: 220px;
-        margin: 1.5em;
+        margin: 2rem;
         border-radius: 10px;
         transition: 200ms ease-in-out;
 
         &:hover {
           transform: scale(1.1);
+          box-shadow: 0 20px 20px -11px rgba(theme.$pictorial-carmine, 0.5);
         }
 
         .icon {

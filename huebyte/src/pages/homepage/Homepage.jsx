@@ -1,6 +1,6 @@
 import React from "react";
 import "./Homepage.scss";
-import "../../core/CoreStyles.scss";
+import "../../styles/CoreStyles.scss";
 import layer2 from "../../assets/layer2.svg";
 import layer3 from "../../assets/layer3.svg";
 import Intro from "./components/Intro";
