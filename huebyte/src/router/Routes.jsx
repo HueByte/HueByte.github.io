@@ -3,7 +3,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import HomePage from "../pages/homepage/Homepage";
 
 const MyThingsSaver = React.lazy(() =>
-  import("../pages/projects/MyThingsSaver")
+  import("../pages/projects/MyThingsSaver/MyThingsSaver")
 );
 const ProjectLayout = React.lazy(() =>
   import("../core/ProjectLayout/ProjectLayout")
