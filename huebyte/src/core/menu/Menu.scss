@@ -1,5 +1,7 @@
 @use "../../styles/theme" as theme;
 
+$menuWidth: 400px;
+
 .menu-expander {
   position: absolute;
   z-index: 999;
@@ -25,11 +27,11 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 500px;
+  width: $menuWidth;
   height: 100vh;
   z-index: 999;
-  background-color: rgba(theme.$swamp-lighter, 0.5);
-  backdrop-filter: blur(0.9px);
+  background-color: rgba(theme.$swamp-lighter, 0.7);
+  backdrop-filter: blur(2px);
   transition: 450ms ease-out;
 
   .menu-container {
@@ -66,10 +68,10 @@
 }
 
 .menu-hidden {
-  transform: translateX(-500px);
+  transform: translateX(-($menuWidth));
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: $menuWidth) {
   .menu {
     width: 100%;
 
