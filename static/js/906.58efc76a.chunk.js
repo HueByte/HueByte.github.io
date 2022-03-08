@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkhuebyte=self.webpackChunkhuebyte||[]).push([[906],{906:function(e,n,s){s.r(n);s(313);var u=s(890),c=s(417);n.default=function(){return(0,c.jsx)("div",{className:"div",children:(0,c.jsx)("main",{children:(0,c.jsx)(u.j3,{})})})}}}]);
