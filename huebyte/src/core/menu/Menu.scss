@@ -3,11 +3,10 @@
 $menuWidth: 400px;
 
 .menu-expander {
-  position: absolute;
   z-index: 999;
   top: 15px;
-  cursor: pointer;
   font-size: xx-large;
+  cursor: pointer;
   transition: 200ms ease-in-out;
 
   &:hover {
@@ -15,10 +14,12 @@ $menuWidth: 400px;
   }
 
   &.open {
+    position: fixed;
     left: 15px;
   }
 
   &.close {
+    position: absolute;
     right: 15px;
   }
 }
@@ -30,9 +31,9 @@ $menuWidth: 400px;
   width: $menuWidth;
   height: 100vh;
   z-index: 999;
-  background-color: rgba(theme.$swamp-lighter, 0.7);
+  background-color: rgba(theme.$swamp-lighter, 0.85);
   backdrop-filter: blur(2px);
-  transition: 450ms ease-out;
+  transition: 450ms ease-in-out;
 
   .menu-container {
     position: relative;
@@ -47,28 +48,30 @@ $menuWidth: 400px;
     padding-top: 64px;
 
     .item {
-      padding: 5px;
-      margin: 1rem;
+      margin: 0.5rem;
+      padding: 10px;
+      border-radius: 5px;
       cursor: pointer;
-      font-size: x-large;
+      font-size: 1.4rem;
+      font-weight: bolder;
+      letter-spacing: 1px;
       transition: 200ms ease-in-out;
 
       &:hover {
-        transform: translateX(10px);
-        -webkit-text-fill-color: transparent;
-        background: linear-gradient(90deg, theme.$maron, theme.$orange 70%);
-        -webkit-background-clip: text;
+        background-color: theme.$ghost-white;
+        color: theme.$swamp;
       }
 
       &.active {
-        -webkit-text-fill-color: transparent;
-        background: linear-gradient(
-          90deg,
+        background-image: linear-gradient(
+          to right,
           theme.$maron,
-          theme.$ghost-white 70%
+          theme.$bittersweet 90%
         );
-        -webkit-background-clip: text;
-        transform: translateX(10px);
+
+        &:hover {
+          color: white;
+        }
       }
     }
   }

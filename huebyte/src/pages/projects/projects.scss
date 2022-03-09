@@ -25,7 +25,11 @@ $section-width: 940px;
         .title {
           font-size: 4rem;
           -webkit-text-fill-color: transparent;
-          background: linear-gradient(90deg, theme.$maron, theme.$orange 70%);
+          background: linear-gradient(
+            90deg,
+            theme.$maron,
+            theme.$bittersweet 70%
+          );
           -webkit-background-clip: text;
         }
       }
