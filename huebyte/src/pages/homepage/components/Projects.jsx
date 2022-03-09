@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Projects = () => {
   return (
@@ -28,11 +29,7 @@ const Projects = () => {
               its full potential and performance.
             </div>
           </a>
-          <a
-            href="https://huebyte.github.io/MyThingsSaver/"
-            target="_blank"
-            className="item"
-          >
+          <NavLink to="Projects/MyThingsSaver" className="item">
             <div className="icon">
               <img
                 src="https://raw.githubusercontent.com/HueByte/MyThingsSaver/master/backend/App/client/public/favicon.png"
@@ -47,7 +44,7 @@ const Projects = () => {
               Modern and comfortable application with a powerful markdown
               editor.
             </div>
-          </a>
+          </NavLink>
           <a
             href="https://huebyte.github.io/PrintIt3D/"
             target="_blank"

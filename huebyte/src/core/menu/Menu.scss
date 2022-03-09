@@ -59,6 +59,17 @@ $menuWidth: 400px;
         background: linear-gradient(90deg, theme.$maron, theme.$orange 70%);
         -webkit-background-clip: text;
       }
+
+      &.active {
+        -webkit-text-fill-color: transparent;
+        background: linear-gradient(
+          90deg,
+          theme.$maron,
+          theme.$ghost-white 70%
+        );
+        -webkit-background-clip: text;
+        transform: translateX(10px);
+      }
     }
   }
 }

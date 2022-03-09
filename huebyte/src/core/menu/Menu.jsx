@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { HiMenu, HiOutlineX } from "react-icons/hi";
+import { NavLink } from "react-router-dom";
 import "./Menu.scss";
 
 const Menu = () => {
@@ -23,6 +24,9 @@ const Menu = () => {
             <HiOutlineX />
           </div>
           <div className="menu-items">
+            <NavLink to="/" className="item" activeClassName="active-menu-item">
+              Home
+            </NavLink>
             <a
               href="https://github.com/HueByte"
               target="_blank"

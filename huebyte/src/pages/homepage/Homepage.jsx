@@ -8,7 +8,7 @@ import WhoAmI from "./components/WhoAmI";
 import Spacer from "../../core/Spacers/Spacer";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
-import Footer from "./components/Footer";
+import Footer from "../../core/Footer/Footer";
 import Menu from "../../core/menu/Menu";
 
 const HomePage = () => {
