@@ -1,0 +1,38 @@
+@use "../../styles/theme" as theme;
+
+$section-width: 940px;
+
+.project-container {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  section {
+    width: $section-width;
+
+    .intro {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+
+      .description {
+        flex: 3;
+
+        .title {
+          font-size: 4rem;
+          -webkit-text-fill-color: transparent;
+          background: linear-gradient(90deg, theme.$maron, theme.$orange 70%);
+          -webkit-background-clip: text;
+        }
+      }
+
+      .icon {
+        flex: 1;
+      }
+    }
+  }
+}

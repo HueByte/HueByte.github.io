@@ -1,15 +1,17 @@
 @use "../../styles/sizes" as sizes;
 
+$main-width: 100%;
+
 .main-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
   min-height: 100vh;
-  background-color: magenta;
 
   main {
-    background-color: cadetblue;
+    width: $main-width;
     min-height: calc(100vh - sizes.$min-footer-height);
+    padding-top: 5%;
+
+    display: flex;
+    flex-direction: column;
   }
 }
