@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import HomePage from "../pages/homepage/Homepage";
+import HomePage from "../pages/homepage/Homepage"; // as it's the main target always load it and just include it in main bundle
 
 const MyThingsSaver = React.lazy(() =>
   import("../pages/projects/MyThingsSaver/MyThingsSaver")
