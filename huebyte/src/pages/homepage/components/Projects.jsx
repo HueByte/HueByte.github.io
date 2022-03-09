@@ -18,6 +18,7 @@ const Projects = () => {
               <img
                 src="https://i.pinimg.com/564x/ff/c1/59/ffc1594020481a2e64f285f6b4d7ea06.jpg"
                 alt="huppy"
+                loading="lazy"
               />
             </div>
             <div className="background"></div>
@@ -34,6 +35,7 @@ const Projects = () => {
               <img
                 src="https://raw.githubusercontent.com/HueByte/MyThingsSaver/master/backend/App/client/public/favicon.png"
                 alt="huppy"
+                loading="lazy"
               />
             </div>
             <div className="background"></div>
@@ -54,6 +56,7 @@ const Projects = () => {
               <img
                 src="https://huebyte.github.io/PrintIt3D/logo.png"
                 alt="huppy"
+                loading="lazy"
               />
             </div>
             <div className="background"></div>
@@ -74,6 +77,7 @@ const Projects = () => {
               <img
                 src="https://camo.githubusercontent.com/9ccc5063ed331c7a045ed05b7c37d9764228bb5ec6744571ad5bc8c469c7d356/68747470733a2f2f692e70696e696d672e636f6d2f6f726967696e616c732f30632f36372f35612f30633637356138653130363134373864326237623231623333303039333434342e676966"
                 alt="huppy"
+                loading="lazy"
               />
             </div>
             <div className="background"></div>
@@ -94,6 +98,7 @@ const Projects = () => {
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Circle-icons-cloud.svg/2048px-Circle-icons-cloud.svg.png"
                 alt="huppy"
+                loading="lazy"
               />
             </div>
             <div className="background"></div>
