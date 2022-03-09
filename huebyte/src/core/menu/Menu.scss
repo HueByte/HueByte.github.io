@@ -51,12 +51,12 @@ $menuWidth: 400px;
       margin: 0.5rem;
       padding: 10px;
       border-radius: 5px;
-      cursor: pointer;
       font-size: 1.4rem;
-      font-weight: bolder;
       letter-spacing: 1px;
       border-left: 1px solid transparent;
       transition: 200ms ease-in-out;
+      cursor: pointer;
+      font-weight: bolder;
 
       &:hover {
         background-image: linear-gradient(
@@ -65,7 +65,6 @@ $menuWidth: 400px;
           transparent 90%
         );
         border-left: 4px solid theme.$maron;
-        // color: theme.$swamp;
       }
 
       &.active {
@@ -102,6 +101,13 @@ $menuWidth: 400px;
         margin: 0.5rem 0;
         border-radius: 0;
         padding: 15px;
+        border: none;
+
+        &:hover {
+          background-color: theme.$swamp;
+          border: none;
+          background-image: none;
+        }
 
         &.active {
           background-color: theme.$swamp;

@@ -16,3 +16,10 @@ a:active {
   text-decoration: none;
   color: white;
 }
+
+::selection {
+  background: theme.$port; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: theme.$port; /* Gecko Browsers */
+}
