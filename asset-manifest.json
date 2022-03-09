@@ -1,9 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.17faf560.css",
-    "main.js": "/static/js/main.293ae54b.js",
-    "static/js/791.2fb945aa.chunk.js": "/static/js/791.2fb945aa.chunk.js",
-    "static/js/906.58efc76a.chunk.js": "/static/js/906.58efc76a.chunk.js",
+    "main.css": "/static/css/main.3cd0a2d0.css",
+    "main.js": "/static/js/main.07d642fa.js",
+    "static/css/271.406ecda2.chunk.css": "/static/css/271.406ecda2.chunk.css",
+    "static/js/271.45d0ee40.chunk.js": "/static/js/271.45d0ee40.chunk.js",
+    "static/css/848.d1b450ee.chunk.css": "/static/css/848.d1b450ee.chunk.css",
+    "static/js/848.28952c69.chunk.js": "/static/js/848.28952c69.chunk.js",
     "static/js/27.d8b20a5e.chunk.js": "/static/js/27.d8b20a5e.chunk.js",
     "static/media/layer1.svg": "/static/media/layer1.7c72d5d0ca15c1ac568a44dea9686e58.svg",
     "static/media/layer2.svg": "/static/media/layer2.530847beaf5429ccf0d07fd0596346c0.svg",
@@ -12,7 +14,7 @@
     "static/media/layer4.svg": "/static/media/layer4.45f61da97e3eb65fad5cf4a6776aa7f2.svg"
   },
   "entrypoints": [
-    "static/css/main.17faf560.css",
-    "static/js/main.293ae54b.js"
+    "static/css/main.3cd0a2d0.css",
+    "static/js/main.07d642fa.js"
   ]
 }

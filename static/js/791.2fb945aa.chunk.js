@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkhuebyte=self.webpackChunkhuebyte||[]).push([[791],{791:function(e,u,n){n.r(u);n(313);var t=n(417);u.default=function(){return(0,t.jsx)("div",{children:"Hello World"})}}}]);
