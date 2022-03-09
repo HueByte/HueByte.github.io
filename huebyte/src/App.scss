@@ -18,8 +18,8 @@ a:active {
 }
 
 ::selection {
-  background: theme.$port; /* WebKit/Blink Browsers */
+  background: theme.$port;
 }
 ::-moz-selection {
-  background: theme.$port; /* Gecko Browsers */
+  background: theme.$port;
 }
