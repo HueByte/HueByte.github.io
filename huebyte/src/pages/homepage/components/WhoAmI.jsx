@@ -9,20 +9,20 @@ const WhoAmI = () => {
             <h1>whoami</h1>
           </div>
           <div className="text">
-            <h2>
+            <p>
               <strong>
                 Hello! On the internet I appear under the name Hue, as for now
                 20 years old professional Fullstack developer && Computer
                 Science student.
               </strong>
               <br />
-            </h2>
-            <h2>
+            </p>
+            <p>
               I'm passionate about coding and though I consider .NET as my main
               technology I'm always open for learning and mastering new ones!
               <br />
               My future goal is to work with Artificial Intelligence research.
-            </h2>
+            </p>
           </div>
         </div>
       </div>
