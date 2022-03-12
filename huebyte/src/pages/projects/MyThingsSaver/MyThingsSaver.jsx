@@ -1,6 +1,6 @@
 import React from "react";
 import Spacer from "../../../core/Spacers/Spacer";
-import layer from "../../../assets/layer3.svg";
+import layer from "../../../assets/layer5.svg";
 import "../projects.scss";
 
 const MyThingsSaver = () => {
