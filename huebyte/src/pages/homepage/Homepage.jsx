@@ -3,7 +3,6 @@ import "./Homepage.scss";
 import "../../styles/CoreStyles.scss";
 import layer2 from "../../assets/layer2.svg";
 import layer3 from "../../assets/layer3.svg";
-import Menu from "../../core/menu/Menu";
 import Footer from "../../core/Footer/Footer";
 
 // Homepage exclusive components
@@ -16,8 +15,6 @@ import Projects from "./components/Projects";
 const HomePage = () => {
   return (
     <div className="homepage-container">
-      <Menu />
-
       <Intro />
       <WhoAmI />
       <Spacer layerSvg={layer2} />

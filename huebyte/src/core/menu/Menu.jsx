@@ -24,7 +24,7 @@ const Menu = () => {
             <HiOutlineX />
           </div>
           <div className="menu-items">
-            <NavLink to="/" className="item" activeClassName="active-menu-item">
+            <NavLink to="/" className="item">
               Home
             </NavLink>
             <a
@@ -34,7 +34,9 @@ const Menu = () => {
             >
               Github
             </a>
-            <div className="item">Repositories (in progress)</div>
+            <NavLink to="/Repositories" className="item">
+              Repositories (in progress)
+            </NavLink>
             <div className="item">Code Showcase (in progress)</div>
             <div className="item">Research (in progress)</div>
           </div>

@@ -10,7 +10,7 @@ const MyThingsSaver = () => {
         <div className="intro">
           <div className="description">
             <h1 className="title">MyThingsSaver</h1>
-            <div>Date 2020</div>
+            <div>Date 2021</div>
             <div>Web / self hosted</div>
           </div>
           <div className="icon"></div>

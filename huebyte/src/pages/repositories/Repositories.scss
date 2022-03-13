@@ -1,0 +1,13 @@
+@use "../../styles/theme" as theme;
+@use "../../styles/sizes" as sizes;
+
+.projects-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  main {
+    min-height: calc(100vh - sizes.$min-footer-height);
+  }
+}
