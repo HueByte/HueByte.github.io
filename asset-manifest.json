@@ -1,11 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.76bbc059.css",
-    "main.js": "/static/js/main.ecf1b814.js",
+    "main.css": "/static/css/main.9377403a.css",
+    "main.js": "/static/js/main.18f70a38.js",
+    "static/css/550.0dd2e72f.chunk.css": "/static/css/550.0dd2e72f.chunk.css",
+    "static/js/550.3e94879a.chunk.js": "/static/js/550.3e94879a.chunk.js",
     "static/css/638.4d65eca5.chunk.css": "/static/css/638.4d65eca5.chunk.css",
-    "static/js/638.447d2351.chunk.js": "/static/js/638.447d2351.chunk.js",
+    "static/js/638.00815e46.chunk.js": "/static/js/638.00815e46.chunk.js",
     "static/css/848.d1b450ee.chunk.css": "/static/css/848.d1b450ee.chunk.css",
-    "static/js/848.28952c69.chunk.js": "/static/js/848.28952c69.chunk.js",
+    "static/js/848.2446130f.chunk.js": "/static/js/848.2446130f.chunk.js",
     "static/js/27.d8b20a5e.chunk.js": "/static/js/27.d8b20a5e.chunk.js",
     "static/media/layer1.svg": "/static/media/layer1.7c72d5d0ca15c1ac568a44dea9686e58.svg",
     "static/media/layer5.svg": "/static/media/layer5.a60897f7f26a5b5723fe484a8e8ea2a4.svg",
@@ -15,7 +17,7 @@
     "static/media/layer4.svg": "/static/media/layer4.45f61da97e3eb65fad5cf4a6776aa7f2.svg"
   },
   "entrypoints": [
-    "static/css/main.76bbc059.css",
-    "static/js/main.ecf1b814.js"
+    "static/css/main.9377403a.css",
+    "static/js/main.18f70a38.js"
   ]
 }
