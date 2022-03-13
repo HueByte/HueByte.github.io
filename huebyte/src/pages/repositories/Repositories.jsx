@@ -41,8 +41,6 @@ const Repositories = () => {
         })
     );
 
-    console.log(data);
-
     setUser(user);
   }, []);
 
