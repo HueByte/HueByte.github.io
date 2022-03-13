@@ -24,21 +24,26 @@ const Menu = () => {
             <HiOutlineX />
           </div>
           <div className="menu-items">
-            <NavLink to="/" className="item">
+            <NavLink to="/" className="item" onClick={ToggleMenu}>
               Home
             </NavLink>
             <a
               href="https://github.com/HueByte"
               target="_blank"
               className="item"
+              onClick={ToggleMenu}
             >
               Github
             </a>
-            <NavLink to="/Repositories" className="item">
+            <NavLink to="/Repositories" className="item" onClick={ToggleMenu}>
               Repositories (in progress)
             </NavLink>
-            <div className="item">Code Showcase (in progress)</div>
-            <div className="item">Research (in progress)</div>
+            <div className="item" onClick={ToggleMenu}>
+              Code Showcase (in progress)
+            </div>
+            <div className="item" onClick={ToggleMenu}>
+              Research (in progress)
+            </div>
           </div>
         </div>
       </div>
