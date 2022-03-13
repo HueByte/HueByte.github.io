@@ -52,7 +52,7 @@ const Repositories = () => {
   };
 
   return (
-    <div className="projects-container">
+    <div className="repositories-container">
       <main>
         <div className="user">
           <div className="avatar">
