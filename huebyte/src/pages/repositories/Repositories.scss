@@ -103,8 +103,15 @@
         border-radius: 15px;
         border: 1px solid theme.$eerie-black;
         cursor: pointer;
+        transition: 200ms;
 
         &:hover {
+          transform: scale(1.05);
+          border: 1px solid theme.$maron;
+          // backdrop-filter: invert(23%) sepia(67%) saturate(2414%)
+          //   hue-rotate(311deg) brightness(91%) contrast(99%);
+
+          // background-color: aliceblue;
         }
 
         .name {

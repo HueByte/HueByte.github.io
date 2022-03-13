@@ -19,6 +19,7 @@ const Repositories = () => {
     html: "#ff5917",
     javascript: "#ffdf6b",
     css: "#00fbff",
+    null: "#ff00a2",
   };
 
   useEffect(async () => {
@@ -42,9 +43,8 @@ const Repositories = () => {
   }, []);
 
   const getLanguageColor = (language) => {
-    let result = langs[language?.toLowerCase()] ?? "#FFF";
-    console.log(language, result);
-    return result;
+    language = language ?? "null";
+    return langs[language?.toLowerCase()] ?? "#FFF";
   };
 
   return (
@@ -81,7 +81,9 @@ const Repositories = () => {
           <div className="title">HueByte@Repositories:~ $</div>
           {repos.length > 0 ? (
             repos?.map((data) => (
-              <div
+              <a
+                href={data.html_url}
+                target="_blank"
                 className="repository-container"
                 style={{ backgroundImage: `url(${topo})` }}
               >
@@ -115,7 +117,7 @@ const Repositories = () => {
                     <div className="value">{data.stargazers_count}</div>
                   </div>
                 </div>
-              </div>
+              </a>
             ))
           ) : (
             <Loader />
