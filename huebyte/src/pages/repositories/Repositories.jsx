@@ -32,9 +32,13 @@ const Repositories = () => {
     );
 
     setRepos(
-      data.sort((a, b) => {
-        return b.stargazers_count - a.stargazers_count;
-      })
+      data
+        .filter((item) => {
+          return item.fork == false;
+        })
+        .sort((a, b) => {
+          return b.stargazers_count - a.stargazers_count;
+        })
     );
 
     console.log(data);
