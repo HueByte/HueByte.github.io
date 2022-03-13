@@ -36,7 +36,7 @@ const Menu = () => {
               Github
             </a>
             <NavLink to="/Repositories" className="item" onClick={ToggleMenu}>
-              Repositories (in progress)
+              Repositories
             </NavLink>
             <div className="item" onClick={ToggleMenu}>
               Code Showcase (in progress)
