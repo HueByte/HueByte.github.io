@@ -14,8 +14,11 @@ const Loader = () => {
 };
 
 const loaderClass = {
-  width: "100%",
-  height: "100%",
+  position: "absolute",
+  top: "0",
+  left: "0",
+  width: "100vw",
+  height: "100vh",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

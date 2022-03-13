@@ -6,8 +6,139 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   main {
     min-height: calc(100vh - sizes.$min-footer-height);
+    width: sizes.$reading-width;
+    display: flex;
+    flex-direction: row;
+    padding: 2em;
+
+    .user {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .avatar {
+        width: 100%;
+        min-height: 200px;
+        border-radius: 100%;
+        border: 2px solid theme.$maron;
+        overflow: hidden;
+        box-shadow: 0 5px 5px theme.$accent;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .user-info {
+        display: flex;
+        flex-direction: column;
+        padding-top: 1em;
+
+        .name {
+          text-align: center;
+          font-size: x-large;
+          padding-bottom: 1em;
+          letter-spacing: 1px;
+        }
+
+        .bio {
+          text-align: center;
+          font-weight: bold;
+          margin-bottom: 1em;
+        }
+
+        .field {
+          margin: 0.5em;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          svg {
+            margin-right: 0.5em;
+            color: theme.$maron;
+          }
+
+          .key {
+            display: flex;
+            align-items: center;
+          }
+
+          .value {
+            color: theme.$maron;
+          }
+        }
+      }
+    }
+
+    .repositories {
+      display: flex;
+      flex: 3;
+      flex-direction: column;
+      align-items: center;
+
+      .title {
+        font-size: 2rem;
+        -webkit-text-fill-color: transparent;
+        background: linear-gradient(
+          90deg,
+          theme.$maron,
+          theme.$bittersweet 70%
+        );
+        -webkit-background-clip: text;
+      }
+
+      .repository-container {
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        margin: 1em;
+        height: 200px;
+        padding: 10px;
+        border-radius: 15px;
+        border: 1px solid theme.$eerie-black;
+        cursor: pointer;
+
+        &:hover {
+        }
+
+        .name {
+          display: flex;
+          align-items: center;
+          flex: 1;
+          font-size: x-large;
+          margin-bottom: 0.5em;
+
+          svg {
+            color: theme.$bittersweet;
+            margin-right: 0.5em;
+          }
+        }
+
+        .description {
+          flex: 2;
+          overflow-y: auto;
+        }
+
+        .info-container {
+          flex: 1;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-around;
+
+          .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+      }
+    }
   }
 }
