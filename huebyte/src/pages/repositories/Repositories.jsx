@@ -11,8 +11,8 @@ import {
 import { FaStar } from "react-icons/fa";
 
 const Repositories = () => {
-  const [repos, setRepos] = useState([{}]);
-  const [user, setUser] = useState({});
+  const [repos, setRepos] = useState([]);
+  const [user, setUser] = useState(null);
   const langs = {
     "c#": "#af36ff",
     scss: "#ff36c6",
@@ -53,30 +53,32 @@ const Repositories = () => {
     <div className="repositories-container">
       <main>
         <div className="user">
-          <div className="avatar">
-            <img src="https://github.com/huebyte.png" alt="huebyte" />
-          </div>
           {user ? (
-            <div className="user-info">
-              <div className="name">🍧 {user.login} 🍧</div>
-              <div className="bio">{user.bio}</div>
-              <div className="field">
-                <div className="key">
-                  <RiGitRepositoryFill />
-                  Repositories:~ ${" "}
-                </div>
-                <div className="value">{user.public_repos}</div>
+            <>
+              <div className="avatar">
+                <img src="https://github.com/huebyte.png" alt="huebyte" />
               </div>
-              <div className="field">
-                <div className="key">
-                  <RiUserFollowLine />
-                  Followers:~ ${" "}
+              <div className="user-info">
+                <div className="name">🍧 {user.login} 🍧</div>
+                <div className="bio">{user.bio}</div>
+                <div className="field">
+                  <div className="key">
+                    <RiGitRepositoryFill />
+                    Repositories:~ ${" "}
+                  </div>
+                  <div className="value">{user.public_repos}</div>
                 </div>
-                <div className="value">{user.followers}</div>
+                <div className="field">
+                  <div className="key">
+                    <RiUserFollowLine />
+                    Followers:~ ${" "}
+                  </div>
+                  <div className="value">{user.followers}</div>
+                </div>
               </div>
-            </div>
+            </>
           ) : (
-            <></>
+            <Loader local={true} />
           )}
         </div>
         <div className="repositories">
@@ -122,7 +124,7 @@ const Repositories = () => {
               </a>
             ))
           ) : (
-            <Loader />
+            <Loader local={true} />
           )}
         </div>
       </main>

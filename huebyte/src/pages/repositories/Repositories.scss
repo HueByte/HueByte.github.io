@@ -20,6 +20,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      position: relative;
 
       .avatar {
         width: 100%;
@@ -81,6 +82,7 @@
       flex: 3;
       flex-direction: column;
       align-items: center;
+      position: relative;
 
       .title {
         font-size: 2rem;
@@ -203,8 +205,6 @@
       .repositories {
         .title {
           font-size: 1.2rem;
-        }
-        .repository-container {
         }
       }
     }
