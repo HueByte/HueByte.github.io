@@ -127,6 +127,7 @@
         .description {
           flex: 2;
           overflow-y: auto;
+          display: flex;
         }
 
         .info-container {
@@ -147,10 +148,65 @@
   }
 }
 
-@media screen and (max-width: sizes.$reading-width) {
+@media screen and (max-width: sizes.$mid-width-device) {
   .repositories-container {
     main {
       width: 100%;
+      flex-direction: column;
+
+      .user {
+        align-items: center;
+        margin-bottom: 2em;
+
+        .avatar {
+          width: 200px;
+          height: 200px;
+        }
+      }
+
+      .repositories {
+        .title {
+          font-size: 1.5rem;
+        }
+        .repository-container {
+          width: 100%;
+          max-width: 425px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: sizes.$large-mobile-device) {
+  .repositories-container {
+    main {
+      .repositories {
+        .repository-container {
+          height: 100px;
+
+          .name {
+            justify-content: center;
+          }
+
+          .description {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: sizes.$medium-mobile-device) {
+  .repositories-container {
+    main {
+      .repositories {
+        .title {
+          font-size: 1.2rem;
+        }
+        .repository-container {
+        }
+      }
     }
   }
 }

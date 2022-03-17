@@ -1,4 +1,8 @@
 @use "../../styles/theme" as theme;
+@use "../../styles/sizes" as sizes;
+
+$custom-mobile-width: 540px;
+$custom-small-width: 420px;
 
 .homepage-container {
   width: 100%;
@@ -280,7 +284,7 @@
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: sizes.$mid-width-device) {
   .homepage-container {
     section {
       .content-container {
@@ -308,7 +312,7 @@
   }
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: $custom-mobile-width) {
   .homepage-container {
     .whoami {
       .text {
@@ -328,7 +332,7 @@
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: $custom-small-width) {
   .homepage-container {
     .skills-container {
       .skills {
