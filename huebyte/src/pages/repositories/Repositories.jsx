@@ -19,6 +19,7 @@ const Repositories = () => {
     scss: "#ff36c6",
     html: "#ff5917",
     javascript: "#ffdf6b",
+    typescript: "#0096ed",
     css: "#00fbff",
     null: "#ff00a2",
   };
