@@ -11,6 +11,7 @@ import {
 import { FaStar } from "react-icons/fa";
 
 const Repositories = () => {
+  const [isFetching, setIsFetching] = useState(true);
   const [repos, setRepos] = useState([]);
   const [user, setUser] = useState(null);
   const langs = {
@@ -42,6 +43,8 @@ const Repositories = () => {
     );
 
     setUser(user);
+
+    setIsFetching(false);
   }, []);
 
   const getLanguageColor = (language) => {
@@ -51,83 +54,87 @@ const Repositories = () => {
 
   return (
     <div className="repositories-container">
-      <main>
-        <div className="user">
-          {user ? (
-            <>
-              <div className="avatar">
-                <img src="https://github.com/huebyte.png" alt="huebyte" />
-              </div>
-              <div className="user-info">
-                <div className="name">🍧 {user.login} 🍧</div>
-                <div className="bio">{user.bio}</div>
-                <div className="field">
-                  <div className="key">
-                    <RiGitRepositoryFill />
-                    Repositories:~ ${" "}
-                  </div>
-                  <div className="value">{user.public_repos}</div>
+      {isFetching ? (
+        <Loader local={true} />
+      ) : (
+        <main>
+          <div className="user">
+            {user ? (
+              <>
+                <div className="avatar">
+                  <img src="https://github.com/huebyte.png" alt="huebyte" />
                 </div>
-                <div className="field">
-                  <div className="key">
-                    <RiUserFollowLine />
-                    Followers:~ ${" "}
-                  </div>
-                  <div className="value">{user.followers}</div>
-                </div>
-              </div>
-            </>
-          ) : (
-            <Loader local={true} />
-          )}
-        </div>
-        <div className="repositories">
-          <div className="title">HueByte@Repositories:~ $</div>
-          {repos.length > 0 ? (
-            repos?.map((data) => (
-              <a
-                href={data.html_url}
-                target="_blank"
-                className="repository-container"
-                style={{ backgroundImage: `url(${topo})` }}
-              >
-                <div className="name">
-                  <RiGitBranchLine /> {data.name}
-                </div>
-                <div className="description">{data.description}</div>
-                <div className="info-container">
-                  <div className="item">
-                    <div className="key">Main Language</div>
-                    <div
-                      className="value"
-                      style={{
-                        color: getLanguageColor(data.language),
-                        fontSize: "1.1em",
-                      }}
-                    >
-                      {data.language ?? "null"}
-                    </div>
-                  </div>
-                  <div className="item">
-                    <div className="key">Created Date</div>
-                    <div className="value">
-                      {new Date(data.created_at).toLocaleDateString()}
-                    </div>
-                  </div>
-                  <div className="item">
+                <div className="user-info">
+                  <div className="name">🍧 {user.login} 🍧</div>
+                  <div className="bio">{user.bio}</div>
+                  <div className="field">
                     <div className="key">
-                      <FaStar />
+                      <RiGitRepositoryFill />
+                      Repositories:~ ${" "}
                     </div>
-                    <div className="value">{data.stargazers_count}</div>
+                    <div className="value">{user.public_repos}</div>
+                  </div>
+                  <div className="field">
+                    <div className="key">
+                      <RiUserFollowLine />
+                      Followers:~ ${" "}
+                    </div>
+                    <div className="value">{user.followers}</div>
                   </div>
                 </div>
-              </a>
-            ))
-          ) : (
-            <Loader local={true} />
-          )}
-        </div>
-      </main>
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
+          <div className="repositories">
+            <div className="title">HueByte@Repositories:~ $</div>
+            {repos.length > 0 ? (
+              repos?.map((data) => (
+                <a
+                  href={data.html_url}
+                  target="_blank"
+                  className="repository-container"
+                  style={{ backgroundImage: `url(${topo})` }}
+                >
+                  <div className="name">
+                    <RiGitBranchLine /> {data.name}
+                  </div>
+                  <div className="description">{data.description}</div>
+                  <div className="info-container">
+                    <div className="item">
+                      <div className="key">Main Language</div>
+                      <div
+                        className="value"
+                        style={{
+                          color: getLanguageColor(data.language),
+                          fontSize: "1.1em",
+                        }}
+                      >
+                        {data.language ?? "null"}
+                      </div>
+                    </div>
+                    <div className="item">
+                      <div className="key">Created Date</div>
+                      <div className="value">
+                        {new Date(data.created_at).toLocaleDateString()}
+                      </div>
+                    </div>
+                    <div className="item">
+                      <div className="key">
+                        <FaStar />
+                      </div>
+                      <div className="value">{data.stargazers_count}</div>
+                    </div>
+                  </div>
+                </a>
+              ))
+            ) : (
+              <></>
+            )}
+          </div>
+        </main>
+      )}
       <Footer />
     </div>
   );
