@@ -3,7 +3,7 @@
 $menuWidth: 400px;
 
 .menu-expander {
-  z-index: 999;
+  z-index: 900;
   top: 15px;
   font-size: xx-large;
   cursor: pointer;
@@ -30,7 +30,7 @@ $menuWidth: 400px;
   left: 0;
   width: $menuWidth;
   height: 100vh;
-  z-index: 999;
+  z-index: 901;
   background-color: rgba(theme.$swamp-lighter, 0.85);
   backdrop-filter: blur(2px);
   transition: 450ms ease-in-out;

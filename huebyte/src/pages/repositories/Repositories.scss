@@ -98,6 +98,7 @@
           theme.$bittersweet 70%
         );
         -webkit-background-clip: text;
+        white-space: nowrap;
       }
 
       .repository-container {
@@ -188,6 +189,10 @@
   .repositories-container {
     main {
       .repositories {
+        .title {
+          font-size: 1.2rem;
+        }
+
         .repository-container {
           height: 100px;
 
@@ -209,7 +214,7 @@
     main {
       .repositories {
         .title {
-          font-size: 1.2rem;
+          font-size: 20px;
         }
       }
     }
