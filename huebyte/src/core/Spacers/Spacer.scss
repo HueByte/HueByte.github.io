@@ -4,5 +4,6 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  z-index: 100;
   transform: translateY(-2px); // fixes resolution bug
 }
