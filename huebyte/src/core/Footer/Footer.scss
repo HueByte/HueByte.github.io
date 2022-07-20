@@ -1,3 +1,5 @@
+@use "../../styles/sizes" as sizes;
+
 .footer {
   position: relative;
   width: 100%;
@@ -28,7 +30,7 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: sizes.$mid-width-device) {
   .footer {
     min-height: 200px;
   }

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../core/Footer/Footer";
 import Loader from "../../core/loader/Loader";
 import "./Repositories.scss";
-import topo from "../../assets/topography.svg";
 import {
   RiGitBranchLine,
   RiGitRepositoryFill,
   RiUserFollowLine,
 } from "react-icons/ri";
 import { FaStar } from "react-icons/fa";
+import bg from "../../assets/sprinkle.svg";
 
 const Repositories = () => {
   const [isFetching, setIsFetching] = useState(true);
@@ -56,7 +56,10 @@ const Repositories = () => {
   };
 
   return (
-    <div className="repositories-container">
+    <div
+      className="repositories-container"
+      style={{ backgroundImage: `url(${bg}` }}
+    >
       <main>
         {isFetching ? (
           <Loader local={true} />
@@ -99,7 +102,6 @@ const Repositories = () => {
                     href={data.html_url}
                     target="_blank"
                     className="repository-container"
-                    style={{ backgroundImage: `url(${topo})` }}
                   >
                     <div className="name">
                       <RiGitBranchLine /> {data.name}

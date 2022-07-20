@@ -7,6 +7,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: theme.$swamp;
+  // God bless this free SVG Background https://bgjar.com
 
   main {
     min-height: calc(100vh - sizes.$min-footer-height);
@@ -26,14 +28,18 @@
       flex-direction: column;
       align-items: flex-start;
       position: relative;
+      background-color: theme.$dark-eerie;
+      height: fit-content;
+      max-width: 300px;
+      padding: 10px;
+      border-radius: 15px;
 
       .avatar {
         width: 100%;
         min-height: 200px;
         border-radius: 100%;
-        border: 2px solid theme.$maron;
+        border: 2px solid;
         overflow: hidden;
-        box-shadow: 0 5px 5px theme.$accent;
 
         img {
           width: 100%;
@@ -92,16 +98,15 @@
       .title {
         font-size: 2rem;
         -webkit-text-fill-color: transparent;
-        background: linear-gradient(
-          90deg,
-          theme.$maron,
-          theme.$bittersweet 70%
-        );
+        background: linear-gradient(90deg,
+            theme.$maron,
+            theme.$bittersweet 70%);
         -webkit-background-clip: text;
         white-space: nowrap;
       }
 
       .repository-container {
+        background-color: theme.$dark-eerie;
         width: 500px;
         display: flex;
         flex-direction: column;
@@ -161,6 +166,8 @@
     main {
       width: 100%;
       flex-direction: column;
+      align-items: center;
+      min-height: calc(100vh - sizes.$min-footer-height-mobile);
 
       .user {
         align-items: center;
@@ -176,6 +183,7 @@
         .title {
           font-size: 1.5rem;
         }
+
         .repository-container {
           width: 100%;
           max-width: 425px;
