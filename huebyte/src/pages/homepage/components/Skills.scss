@@ -17,6 +17,14 @@ $skills-max-width: 1024px;
             place-items: center;
             padding: 10px;
             font-size: 48px;
+
+            svg {
+                color: theme.$maron;
+            }
+
+            &:hover {
+                .skill {}
+            }
         }
 
         .line {
@@ -37,41 +45,17 @@ $skills-max-width: 1024px;
                 transition: 200ms ease-in;
             }
 
+            .stackHover {
+                margin: 10em;
+            }
+
             .skill {
                 position: relative;
                 font-size: 72px;
-                margin: 0.5em;
+                margin: 0.7em;
                 padding: 10px;
                 border-radius: 5px;
                 border: 1px solid transparent;
-
-                &:hover {
-                    transform: scale(1.1);
-                    border: 1px solid theme.$maron;
-                    box-shadow: 15px -15px theme.$maron;
-
-                    .blocky {
-                        opacity: 1;
-                    }
-
-                    .blocky-connector {
-                        opacity: 1;
-                    }
-                }
-
-                &:nth-child(even):hover {
-                    border: 1px solid theme.$medium-spring-green;
-                    box-shadow: 15px -15px theme.$medium-spring-green;
-
-                    .blocky-connector {
-                        border-left: 3px solid theme.$medium-spring-green;
-                    }
-
-                    .blocky {
-                        background-color: theme.$medium-spring-green;
-                        color: #001220;
-                    }
-                }
 
                 .blocky {
                     position: absolute;
@@ -97,6 +81,36 @@ $skills-max-width: 1024px;
                     left: 50%;
                     transform: translate(-50%, -50%);
                     border-left: 3px solid theme.$maron;
+                }
+            }
+
+            .skill:hover,
+            .stackHover {
+                transform: scale(1.1);
+                border: 1px solid theme.$maron;
+                box-shadow: 15px -15px theme.$maron;
+
+                .blocky {
+                    opacity: 1;
+                }
+
+                .blocky-connector {
+                    opacity: 1;
+                }
+            }
+
+            .skill:nth-child(even):hover,
+            .stackHover:nth-child(even) {
+                border: 1px solid theme.$medium-spring-green;
+                box-shadow: 15px -15px theme.$medium-spring-green;
+
+                .blocky-connector {
+                    border-left: 3px solid theme.$medium-spring-green;
+                }
+
+                .blocky {
+                    background-color: theme.$medium-spring-green;
+                    color: #001220;
                 }
             }
         }

@@ -1,14 +1,50 @@
 import React from "react";
+import { useRef } from "react";
 import { useState } from "react";
+import { useEffect } from "react";
+import { AiFillFire } from "react-icons/ai";
 
 const Skills = ({}) => {
+  const [isPerformingAnimation, setIsPerformingAnimation] = useState(false);
+  const skills = useRef();
+
+  useEffect(() => {
+    skills.current = Array.prototype.slice.call(
+      document.getElementsByClassName("skill")
+    );
+  }, []);
+
+  const onMouseEnter = async () => {
+    setIsPerformingAnimation(true);
+    for (let i in skills.current) {
+      skills.current[i].classList.add("stackHover");
+      await sleep(16);
+    }
+    setIsPerformingAnimation(false);
+  };
+
+  const onMouseLeave = async () => {
+    for (let i in skills.current) {
+      skills.current[i].classList.remove("stackHover");
+      await sleep(20);
+    }
+  };
+
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
   return (
     <section className="swamp">
-      <div className="skills-container">
-        <div className="skills-title">Stack</div>
+      <div className="skills-container" id="skillContainer">
+        <div
+          className="skills-title"
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+        >
+          <AiFillFire /> Stack
+        </div>
         <div className="line"></div>
         <div className="skills-content">
-          <div className="skill">
+          <div className={`skill`}>
             <i class="devicon-dotnetcore-plain colored"></i>
             <div className="blocky">.NET</div>
             <div className="blocky-connector"></div>

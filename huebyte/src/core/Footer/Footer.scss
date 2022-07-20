@@ -1,7 +1,7 @@
 .footer {
   position: relative;
   width: 100%;
-  min-height: 400px;
+  min-height: 300px;
   flex: 1;
   display: flex;
   justify-content: center;
@@ -25,5 +25,11 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .footer {
+    min-height: 200px;
   }
 }
