@@ -4,12 +4,20 @@
 $skills-max-width: 1024px;
 
 .homepage-container {
+    .sparkle {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        color: theme.$port;
+    }
+
     .skills-container {
         display: flex;
         flex-direction: column;
         place-content: center;
         align-items: center;
         margin-bottom: 2em;
+        position: relative;
 
         .skills-title {
             width: 100%;
@@ -99,8 +107,8 @@ $skills-max-width: 1024px;
                 }
             }
 
-            .skill:nth-child(even):hover,
-            .stackHover:nth-child(even) {
+            .skill:nth-child(odd):hover,
+            .stackHover:nth-child(odd) {
                 border: 1px solid theme.$medium-spring-green;
                 box-shadow: 15px -15px theme.$medium-spring-green;
 
@@ -111,6 +119,23 @@ $skills-max-width: 1024px;
                 .blocky {
                     background-color: theme.$medium-spring-green;
                     color: #001220;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .homepage-container {
+        .skills-container {
+            .skills-content {
+                .skill {
+                    font-size: 48px;
+                    margin: 1em;
+
+                    .blocky {
+                        top: 135%;
+                    }
                 }
             }
         }

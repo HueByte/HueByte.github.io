@@ -6,6 +6,7 @@ import { AiFillFire } from "react-icons/ai";
 
 const Skills = ({}) => {
   const [isPerformingAnimation, setIsPerformingAnimation] = useState(false);
+  const sparkles = useRef();
   const skills = useRef();
 
   useEffect(() => {
@@ -30,10 +31,16 @@ const Skills = ({}) => {
     }
   };
 
+  useEffect(() => console.log(sparkles.current), [sparkles]);
+
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
   return (
-    <section className="swamp">
+    <section
+      className="swamp"
+      id="skill-container"
+      style={{ position: "relative" }}
+    >
       <div className="skills-container" id="skillContainer">
         <div
           className="skills-title"
@@ -47,6 +54,11 @@ const Skills = ({}) => {
           <div className={`skill`}>
             <i class="devicon-dot-net-plain colored"></i>
             <div className="blocky">.NET</div>
+            <div className="blocky-connector"></div>
+          </div>
+          <div className={`skill`}>
+            <i class="devicon-csharp-plain colored"></i>
+            <div className="blocky">C#</div>
             <div className="blocky-connector"></div>
           </div>
           <div className="skill">
