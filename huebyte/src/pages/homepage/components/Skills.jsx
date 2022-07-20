@@ -18,7 +18,7 @@ const Skills = ({}) => {
     setIsPerformingAnimation(true);
     for (let i in skills.current) {
       skills.current[i].classList.add("stackHover");
-      await sleep(16);
+      await sleep(15);
     }
     setIsPerformingAnimation(false);
   };
@@ -45,7 +45,7 @@ const Skills = ({}) => {
         <div className="line"></div>
         <div className="skills-content">
           <div className={`skill`}>
-            <i class="devicon-dotnetcore-plain colored"></i>
+            <i class="devicon-dot-net-plain colored"></i>
             <div className="blocky">.NET</div>
             <div className="blocky-connector"></div>
           </div>
@@ -92,6 +92,16 @@ const Skills = ({}) => {
           <div className="skill">
             <i class="devicon-vuejs-plain colored"></i>
             <div className="blocky">Vue</div>
+            <div className="blocky-connector"></div>
+          </div>
+          <div className="skill">
+            <i class="devicon-git-plain colored"></i>
+            <div className="blocky">Git</div>
+            <div className="blocky-connector"></div>
+          </div>
+          <div className="skill">
+            <i class="devicon-bash-plain"></i>
+            <div className="blocky">Bash</div>
             <div className="blocky-connector"></div>
           </div>
         </div>
