@@ -24,28 +24,30 @@ const Repositories = () => {
     null: "#ff00a2",
   };
 
-  useEffect(async () => {
-    var data = await fetch("https://api.github.com/users/huebyte/repos").then(
-      (response) => response.json()
-    );
+  useEffect(() => {
+    (async () => {
+      var data = await fetch("https://api.github.com/users/huebyte/repos").then(
+        (response) => response.json()
+      );
 
-    var user = await fetch("https://api.github.com/users/huebyte").then(
-      (response) => response.json()
-    );
+      var user = await fetch("https://api.github.com/users/huebyte").then(
+        (response) => response.json()
+      );
 
-    setRepos(
-      data
-        .filter((item) => {
-          return item.fork == false;
-        })
-        .sort((a, b) => {
-          return b.stargazers_count - a.stargazers_count;
-        })
-    );
+      setRepos(
+        data
+          .filter((item) => {
+            return item.fork == false;
+          })
+          .sort((a, b) => {
+            return b.stargazers_count - a.stargazers_count;
+          })
+      );
 
-    setUser(user);
+      setUser(user);
 
-    setIsFetching(false);
+      setIsFetching(false);
+    })();
   }, []);
 
   const getLanguageColor = (language) => {
