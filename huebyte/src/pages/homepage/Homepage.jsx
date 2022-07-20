@@ -12,6 +12,9 @@ import Spacer from "../../core/Spacers/Spacer";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 
+// Homepage SCSS
+import "./components/Skills.scss";
+
 const HomePage = () => {
   return (
     <div className="homepage-container">

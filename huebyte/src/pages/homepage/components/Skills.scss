@@ -1,0 +1,104 @@
+@use "../../../styles/theme" as theme;
+@use "../../../styles/sizes" as sizes;
+
+$skills-max-width: 1024px;
+
+.homepage-container {
+    .skills-container {
+        display: flex;
+        flex-direction: column;
+        place-content: center;
+        align-items: center;
+        margin-bottom: 2em;
+
+        .skills-title {
+            width: 100%;
+            display: grid;
+            place-items: center;
+            padding: 10px;
+            font-size: 48px;
+        }
+
+        .line {
+            width: 40%;
+            border-bottom: 1px solid theme.$maron;
+        }
+
+        .skills-content {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: $skills-max-width;
+            padding: 10px;
+            z-index: 10;
+
+            * {
+                transition: 200ms ease-in;
+            }
+
+            .skill {
+                position: relative;
+                font-size: 72px;
+                margin: 0.5em;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid transparent;
+
+                &:hover {
+                    transform: scale(1.1);
+                    border: 1px solid theme.$maron;
+                    box-shadow: 15px -15px theme.$maron;
+
+                    .blocky {
+                        opacity: 1;
+                    }
+
+                    .blocky-connector {
+                        opacity: 1;
+                    }
+                }
+
+                &:nth-child(even):hover {
+                    border: 1px solid theme.$medium-spring-green;
+                    box-shadow: 15px -15px theme.$medium-spring-green;
+
+                    .blocky-connector {
+                        border-left: 3px solid theme.$medium-spring-green;
+                    }
+
+                    .blocky {
+                        background-color: theme.$medium-spring-green;
+                        color: #001220;
+                    }
+                }
+
+                .blocky {
+                    position: absolute;
+                    opacity: 0;
+                    top: 125%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-color: theme.$maron;
+                    padding: 10px;
+                    border-radius: 5px;
+                    z-index: 10;
+                    font-size: medium;
+                    transition-delay: 50ms;
+                }
+
+                .blocky-connector {
+                    position: absolute;
+                    opacity: 0;
+                    z-index: 5;
+                    height: 30%;
+                    font-size: medium;
+                    top: 116%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    border-left: 3px solid theme.$maron;
+                }
+            }
+        }
+    }
+}

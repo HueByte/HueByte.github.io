@@ -4,6 +4,8 @@
 $custom-mobile-width: 540px;
 $custom-small-width: 420px;
 
+$avatar-size: 300px;
+
 .homepage-container {
   width: 100%;
   height: 100%;
@@ -17,14 +19,13 @@ $custom-small-width: 420px;
     justify-content: center;
     flex-direction: column;
     position: relative;
-    background: linear-gradient(
-      theme.$swamp,
-      theme.$swamp-lighter,
-      theme.$bittersweet
-    );
+    background: linear-gradient(theme.$swamp,
+        theme.$swamp-lighter,
+        theme.$bittersweet );
 
     .avatar {
-      height: 300px;
+      height: $avatar-size;
+      width: $avatar-size;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -32,8 +33,8 @@ $custom-small-width: 420px;
 
       img {
         min-width: 100px;
-        width: 100%;
-        height: 100%;
+        width: $avatar-size;
+        height: $avatar-size;
         border-radius: 100%;
         border: 2px solid theme.$accent;
         box-shadow: 0 5px 10px theme.$accent;
@@ -110,66 +111,6 @@ $custom-small-width: 420px;
     }
   }
 
-  .skills-container {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 2em;
-
-    .title {
-      margin-right: 3rem;
-
-      h1 {
-        font-size: 4rem;
-        width: 20%;
-      }
-    }
-
-    .skills {
-      min-width: 80%;
-      width: 80%;
-
-      .item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        width: 100%;
-        margin-bottom: 0.5em;
-
-        .text {
-          width: 30%;
-          margin-right: 0.5em;
-          font-size: 1.5rem;
-          font-weight: bold;
-        }
-
-        .bar {
-          height: 20px;
-          width: 300px;
-          background-color: theme.$swamp-lighter;
-          border-radius: 3px;
-
-          .progress {
-            height: 100%;
-            background-color: theme.$maron;
-            border-radius: 3px;
-            visibility: hidden;
-
-            &::after {
-              content: ".";
-              visibility: hidden;
-            }
-          }
-
-          .enter-animation {
-            visibility: visible;
-            animation: wipe-enter 1s 1;
-          }
-        }
-      }
-    }
-  }
-
   .projects {
     width: 90vw;
     margin-bottom: 4em;
@@ -177,6 +118,7 @@ $custom-small-width: 420px;
 
     .title {
       text-align: center;
+
       h1 {
         font-size: 4rem;
       }
@@ -268,6 +210,7 @@ $custom-small-width: 420px;
   0% {
     transform: scale(0, 0.25);
   }
+
   50% {
     transform: scale(1, 0.25);
   }
@@ -291,24 +234,6 @@ $custom-small-width: 420px;
         width: 95%;
       }
     }
-    .skills-container {
-      align-content: center;
-      justify-content: center;
-      flex-direction: column;
-      width: 100%;
-
-      .title {
-        margin: 0;
-        h1 {
-          text-align: center;
-          width: 100%;
-        }
-      }
-
-      .skills {
-        width: 100%;
-      }
-    }
   }
 }
 
@@ -319,32 +244,7 @@ $custom-small-width: 420px;
         font-size: 1rem;
       }
     }
-
-    .skills-container {
-      .skills {
-        .item {
-          .bar {
-            width: 200px;
-          }
-        }
-      }
-    }
   }
 }
 
-@media screen and (max-width: $custom-small-width) {
-  .homepage-container {
-    .skills-container {
-      .skills {
-        .item {
-          .text {
-            font-size: 1rem;
-          }
-          .bar {
-            width: 100px;
-          }
-        }
-      }
-    }
-  }
-}
+@media screen and (max-width: $custom-small-width) {}

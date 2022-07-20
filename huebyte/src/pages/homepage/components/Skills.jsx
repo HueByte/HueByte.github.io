@@ -1,139 +1,62 @@
 import React from "react";
-import { useEffect } from "react";
 import { useState } from "react";
 
 const Skills = ({}) => {
-  const [isIntersecting, setIsIntersecting] = useState(false);
-
-  const observer = new IntersectionObserver((entries) => {
-    entries[0].isIntersecting
-      ? setIsIntersecting(true)
-      : setIsIntersecting(false);
-  });
-
-  useEffect(() => {
-    let element = document.querySelector(".skills");
-    observer.observe(element);
-
-    return () => observer.unobserve(element);
-  }, []);
-
   return (
     <section className="swamp">
       <div className="skills-container">
-        <div className="title">
-          <h1>Skills</h1>
-        </div>
-        <div className="skills">
-          <div className="item">
-            <div className="text">.NET</div>
-            <div className="bar">
-              <div
-                className={`progress${
-                  isIntersecting ? " enter-animation" : ""
-                }`}
-                style={{ width: "100%" }}
-              ></div>
-            </div>
+        <div className="skills-title">Stack</div>
+        <div className="line"></div>
+        <div className="skills-content">
+          <div className="skill">
+            <i class="devicon-dotnetcore-plain colored"></i>
+            <div className="blocky">.NET</div>
+            <div className="blocky-connector"></div>
           </div>
-          <div className="item">
-            <div className="text">ASP.NET</div>
-            <div className="bar">
-              <div
-                className={`progress${
-                  isIntersecting ? " enter-animation" : ""
-                }`}
-                style={{ width: "100%" }}
-              ></div>
-            </div>
+          <div className="skill">
+            <i class="devicon-html5-plain colored"></i>
+            <div className="blocky">HTML</div>
+            <div className="blocky-connector"></div>
           </div>
-          <div className="item">
-            <div className="text">HTML & CSS</div>
-            <div className="bar">
-              <div
-                className={`progress${
-                  isIntersecting ? " enter-animation" : ""
-                }`}
-                style={{ width: "100%" }}
-              ></div>
-            </div>
+          <div className="skill">
+            <i class="devicon-css3-plain colored"></i>
+            <div className="blocky">CSS</div>
+            <div className="blocky-connector"></div>
           </div>
-          <div className="item">
-            <div className="text">React</div>
-            <div className="bar">
-              <div
-                className={`progress${
-                  isIntersecting ? " enter-animation" : ""
-                }`}
-                style={{ width: "85%" }}
-              ></div>
-            </div>
+          <div className="skill">
+            <i class="devicon-react-original colored"></i>
+            <div className="blocky">React</div>
+            <div className="blocky-connector"></div>
           </div>
-          <div className="item">
-            <div className="text">JavaScript</div>
-            <div className="bar">
-              <div
-                className={`progress${
-                  isIntersecting ? " enter-animation" : ""
-                }`}
-                style={{ width: "80%" }}
-              ></div>
-            </div>
+          <div className="skill">
+            <i class="devicon-javascript-plain colored"></i>
+            <div className="blocky">JavaScript</div>
+            <div className="blocky-connector"></div>
           </div>
-          <div className="item">
-            <div className="text">NodeJS</div>
-            <div className="bar">
-              <div
-                className={`progress${
-                  isIntersecting ? " enter-animation" : ""
-                }`}
-                style={{ width: "75%" }}
-              ></div>
-            </div>
+          <div className="skill">
+            <i class="devicon-nodejs-plain colored"></i>
+            <div className="blocky">NodeJS</div>
+            <div className="blocky-connector"></div>
           </div>
-          <div className="item">
-            <div className="text">TypeScript</div>
-            <div className="bar">
-              <div
-                className={`progress${
-                  isIntersecting ? " enter-animation" : ""
-                }`}
-                style={{ width: "70%" }}
-              ></div>
-            </div>
+          <div className="skill">
+            <i class="devicon-typescript-plain colored"></i>
+            <div className="blocky">TypeScript</div>
+            <div className="blocky-connector"></div>
           </div>
-          <div className="item">
-            <div className="text">Blazor</div>
-            <div className="bar">
-              <div
-                className={`progress${
-                  isIntersecting ? " enter-animation" : ""
-                }`}
-                style={{ width: "70%" }}
-              ></div>
-            </div>
+          <div className="skill">
+            <i class="devicon-microsoftsqlserver-plain-wordmark colored"></i>
+            <div className="blocky">MSSQL</div>
+            <div className="blocky-connector"></div>
           </div>
-          <div className="item">
-            <div className="text">Vue</div>
-            <div className="bar">
-              <div
-                className={`progress${
-                  isIntersecting ? " enter-animation" : ""
-                }`}
-                style={{ width: "70%" }}
-              ></div>
-            </div>
+          <div className="skill">
+            <i class="devicon-python-plain colored"></i>
+            <div className="blocky">Python</div>
+            <div className="blocky-connector"></div>
           </div>
-          <div className="item">
-            <div className="text">SQL</div>
-            <div className="bar">
-              <div
-                className={`progress${
-                  isIntersecting ? " enter-animation" : ""
-                }`}
-                style={{ width: "70%" }}
-              ></div>
-            </div>
+          <div className="skill">
+            <i class="devicon-vuejs-plain colored"></i>
+            <div className="blocky">Vue</div>
+            <div className="blocky-connector"></div>
           </div>
         </div>
       </div>
