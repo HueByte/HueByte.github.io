@@ -38,12 +38,6 @@ const Menu = () => {
             <NavLink to="/Repositories" className="item" onClick={ToggleMenu}>
               Repositories
             </NavLink>
-            {/* <div className="item" onClick={ToggleMenu}>
-              Code Showcase (in progress)
-            </div>
-            <div className="item" onClick={ToggleMenu}>
-              Research (in progress)
-            </div> */}
           </div>
         </div>
       </div>
