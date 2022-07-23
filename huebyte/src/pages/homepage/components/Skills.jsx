@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { AiFillFire } from "react-icons/ai";
 
 const Skills = ({}) => {
-  const [isPerformingAnimation, setIsPerformingAnimation] = useState(false);
   const sparkles = useRef();
   const skills = useRef();
 
@@ -16,12 +15,10 @@ const Skills = ({}) => {
   }, []);
 
   const onMouseEnter = async () => {
-    setIsPerformingAnimation(true);
     for (let i in skills.current) {
       skills.current[i].classList.add("stackHover");
       await sleep(15);
     }
-    setIsPerformingAnimation(false);
   };
 
   const onMouseLeave = async () => {
