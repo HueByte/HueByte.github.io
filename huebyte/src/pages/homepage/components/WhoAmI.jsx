@@ -1,9 +1,32 @@
 import React from "react";
+import { IoSparkles } from "react-icons/io5";
+import { HiSparkles } from "react-icons/hi";
 
 const WhoAmI = () => {
   return (
     <section className="maron">
       <div className="content-container">
+        <div
+          className="sparkle"
+          style={{ top: "20%", left: "20%", color: "#262853" }}
+        >
+          <HiSparkles />
+        </div>
+        <div
+          className="sparkle"
+          style={{ top: "70%", right: "20%", color: "#051929" }}
+        >
+          <HiSparkles />
+        </div>
+        <div
+          className="sparkle"
+          style={{ top: "10%", right: "15%", color: "#171718" }}
+        >
+          <IoSparkles />
+        </div>
+        <div className="sparkle" style={{ bottom: "10%", left: "20%" }}>
+          <IoSparkles />
+        </div>
         <div className="whoami">
           <div className="title">
             <h1>whoami</h1>
