@@ -14,17 +14,37 @@ const WhoAmI = () => {
         </div>
         <div
           className="sparkle"
-          style={{ top: "70%", right: "20%", color: "#051929" }}
+          style={{
+            top: "70%",
+            right: "20%",
+            color: "#051929",
+            animationDelay: "200ms",
+            animationDuration: "3.5s",
+          }}
         >
           <HiSparkles />
         </div>
         <div
           className="sparkle"
-          style={{ top: "10%", right: "15%", color: "#171718" }}
+          style={{
+            top: "10%",
+            right: "15%",
+            color: "#171718",
+            animationDelay: "500ms",
+            animationDuration: "4s",
+          }}
         >
           <IoSparkles />
         </div>
-        <div className="sparkle" style={{ bottom: "10%", left: "20%" }}>
+        <div
+          className="sparkle"
+          style={{
+            bottom: "10%",
+            left: "20%",
+            animationDelay: "50ms",
+            animationDuration: "5s",
+          }}
+        >
           <IoSparkles />
         </div>
         <div className="whoami">

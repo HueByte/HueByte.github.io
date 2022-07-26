@@ -29,10 +29,6 @@ $skills-max-width: 1024px;
             svg {
                 color: theme.$maron;
             }
-
-            &:hover {
-                .skill {}
-            }
         }
 
         .line {
@@ -130,25 +126,8 @@ $skills-max-width: 1024px;
         .skills-container {
             .skills-content {
                 .skill {
-                    font-size: 50px;
-                    margin: 1em;
-
-                    .blocky {
-                        top: 135%;
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 1024px) {
-    .homepage-container {
-        .skills-container {
-            .skills-content {
-                .skill {
-                    font-size: 48px;
-                    margin: 1em;
+                    font-size: 60px;
+                    margin: 1em 0.8em;
 
                     .blocky {
                         top: 135%;
