@@ -25,9 +25,15 @@ $skills-max-width: 1024px;
             place-items: center;
             padding: 10px;
             font-size: 48px;
+            transition: 300ms;
 
             svg {
                 color: theme.$maron;
+            }
+
+            &:hover {
+                transform: scale(1.1);
+                cursor: crosshair;
             }
         }
 

@@ -5,13 +5,25 @@ import { useEffect } from "react";
 import { AiFillFire } from "react-icons/ai";
 
 const Skills = ({}) => {
-  const sparkles = useRef();
   const skills = useRef();
+  let element = document.getElementById("skillContainer");
+
+  const observer = new IntersectionObserver(async (entry) => {
+    if (entry[0].isIntersecting) {
+      await sleep(700);
+      await onMouseEnter();
+      await onMouseLeave();
+    }
+  });
 
   useEffect(() => {
     skills.current = Array.prototype.slice.call(
       document.getElementsByClassName("skill")
     );
+
+    let element = document.getElementById("skillContainer");
+    observer.observe(element);
+    return () => observer.unobserve(element);
   }, []);
 
   const onMouseEnter = async () => {
@@ -27,8 +39,6 @@ const Skills = ({}) => {
       await sleep(20);
     }
   };
-
-  useEffect(() => console.log(sparkles.current), [sparkles]);
 
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 

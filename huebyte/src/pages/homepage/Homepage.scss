@@ -178,10 +178,11 @@ $avatar-size: 300px;
         flex-direction: column;
         position: relative;
         width: 300px;
-        height: 220px;
+        height: 230px;
         margin: 2rem;
         border-radius: 10px;
         transition: 200ms ease-in-out;
+        font-size: large;
 
         &:hover {
           transform: scale(1.1);
@@ -201,12 +202,12 @@ $avatar-size: 300px;
           place-items: center;
           border-radius: 100%;
           overflow: hidden;
+          background-color: theme.$swamp;
 
           img {
             width: 100px;
             height: 100px;
             height: auto;
-            background-color: theme.$swamp;
           }
         }
 
@@ -220,7 +221,7 @@ $avatar-size: 300px;
 
         .title {
           height: 40px;
-          padding: 5px;
+          padding: 10px 5px;
           background-color: theme.$swamp-lighter;
           z-index: 110;
           color: theme.$ghost-white;
