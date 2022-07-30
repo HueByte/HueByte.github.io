@@ -19,7 +19,6 @@ function App() {
     cacheImages(preloadedImages);
 
     if (checkMobile()) {
-      console.log("true");
       cursor.current = document.querySelector(".cursor");
       document.addEventListener("mousemove", cursorMove);
       document.addEventListener("click", cursorClick);
