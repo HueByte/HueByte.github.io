@@ -157,8 +157,11 @@ $avatar-size: 300px;
     margin-bottom: 4em;
     max-width: 1200px;
 
-    .title {
+    .projects-title {
       text-align: center;
+      padding: 10px;
+      border-radius: 15px;
+      backdrop-filter: blur(2px);
 
       h1 {
         font-size: 4rem;
@@ -220,11 +223,12 @@ $avatar-size: 300px;
         }
 
         .title {
+          text-align: center;
           height: 40px;
           padding: 10px 5px;
           background-color: theme.$swamp-lighter;
           z-index: 110;
-          color: theme.$ghost-white;
+          color: theme.$accent;
 
           h2 {
             margin: 0;
