@@ -11,8 +11,6 @@ const Footer = () => {
       ></div>
       <div className="content">
         © Copyright {new Date().getFullYear()} by HueByte
-        <br />
-        Website is still under construction
       </div>
     </div>
   );
