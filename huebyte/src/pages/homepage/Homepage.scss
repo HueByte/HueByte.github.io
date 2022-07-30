@@ -56,9 +56,9 @@ $avatar-size: 300px;
 
       .button {
         margin: 1em;
-        font-size: larger;
-        width: 40%;
-        min-width: 120px;
+        font-size: 18px;
+        width: 50%;
+        min-width: 140px;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -66,7 +66,7 @@ $avatar-size: 300px;
         z-index: 10;
 
         svg {
-          margin-right: 0.5em;
+          margin-right: 10px;
         }
       }
     }
@@ -236,12 +236,11 @@ $avatar-size: 300px;
 
         .description {
           flex: 5;
-          display: flex;
+          height: 50px;
+          overflow-y: auto;
           background-color: theme.$swamp-lighter;
           text-align: center;
           padding: 15px;
-          overflow: hidden;
-          text-overflow: ellipsis;
           width: 100%;
           z-index: 110;
           border-radius: 0 0 8px 8px;
