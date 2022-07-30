@@ -92,4 +92,15 @@ a:active {
   border: 1px solid theme.$maron;
 }
 
-@media screen and (max-width: sizes.$small-width-device) {}
+@media screen and (max-width: sizes.$small-width-device) {
+
+  body,
+  html {
+    cursor: default;
+  }
+
+  .cursor,
+  .cursor::after {
+    display: none;
+  }
+}
