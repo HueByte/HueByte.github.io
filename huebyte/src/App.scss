@@ -1,4 +1,5 @@
 @use "./styles/theme" as theme;
+@use "./styles/sizes" as sizes;
 
 .maron {
   background-color: theme.$maron;
@@ -90,3 +91,5 @@ a:active {
   animation: cursorAnim3 .5s forwards;
   border: 1px solid theme.$maron;
 }
+
+@media screen and (max-width: sizes.$small-width-device) {}
