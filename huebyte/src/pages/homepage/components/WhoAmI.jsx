@@ -54,10 +54,12 @@ const WhoAmI = () => {
           <div className="text">
             <p>
               <strong>
-                Hello! On the internet I appear under the name Hue or HueByte,
-                as for now <span className="k-word">20</span> years old
-                professional Fullstack developer{" "}
-                <span className="k-word">&&</span> Computer Science student.
+                Hello! On the internet I appear under the name{" "}
+                <span className="k-word">Hue </span>or
+                <span className="k-word"> HueByte</span>, as for now
+                <span className="k-word"> 20</span> years old professional
+                Fullstack developer <span className="k-word">&&</span> Computer
+                Science student.
               </strong>
               <br />
             </p>

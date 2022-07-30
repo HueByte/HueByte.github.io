@@ -54,67 +54,67 @@ const Skills = ({}) => {
         <div className="line"></div>
         <div className="skills-content">
           <div className={`skill`}>
-            <i class="devicon-dot-net-plain colored"></i>
+            <i className="devicon-dot-net-plain colored"></i>
             <div className="blocky">.NET</div>
             <div className="blocky-connector"></div>
           </div>
           <div className={`skill`}>
-            <i class="devicon-csharp-plain colored"></i>
+            <i className="devicon-csharp-plain colored"></i>
             <div className="blocky">C#</div>
             <div className="blocky-connector"></div>
           </div>
           <div className="skill">
-            <i class="devicon-html5-plain colored"></i>
+            <i className="devicon-html5-plain colored"></i>
             <div className="blocky">HTML</div>
             <div className="blocky-connector"></div>
           </div>
           <div className="skill">
-            <i class="devicon-css3-plain colored"></i>
+            <i className="devicon-css3-plain colored"></i>
             <div className="blocky">CSS</div>
             <div className="blocky-connector"></div>
           </div>
           <div className="skill">
-            <i class="devicon-react-original colored"></i>
+            <i className="devicon-react-original colored"></i>
             <div className="blocky">React</div>
             <div className="blocky-connector"></div>
           </div>
           <div className="skill">
-            <i class="devicon-javascript-plain colored"></i>
+            <i className="devicon-javascript-plain colored"></i>
             <div className="blocky">JavaScript</div>
             <div className="blocky-connector"></div>
           </div>
           <div className="skill">
-            <i class="devicon-nodejs-plain colored"></i>
+            <i className="devicon-nodejs-plain colored"></i>
             <div className="blocky">NodeJS</div>
             <div className="blocky-connector"></div>
           </div>
           <div className="skill">
-            <i class="devicon-typescript-plain colored"></i>
+            <i className="devicon-typescript-plain colored"></i>
             <div className="blocky">TypeScript</div>
             <div className="blocky-connector"></div>
           </div>
           <div className="skill">
-            <i class="devicon-microsoftsqlserver-plain-wordmark colored"></i>
+            <i className="devicon-microsoftsqlserver-plain-wordmark colored"></i>
             <div className="blocky">MSSQL</div>
             <div className="blocky-connector"></div>
           </div>
           <div className="skill">
-            <i class="devicon-python-plain colored"></i>
+            <i className="devicon-python-plain colored"></i>
             <div className="blocky">Python</div>
             <div className="blocky-connector"></div>
           </div>
           <div className="skill">
-            <i class="devicon-vuejs-plain colored"></i>
+            <i className="devicon-vuejs-plain colored"></i>
             <div className="blocky">Vue</div>
             <div className="blocky-connector"></div>
           </div>
           <div className="skill">
-            <i class="devicon-git-plain colored"></i>
+            <i className="devicon-git-plain colored"></i>
             <div className="blocky">Git</div>
             <div className="blocky-connector"></div>
           </div>
           <div className="skill">
-            <i class="devicon-bash-plain"></i>
+            <i className="devicon-bash-plain"></i>
             <div className="blocky">Bash</div>
             <div className="blocky-connector"></div>
           </div>

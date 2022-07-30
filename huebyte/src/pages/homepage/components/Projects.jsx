@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 
 const Projects = () => {
   return (
@@ -30,7 +29,11 @@ const Projects = () => {
               its full potential and performance.
             </div>
           </a>
-          <NavLink to="Projects/MyThingsSaver" className="item">
+          <a
+            href="https://github.com/HueByte/MyThingsSaver"
+            target="_blank"
+            className="item"
+          >
             <div className="icon">
               <img
                 src="https://raw.githubusercontent.com/HueByte/MyThingsSaver/master/backend/App/client/public/favicon.png"
@@ -46,7 +49,7 @@ const Projects = () => {
               Modern and comfortable application with a powerful markdown
               editor.
             </div>
-          </NavLink>
+          </a>
           <a
             href="https://huebyte.github.io/PrintIt3D/"
             target="_blank"
@@ -65,7 +68,8 @@ const Projects = () => {
             </div>
             <div className="description">
               Website I've made for university project about imaginary business.
-              I'm quite happy with the result (Desktop Only)
+              I'm quite happy with the result <br />
+              (Desktop Only)
             </div>
           </a>
           <a
@@ -106,8 +110,8 @@ const Projects = () => {
               <h2>Capital Cloud</h2>
             </div>
             <div className="description">
-              Project I've used for discovering SignalR technology & implemented
-              chat feature
+              Project I've used for discovering SignalR technology & with chat
+              feature
             </div>
           </a>
         </div>
