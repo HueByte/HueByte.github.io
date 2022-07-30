@@ -42,11 +42,7 @@ const Skills = ({}) => {
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
   return (
-    <section
-      className="swamp"
-      id="skill-container"
-      style={{ position: "relative" }}
-    >
+    <section id="skill-container" style={{ position: "relative" }}>
       <div className="skills-container" id="skillContainer">
         <div
           className="skills-title"

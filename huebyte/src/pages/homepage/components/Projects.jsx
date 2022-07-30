@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Projects = () => {
   return (
-    <section className="swamp">
+    <section>
       <div className="projects">
         <div className="title">
           <h1>Personal Projects</h1>

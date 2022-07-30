@@ -99,6 +99,7 @@ $skills-max-width: 1024px;
                 transform: scale(1.1);
                 border: 1px solid theme.$maron;
                 box-shadow: 15px -15px theme.$maron;
+                backdrop-filter: blur(2px);
 
                 .blocky {
                     opacity: 1;
