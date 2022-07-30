@@ -11,6 +11,7 @@ import { useRef } from "react";
 function App() {
   const history = createBrowserHistory();
   const [isLoading, setIsLoading] = useState(true);
+  const [renderCustomCursor, setRenderCustomCursor] = useState(true);
   const cursor = useRef();
 
   useEffect(() => {
@@ -22,6 +23,7 @@ function App() {
       cursor.current = document.querySelector(".cursor");
       document.addEventListener("mousemove", cursorMove);
       document.addEventListener("click", cursorClick);
+      setRenderCustomCursor(true);
     }
 
     return () => {
@@ -80,7 +82,7 @@ function App() {
     <BrowserRouter history={history}>
       <Suspense fallback={<Loader />}>
         {isLoading ? <Loader /> : <ClientRoutes />}
-        <div class="cursor"></div>
+        {renderCustomCursor ? <div class="cursor"></div> : <></>}
       </Suspense>
     </BrowserRouter>
   );
