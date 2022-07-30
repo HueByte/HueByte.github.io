@@ -24,8 +24,10 @@ $skills-max-width: 1024px;
             display: grid;
             place-items: center;
             padding: 10px;
-            font-size: 48px;
             transition: 300ms;
+            font-size: 48px;
+            backdrop-filter: blur(2px);
+            padding: 10px;
 
             svg {
                 color: theme.$maron;
@@ -99,6 +101,7 @@ $skills-max-width: 1024px;
                 transform: scale(1.1);
                 border: 1px solid theme.$maron;
                 box-shadow: 15px -15px theme.$maron;
+                backdrop-filter: blur(2px);
 
                 .blocky {
                     opacity: 1;

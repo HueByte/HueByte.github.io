@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 
 const Projects = () => {
   return (
-    <section className="swamp">
+    <section>
       <div className="projects">
-        <div className="title">
+        <div className="projects-title">
           <h1>Personal Projects</h1>
         </div>
         <div className="projects-container">
