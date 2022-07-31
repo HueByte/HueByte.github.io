@@ -19,9 +19,9 @@ $avatar-size: 300px;
     justify-content: center;
     flex-direction: column;
     position: relative;
-    // background: linear-gradient(theme.$swamp,
-    //     theme.$swamp-lighter,
-    //     theme.$bittersweet );
+    background: linear-gradient(theme.$swamp,
+        theme.$swamp-lighter,
+        theme.$bittersweet );
 
     background-size: cover;
     background-attachment: fixed;

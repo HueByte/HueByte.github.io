@@ -2,11 +2,10 @@ import React from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { FaDiscord } from "react-icons/fa";
 import layer1 from "../../../assets/layer1.svg";
-import meteors from "../../../assets/meteors.svg";
 
 const Intro = () => {
   return (
-    <div className="intro" style={{ backgroundImage: `url(${meteors}` }}>
+    <div className="intro">
       <div className="avatar">
         <img src="https://github.com/huebyte.png" alt="huebyte" />
       </div>
