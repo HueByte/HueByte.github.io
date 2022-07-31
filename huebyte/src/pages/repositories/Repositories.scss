@@ -130,9 +130,10 @@
           flex: 1;
           font-size: x-large;
           margin-bottom: 0.5em;
+          color: theme.$accent;
 
           svg {
-            color: theme.$bittersweet;
+            color: theme.$msg;
             margin-right: 0.5em;
           }
         }
@@ -141,6 +142,7 @@
           flex: 2;
           overflow-y: auto;
           display: flex;
+          padding: 5px;
         }
 
         .info-container {
