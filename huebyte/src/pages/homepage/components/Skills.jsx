@@ -5,7 +5,25 @@ import { AiFillFire } from "react-icons/ai";
 
 const Skills = ({}) => {
   const skills = useRef();
-  let element = document.getElementById("skillContainer");
+  let element = useRef();
+  const langs = [
+    { name: ".NET", icon: "devicon-dot-net-plain colored" },
+    { name: "C#", icon: "devicon-csharp-plain colored" },
+    { name: "HTML", icon: "devicon-html5-plain colored" },
+    { name: "CSS", icon: "devicon-css3-plain colored" },
+    { name: "React", icon: "devicon-react-original colored" },
+    { name: "JavaScript", icon: "devicon-javascript-plain colored" },
+    { name: "NodeJS", icon: "devicon-nodejs-plain colored" },
+    { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+    {
+      name: "MSSQL",
+      icon: "devicon-microsoftsqlserver-plain-wordmark colored",
+    },
+    { name: "Python", icon: "devicon-python-plain colored" },
+    { name: "Vue", icon: "devicon-vuejs-plain colored" },
+    { name: "Git", icon: "devicon-git-plain colored" },
+    { name: "Bash", icon: "devicon-bash-plain" },
+  ];
 
   const observer = new IntersectionObserver(async (entry) => {
     if (entry[0].isIntersecting) {
@@ -20,9 +38,14 @@ const Skills = ({}) => {
       document.getElementsByClassName("skill")
     );
 
-    let element = document.getElementById("skillContainer");
-    observer.observe(element);
-    return () => observer.unobserve(element);
+    if (!isMobile()) {
+      element.current = document.getElementById("skillContainer");
+      observer.observe(element.current);
+    }
+
+    return () => {
+      if (!isMobile()) observer.unobserve(element.current);
+    };
   }, []);
 
   const onMouseEnter = async () => {
@@ -39,6 +62,17 @@ const Skills = ({}) => {
     }
   };
 
+  const isMobile = () => {
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    )
+      return true;
+
+    return false;
+  };
+
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
   return (
@@ -53,71 +87,13 @@ const Skills = ({}) => {
         </div>
         <div className="line"></div>
         <div className="skills-content">
-          <div className={`skill`}>
-            <i className="devicon-dot-net-plain colored"></i>
-            <div className="blocky">.NET</div>
-            <div className="blocky-connector"></div>
-          </div>
-          <div className={`skill`}>
-            <i className="devicon-csharp-plain colored"></i>
-            <div className="blocky">C#</div>
-            <div className="blocky-connector"></div>
-          </div>
-          <div className="skill">
-            <i className="devicon-html5-plain colored"></i>
-            <div className="blocky">HTML</div>
-            <div className="blocky-connector"></div>
-          </div>
-          <div className="skill">
-            <i className="devicon-css3-plain colored"></i>
-            <div className="blocky">CSS</div>
-            <div className="blocky-connector"></div>
-          </div>
-          <div className="skill">
-            <i className="devicon-react-original colored"></i>
-            <div className="blocky">React</div>
-            <div className="blocky-connector"></div>
-          </div>
-          <div className="skill">
-            <i className="devicon-javascript-plain colored"></i>
-            <div className="blocky">JavaScript</div>
-            <div className="blocky-connector"></div>
-          </div>
-          <div className="skill">
-            <i className="devicon-nodejs-plain colored"></i>
-            <div className="blocky">NodeJS</div>
-            <div className="blocky-connector"></div>
-          </div>
-          <div className="skill">
-            <i className="devicon-typescript-plain colored"></i>
-            <div className="blocky">TypeScript</div>
-            <div className="blocky-connector"></div>
-          </div>
-          <div className="skill">
-            <i className="devicon-microsoftsqlserver-plain-wordmark colored"></i>
-            <div className="blocky">MSSQL</div>
-            <div className="blocky-connector"></div>
-          </div>
-          <div className="skill">
-            <i className="devicon-python-plain colored"></i>
-            <div className="blocky">Python</div>
-            <div className="blocky-connector"></div>
-          </div>
-          <div className="skill">
-            <i className="devicon-vuejs-plain colored"></i>
-            <div className="blocky">Vue</div>
-            <div className="blocky-connector"></div>
-          </div>
-          <div className="skill">
-            <i className="devicon-git-plain colored"></i>
-            <div className="blocky">Git</div>
-            <div className="blocky-connector"></div>
-          </div>
-          <div className="skill">
-            <i className="devicon-bash-plain"></i>
-            <div className="blocky">Bash</div>
-            <div className="blocky-connector"></div>
-          </div>
+          {langs.map((item, index) => (
+            <div className="skill" key={index}>
+              <i className={item.icon}></i>
+              <div className="blocky">{item.name}</div>
+              <div className="blocky-connector"></div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
