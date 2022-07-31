@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.d7f2952b.css",
-    "main.js": "/static/js/main.832bbccf.js",
+    "main.css": "/static/css/main.1c539536.css",
+    "main.js": "/static/js/main.b9e2d482.js",
     "static/css/550.a019ca29.chunk.css": "/static/css/550.a019ca29.chunk.css",
     "static/js/550.b155b954.chunk.js": "/static/js/550.b155b954.chunk.js",
     "static/css/638.4d65eca5.chunk.css": "/static/css/638.4d65eca5.chunk.css",
@@ -12,7 +12,6 @@
     "static/js/972.afde8004.chunk.js": "/static/js/972.afde8004.chunk.js",
     "static/media/sprinkle.svg": "/static/media/sprinkle.ca197739aa00743309105f173d5868c1.svg",
     "static/media/layer3.svg": "/static/media/layer3.883381007e6bff98a0f5276760e5e598.svg",
-    "static/media/meteors.svg": "/static/media/meteors.8b1d7e93c2e896c381301c1c4d45d29e.svg",
     "static/media/layer5.svg": "/static/media/layer5.acc736b172d41d218d69141caa768c2e.svg",
     "static/media/layer1.svg": "/static/media/layer1.7c72d5d0ca15c1ac568a44dea9686e58.svg",
     "index.html": "/index.html",
@@ -20,7 +19,7 @@
     "static/media/layer4.svg": "/static/media/layer4.45f61da97e3eb65fad5cf4a6776aa7f2.svg"
   },
   "entrypoints": [
-    "static/css/main.d7f2952b.css",
-    "static/js/main.832bbccf.js"
+    "static/css/main.1c539536.css",
+    "static/js/main.b9e2d482.js"
   ]
 }
