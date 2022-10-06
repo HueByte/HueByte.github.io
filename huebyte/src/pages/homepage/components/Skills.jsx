@@ -50,14 +50,18 @@ const Skills = ({}) => {
 
   const onMouseEnter = async () => {
     for (let i in skills.current) {
-      skills.current[i].classList.add("stackHover");
+      requestAnimationFrame(async () => {
+        skills.current[i].classList.add("stackHover");
+      });
       await sleep(15);
     }
   };
 
   const onMouseLeave = async () => {
     for (let i in skills.current) {
-      skills.current[i].classList.remove("stackHover");
+      requestAnimationFrame(async () => {
+        skills.current[i].classList.remove("stackHover");
+      });
       await sleep(20);
     }
   };
