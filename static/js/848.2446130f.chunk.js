@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkhuebyte=self.webpackChunkhuebyte||[]).push([[848],{848:function(e,n,s){s.r(n),s.d(n,{default:function(){return c}});s(313);var r=s(890),t=s(992),u=s(417),c=function(){return(0,u.jsx)(u.Fragment,{children:(0,u.jsxs)("div",{className:"main-container",children:[(0,u.jsx)("main",{children:(0,u.jsx)(r.j3,{})}),(0,u.jsx)(t.Z,{})]})})}}}]);
