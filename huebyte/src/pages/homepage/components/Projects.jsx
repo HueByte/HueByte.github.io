@@ -26,7 +26,8 @@ const Projects = () => {
             </div>
             <div className="description">
               Discord bot with complex microservice architecture, based on
-              ASP.NET core style and my favourite project so far
+              ASP.NET core style.
+              <br /> My favourite project so far
             </div>
           </a>
           <a
