@@ -53,7 +53,7 @@ $avatar-size: 300px;
         display: grid;
         place-items: center;
         cursor: pointer;
-        z-index: 999;
+        z-index: 900;
         transition: 200ms ease-in-out;
         background-color: theme.$swamp;
         border: 1px solid theme.$maron;
@@ -305,11 +305,13 @@ $avatar-size: 300px;
 
 @keyframes avatar-entry {
   from {
+    z-index: 900;
     opacity: 0;
     transform: translateY(20px);
   }
 
   to {
+    z-index: 900;
     opacity: 1;
   }
 }
@@ -320,11 +322,11 @@ $avatar-size: 300px;
   }
 
   50% {
-    box-shadow: 0 0 0 theme.$accent;
+    box-shadow: unset;
   }
 
   100% {
-    box-shadow: 0 0px 50px theme.$accent;
+    box-shadow: 0 0 50px theme.$accent;
   }
 }
 
