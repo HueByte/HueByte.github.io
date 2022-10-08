@@ -15,7 +15,7 @@ const Projects = () => {
           >
             <div className="icon">
               <img
-                src="https://i.pinimg.com/564x/ff/c1/59/ffc1594020481a2e64f285f6b4d7ea06.jpg"
+                src="https://camo.githubusercontent.com/622176ec78a3c8112c4e12d3c034abacba9ac59b0a3f66530405195b4318df89/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f617661746172732f3839343330353539373536393235373439322f64356362393030373663633465326132643565643363326363313730343634392e706e673f73697a653d323536"
                 alt="huppy"
                 loading="lazy"
               />
@@ -25,8 +25,8 @@ const Projects = () => {
               <h2>Huppy</h2>
             </div>
             <div className="description">
-              Discord bot where I'm using my experience from ASP.NET to reach
-              its full potential and performance.
+              Discord bot with complex microservice architecture, based on
+              ASP.NET core style and my favourite project so far
             </div>
           </a>
           <a
@@ -46,8 +46,28 @@ const Projects = () => {
               <h2>My Things Saver</h2>
             </div>
             <div className="description">
-              Modern and comfortable application with a powerful markdown
-              editor.
+              Modern and comfortable application with a powerful markdown editor
+            </div>
+          </a>
+          <a
+            href="https://github.com/HueByte/ConsoleImager"
+            target="_blank"
+            className="item"
+          >
+            <div className="icon">
+              <img
+                src="https://camo.githubusercontent.com/3501e4e45f899125d0db2111435230e95a6f296b9b4a8efdfa49b7c0470f9104/68747470733a2f2f692e696d6775722e636f6d2f535467686e6a492e706e67"
+                alt="huppy"
+                loading="lazy"
+              />
+            </div>
+            <div className="background"></div>
+            <div className="title">
+              <h2>ConsoleImager</h2>
+            </div>
+            <div className="description">
+              A small project that allows you to display any image from internet
+              in your console!
             </div>
           </a>
           <a
@@ -68,8 +88,6 @@ const Projects = () => {
             </div>
             <div className="description">
               Website I've made for university project about imaginary business.
-              I'm quite happy with the result <br />
-              (Desktop Only)
             </div>
           </a>
           <a
