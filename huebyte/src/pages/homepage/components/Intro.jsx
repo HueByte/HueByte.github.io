@@ -24,7 +24,7 @@ const Intro = () => {
           <AiFillGithub />
         </a>
         <a
-          href="mailto:ihuebytes@gmail.com"
+          href="mailto:ihuebyte@gmail.com"
           target="_blank"
           className="orb-icon"
         >
