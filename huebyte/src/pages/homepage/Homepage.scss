@@ -45,7 +45,7 @@ $avatar-size: 300px;
         z-index: 900;
       }
 
-      .test {
+      .orb-icon {
         position: absolute;
         font-size: 48px;
         padding: 10px;
@@ -56,6 +56,7 @@ $avatar-size: 300px;
         z-index: 999;
         transition: 200ms ease-in-out;
         background-color: theme.$swamp;
+        border: 1px solid theme.$maron;
 
         &:hover {
           transform: scale(1.1);
@@ -63,16 +64,16 @@ $avatar-size: 300px;
         }
       }
 
-      .test:nth-of-type(1) {
+      .orb-icon:nth-of-type(1) {
         top: -90px;
       }
 
-      .test:nth-of-type(2) {
+      .orb-icon:nth-of-type(2) {
         bottom: -30px;
         left: -30px;
       }
 
-      .test:nth-of-type(3) {
+      .orb-icon:nth-of-type(3) {
         bottom: -30px;
         right: -30px;
       }
@@ -347,4 +348,26 @@ $avatar-size: 300px;
   }
 }
 
-@media screen and (max-width: $custom-small-width) {}
+@media screen and (max-width: $custom-small-width) {
+  .homepage-container {
+    .intro {
+      .avatar {
+        .orb-icon:nth-of-type(1) {
+          top: unset;
+          bottom: -100px;
+
+        }
+
+        .orb-icon:nth-of-type(2) {
+          left: 10px;
+          bottom: -50px;
+        }
+
+        .orb-icon:nth-of-type(3) {
+          right: 10px;
+          bottom: -50px;
+        }
+      }
+    }
+  }
+}

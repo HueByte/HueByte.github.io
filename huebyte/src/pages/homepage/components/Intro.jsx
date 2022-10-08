@@ -12,14 +12,18 @@ const Intro = () => {
         <a
           href="https://discordapp.com/users/215556401467097088"
           target="_blank"
-          className="test"
+          className="orb-icon"
         >
           <FaDiscord />
         </a>
-        <a href="https://github.com/HueByte" target="_blank" className="test">
+        <a
+          href="https://github.com/HueByte"
+          target="_blank"
+          className="orb-icon"
+        >
           <AiFillGithub />
         </a>
-        <a href="ihuebytes@gmail.com" target="_blank" className="test">
+        <a href="ihuebytes@gmail.com" target="_blank" className="orb-icon">
           <BiMailSend />
         </a>
       </div>
