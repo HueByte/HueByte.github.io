@@ -38,8 +38,7 @@ const Skills = ({}) => {
       document.getElementsByClassName("skill")
     );
 
-    if (!isMobile()) {
-      element.current = document.getElementById("skillContainer");
+    if (!isMobile() && element.current) {
       observer.observe(element.current);
     }
 
@@ -53,6 +52,7 @@ const Skills = ({}) => {
       requestAnimationFrame(async () => {
         skills.current[i].classList.add("stackHover");
       });
+
       await sleep(15);
     }
   };
@@ -62,6 +62,7 @@ const Skills = ({}) => {
       requestAnimationFrame(async () => {
         skills.current[i].classList.remove("stackHover");
       });
+
       await sleep(20);
     }
   };
@@ -81,7 +82,7 @@ const Skills = ({}) => {
 
   return (
     <section id="skill-container" style={{ position: "relative" }}>
-      <div className="skills-container" id="skillContainer">
+      <div className="skills-container" ref={element}>
         <div
           className="skills-title"
           onMouseEnter={onMouseEnter}

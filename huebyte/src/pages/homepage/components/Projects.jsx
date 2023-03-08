@@ -1,4 +1,5 @@
 import React from "react";
+import jiroImg from "../../../assets/jiro.png";
 
 const Projects = () => {
   return (
@@ -8,6 +9,22 @@ const Projects = () => {
           <h1>Personal Projects</h1>
         </div>
         <div className="projects-container">
+          <a
+            href="https://github.com/HueByte/Jiro"
+            target="_blank"
+            className="item"
+          >
+            <div className="icon">
+              <img src={jiroImg} alt="huppy" loading="lazy" />
+            </div>
+            <div className="background"></div>
+            <div className="title">
+              <h2>Jiro</h2>
+            </div>
+            <div className="description">
+              Virtual Assistant powered by ChatGPT and custom code integration!
+            </div>
+          </a>
           <a
             href="https://github.com/HueByte/Huppy"
             target="_blank"
