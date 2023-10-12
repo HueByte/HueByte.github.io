@@ -2,231 +2,233 @@
 @use "../../styles/sizes" as sizes;
 
 .repositories-container {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: theme.$swamp;
-  // God bless this free SVG Background https://bgjar.com
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: theme.$swamp;
+	// God bless this free SVG Background https://bgjar.com
 
-  main {
-    min-height: calc(100vh - sizes.$min-footer-height);
-    width: sizes.$reading-width;
-    display: flex;
-    flex-direction: row;
-    padding: 2em;
+	main {
+		min-height: calc(100vh - sizes.$min-footer-height);
+		width: sizes.$reading-width;
+		display: flex;
+		flex-direction: row;
+		padding: 2em;
 
-    &::after {
-      content: ".";
-      visibility: hidden;
-    }
+		&::after {
+			content: ".";
+			visibility: hidden;
+		}
 
-    .user {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      position: relative;
-      background-color: theme.$dark-eerie;
-      height: fit-content;
-      max-width: 300px;
-      padding: 10px;
-      border-radius: 15px;
+		.user {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			position: relative;
+			background-color: theme.$dark-eerie;
+			height: fit-content;
+			max-width: 300px;
+			padding: 10px;
+			border-radius: 15px;
 
-      .avatar {
-        width: 100%;
-        min-height: 200px;
-        border-radius: 100%;
-        border: 2px solid;
-        overflow: hidden;
+			.avatar {
+				width: 100%;
+				min-height: 200px;
+				border-radius: 100%;
+				border: 2px solid theme.$port;
+				overflow: hidden;
 
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
+				img {
+					width: 100%;
+					height: 100%;
+				}
+			}
 
-      .user-info {
-        display: flex;
-        flex-direction: column;
-        padding-top: 1em;
+			.user-info {
+				display: flex;
+				flex-direction: column;
+				padding-top: 1em;
 
-        .name {
-          text-align: center;
-          font-size: x-large;
-          padding-bottom: 1em;
-          letter-spacing: 1px;
-        }
+				.name {
+					text-align: center;
+					font-size: x-large;
+					padding-bottom: 1em;
+					letter-spacing: 1px;
+				}
 
-        .bio {
-          text-align: center;
-          font-weight: bold;
-          margin-bottom: 1em;
-        }
+				.bio {
+					text-align: center;
+					font-weight: bold;
+					margin-bottom: 1em;
+				}
 
-        .field {
-          margin: 0.5em;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
+				.field {
+					margin: 0.5em;
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
 
-          svg {
-            margin-right: 0.5em;
-            color: theme.$maron;
-          }
+					svg {
+						margin-right: 0.5em;
+						color: theme.$maron;
+					}
 
-          .key {
-            display: flex;
-            align-items: center;
-          }
+					.key {
+						display: flex;
+						align-items: center;
+					}
 
-          .value {
-            color: theme.$maron;
-          }
-        }
-      }
-    }
+					.value {
+						color: theme.$maron;
+					}
+				}
+			}
+		}
 
-    .repositories {
-      display: flex;
-      flex: 3;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
+		.repositories {
+			display: flex;
+			flex: 3;
+			flex-direction: column;
+			align-items: center;
+			position: relative;
 
-      .title {
-        font-size: 2rem;
-        -webkit-text-fill-color: transparent;
-        background: linear-gradient(90deg,
-            theme.$maron,
-            theme.$bittersweet 70%);
-        -webkit-background-clip: text;
-        white-space: nowrap;
-      }
+			.title {
+				font-size: 2rem;
+				-webkit-text-fill-color: transparent;
+				background: linear-gradient(
+					90deg,
+					theme.$maron,
+					theme.$bittersweet 70%
+				);
+				-webkit-background-clip: text;
+				white-space: nowrap;
+			}
 
-      .repository-container {
-        background-color: theme.$dark-eerie;
-        width: 500px;
-        display: flex;
-        flex-direction: column;
-        justify-items: center;
-        margin: 1em;
-        height: 200px;
-        padding: 10px;
-        border-radius: 15px;
-        border: 1px solid theme.$dark-eerie;
-        cursor: pointer;
-        transition: 200ms;
+			.repository-container {
+				background-color: theme.$dark-eerie;
+				width: 500px;
+				display: flex;
+				flex-direction: column;
+				justify-items: center;
+				margin: 1em;
+				height: 200px;
+				padding: 10px;
+				border-radius: 15px;
+				border: 1px solid theme.$dark-eerie;
+				cursor: pointer;
+				transition: 200ms;
 
-        &:hover {
-          transform: scale(1.05);
-          border: 1px solid theme.$maron;
-        }
+				&:hover {
+					transform: scale(1.05);
+					border: 1px solid theme.$maron;
+				}
 
-        .name {
-          display: flex;
-          align-items: center;
-          flex: 1;
-          font-size: x-large;
-          margin-bottom: 0.5em;
-          color: theme.$accent;
+				.name {
+					display: flex;
+					align-items: center;
+					flex: 1;
+					font-size: x-large;
+					margin-bottom: 0.5em;
+					color: theme.$accent;
 
-          svg {
-            color: theme.$msg;
-            margin-right: 0.5em;
-          }
-        }
+					svg {
+						color: theme.$msg;
+						margin-right: 0.5em;
+					}
+				}
 
-        .description {
-          flex: 2;
-          overflow-y: auto;
-          display: flex;
-          padding: 5px;
-        }
+				.description {
+					flex: 2;
+					overflow-y: auto;
+					display: flex;
+					padding: 5px;
+				}
 
-        .info-container {
-          flex: 1;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: space-around;
+				.info-container {
+					flex: 1;
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: space-around;
 
-          .item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
-        }
-      }
-    }
-  }
+					.item {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+					}
+				}
+			}
+		}
+	}
 }
 
 @media screen and (max-width: sizes.$mid-width-device) {
-  .repositories-container {
-    main {
-      width: 100%;
-      flex-direction: column;
-      align-items: center;
-      min-height: calc(100vh - sizes.$min-footer-height-mobile);
+	.repositories-container {
+		main {
+			width: 100%;
+			flex-direction: column;
+			align-items: center;
+			min-height: calc(100vh - sizes.$min-footer-height-mobile);
 
-      .user {
-        align-items: center;
-        margin-bottom: 2em;
+			.user {
+				align-items: center;
+				margin-bottom: 2em;
 
-        .avatar {
-          width: 200px;
-          height: 200px;
-        }
-      }
+				.avatar {
+					width: 200px;
+					height: 200px;
+				}
+			}
 
-      .repositories {
-        .title {
-          font-size: 1.5rem;
-        }
+			.repositories {
+				.title {
+					font-size: 1.5rem;
+				}
 
-        .repository-container {
-          width: 100%;
-          max-width: 425px;
-        }
-      }
-    }
-  }
+				.repository-container {
+					width: 100%;
+					max-width: 425px;
+				}
+			}
+		}
+	}
 }
 
 @media screen and (max-width: sizes.$large-mobile-device) {
-  .repositories-container {
-    main {
-      .repositories {
-        .title {
-          font-size: 1.2rem;
-        }
+	.repositories-container {
+		main {
+			.repositories {
+				.title {
+					font-size: 1.2rem;
+				}
 
-        .repository-container {
-          height: 100px;
+				.repository-container {
+					height: 100px;
 
-          .name {
-            justify-content: center;
-          }
+					.name {
+						justify-content: center;
+					}
 
-          .description {
-            display: none;
-          }
-        }
-      }
-    }
-  }
+					.description {
+						display: none;
+					}
+				}
+			}
+		}
+	}
 }
 
 @media screen and (max-width: sizes.$medium-mobile-device) {
-  .repositories-container {
-    main {
-      .repositories {
-        .title {
-          font-size: 20px;
-        }
-      }
-    }
-  }
+	.repositories-container {
+		main {
+			.repositories {
+				.title {
+					font-size: 20px;
+				}
+			}
+		}
+	}
 }
