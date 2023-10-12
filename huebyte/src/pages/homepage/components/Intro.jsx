@@ -10,7 +10,7 @@ const Intro = () => {
 		<div className="intro">
 			<div className="avatar">
 				<div className="avatar-pic">
-					<img src={hue} alt="jiro avatar" />
+					<img src="https://github.com/huebyte.png" alt="jiro avatar" />
 					<svg
 						viewBox="0 0 500 500"
 						xmlns="http://www.w3.org/2000/svg"
