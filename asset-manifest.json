@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.870223ab.css",
-    "main.js": "/static/js/main.1d051625.js",
+    "main.js": "/static/js/main.f07c96a2.js",
     "static/css/77.7039c769.chunk.css": "/static/css/77.7039c769.chunk.css",
     "static/js/77.3e1fa6eb.chunk.js": "/static/js/77.3e1fa6eb.chunk.js",
     "static/css/543.610507ec.chunk.css": "/static/css/543.610507ec.chunk.css",
@@ -11,6 +11,7 @@
     "static/js/787.4acda6f2.chunk.js": "/static/js/787.4acda6f2.chunk.js",
     "static/js/425.ca8dda57.chunk.js": "/static/js/425.ca8dda57.chunk.js",
     "static/media/hue.png": "/static/media/hue.a676c45f26e33b0cd7bb.png",
+    "static/media/huppy.png": "/static/media/huppy.add27f64c32135e4fd74.png",
     "static/media/huebot.png": "/static/media/huebot.a898c76e888de7c91214.png",
     "static/media/jiro.png": "/static/media/jiro.cc43f2283881a393439f.png",
     "static/media/hue2.png": "/static/media/hue2.14b3bd59b52e78ff004c.png",
@@ -23,7 +24,7 @@
     "static/media/layer2.svg": "/static/media/layer2.683c01979d611e67db061a7dc2913789.svg",
     "static/media/layer4.svg": "/static/media/layer4.45f61da97e3eb65fad5cf4a6776aa7f2.svg",
     "main.870223ab.css.map": "/static/css/main.870223ab.css.map",
-    "main.1d051625.js.map": "/static/js/main.1d051625.js.map",
+    "main.f07c96a2.js.map": "/static/js/main.f07c96a2.js.map",
     "77.7039c769.chunk.css.map": "/static/css/77.7039c769.chunk.css.map",
     "77.3e1fa6eb.chunk.js.map": "/static/js/77.3e1fa6eb.chunk.js.map",
     "543.610507ec.chunk.css.map": "/static/css/543.610507ec.chunk.css.map",
@@ -35,6 +36,6 @@
   },
   "entrypoints": [
     "static/css/main.870223ab.css",
-    "static/js/main.1d051625.js"
+    "static/js/main.f07c96a2.js"
   ]
 }
