@@ -1,6 +1,7 @@
 import React from "react";
 import jiroImg from "../../../assets/jiro.png";
 import huebotImg from "../../../assets/huebot.png";
+import huppyImg from "../../../assets/huppy.png";
 import consoleImagerImg from "../../../assets/hue2.png";
 import "./Projects.scss";
 import waver from "../../../assets/waver.svg";
@@ -19,8 +20,7 @@ const Projects = () => {
 			name: "Huppy",
 			description:
 				"Discord bot with complex microservice architecture, based on ASP.NET core style.",
-			image:
-				"https://camo.githubusercontent.com/622176ec78a3c8112c4e12d3c034abacba9ac59b0a3f66530405195b4318df89/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f617661746172732f3839343330353539373536393235373439322f64356362393030373663633465326132643565643363326363313730343634392e706e673f73697a653d323536",
+			image: huppyImg,
 			link: "https://github.com/HueByte/Huppy",
 			alt: "Huppy Image",
 		},
