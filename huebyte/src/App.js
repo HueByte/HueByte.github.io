@@ -1,14 +1,10 @@
 import { BrowserRouter } from "react-router-dom";
-import { createBrowserHistory } from "history";
 import ClientRoutes from "./router/Routes";
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
 import Loader from "./core/loader/Loader";
 import "./App.scss";
-import { useState } from "react";
-import { useEffect } from "react";
 
 function App() {
-  const history = createBrowserHistory();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -32,7 +28,7 @@ function App() {
     setIsLoading(false);
   };
   return (
-    <BrowserRouter history={history}>
+    <BrowserRouter>
       <Suspense fallback={<Loader />}>
         {isLoading ? <Loader /> : <ClientRoutes />}
       </Suspense>

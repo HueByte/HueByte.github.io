@@ -13,25 +13,22 @@ import Spacer from "../../core/Spacers/Spacer";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 
-// Homepage SCSS
-import "./components/Skills.scss";
 
 const HomePage = () => {
-  return (
-    <div
-      className="homepage-container"
-      style={{ backgroundImage: `url(${bg}` }}
-    >
-      <Intro />
-      <WhoAmI />
-      <Spacer layerSvg={layer2} />
-      <Skills />
-      <Spacer layerSvg={layer3} />
-      <Projects />
-
-      <Footer />
-    </div>
-  );
+	return (
+		<div
+			className="homepage-container"
+			style={{ backgroundImage: `url(${bg}` }}
+		>
+			<Intro />
+			<WhoAmI />
+			<Spacer layerSvg={layer2} />
+			<Skills />
+			<Spacer layerSvg={layer3} />
+			<Projects />
+			<Footer />
+		</div>
+	);
 };
 
 export default HomePage;

@@ -30,6 +30,7 @@ const Menu = () => {
             <a
               href="https://github.com/HueByte"
               target="_blank"
+              rel="noreferrer"
               className="item"
               onClick={ToggleMenu}
             >

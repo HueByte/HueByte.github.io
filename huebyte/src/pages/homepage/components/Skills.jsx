@@ -1,9 +1,8 @@
-import React from "react";
-import { useRef } from "react";
-import { useEffect } from "react";
+import React, { useRef, useEffect, useCallback } from "react";
 import { AiFillFire } from "react-icons/ai";
+import "./Skills.scss";
 
-const Skills = ({}) => {
+const Skills = () => {
 	const skills = useRef();
 	let element = useRef();
 	const langs = [
@@ -25,30 +24,7 @@ const Skills = ({}) => {
 		{ name: "Bash", icon: "devicon-bash-plain" },
 	];
 
-	const observer = new IntersectionObserver(async (entry) => {
-		if (entry[0].isIntersecting) {
-			await sleep(700);
-			await onMouseEnter();
-			await onMouseLeave();
-		}
-	});
-
-	useEffect(() => {
-		skills.current = Array.prototype.slice.call(
-			document.getElementsByClassName("skill")
-		);
-
-		if (!isMobile() && element.current) {
-			observer.observe(element.current);
-		}
-
-		return () => {
-			let current = element.current;
-			if (!isMobile() && current) observer.unobserve(current);
-		};
-	}, []);
-
-	const onMouseEnter = async () => {
+	const onMouseEnter = useCallback(async () => {
 		for (let i in skills.current) {
 			requestAnimationFrame(async () => {
 				skills.current[i].classList.add("stackHover");
@@ -56,9 +32,9 @@ const Skills = ({}) => {
 
 			await sleep(15);
 		}
-	};
+	}, []);
 
-	const onMouseLeave = async () => {
+	const onMouseLeave = useCallback(async () => {
 		for (let i in skills.current) {
 			requestAnimationFrame(async () => {
 				skills.current[i].classList.remove("stackHover");
@@ -66,7 +42,30 @@ const Skills = ({}) => {
 
 			await sleep(20);
 		}
-	};
+	}, []);
+
+	useEffect(() => {
+		const observer = new IntersectionObserver(async (entry) => {
+			if (entry[0].isIntersecting) {
+				await sleep(700);
+				await onMouseEnter();
+				await onMouseLeave();
+			}
+		});
+
+		skills.current = Array.prototype.slice.call(
+			document.getElementsByClassName("skill")
+		);
+
+		const currentElement = element.current;
+		if (!isMobile() && currentElement) {
+			observer.observe(currentElement);
+		}
+
+		return () => {
+			if (!isMobile() && currentElement) observer.unobserve(currentElement);
+		};
+	}, [onMouseEnter, onMouseLeave]);
 
 	const isMobile = () => {
 		if (
