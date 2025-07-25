@@ -2,6 +2,7 @@ import React from "react";
 import jiroImg from "../../../assets/jiro.png";
 import huebotImg from "../../../assets/huebot.png";
 import huppyImg from "../../../assets/huppy.png";
+import amiquin from "../../../assets/amiquin.png";
 import consoleImagerImg from "../../../assets/hue2.png";
 import "./Projects.scss";
 import waver from "../../../assets/waver.svg";
@@ -15,6 +16,30 @@ const Projects = () => {
 			image: jiroImg,
 			link: "https://github.com/HueByte/Jiro",
 			alt: "Jiro Image",
+		},
+		{
+			name: "Jiro.Shared",
+			description:
+				"Common types, models, and utilities used across the Jiro ecosystem, including JiroCloud and Jiro instances.",
+			image: jiroImg,
+			link: "https://github.com/HueByte/Jiro.Shared",
+			alt: "Jiro.Shared Image",
+		},
+		{
+			name: "Jiro.Libs",
+			description:
+				"Robust, extensible system for building plugins and runtime commands for the Jiro platform with modular development.",
+			image: jiroImg,
+			link: "https://github.com/HueByte/Jiro.Libs",
+			alt: "Jiro.Libs Image",
+		},
+		{
+			name: "Amiquin",
+			description:
+				"Modular and extensible discord bot designed to streamline development with configurability, logging, and dependency injection.",
+			image: amiquin,
+			link: "https://github.com/HueByte/Amiquin",
+			alt: "Amiquin Image",
 		},
 		{
 			name: "Huppy",
