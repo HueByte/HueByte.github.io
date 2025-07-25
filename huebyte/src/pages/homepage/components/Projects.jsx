@@ -12,7 +12,7 @@ const Projects = () => {
 		{
 			name: "Jiro",
 			description:
-				"Virtual Assistant powered by ChatGPT and custom code integration!",
+				"Your intelligent companion powered by AI and extensible plugins",
 			image: jiroImg,
 			link: "https://github.com/HueByte/Jiro",
 			alt: "Jiro Image",
