@@ -112,52 +112,161 @@
 				width: 500px;
 				display: flex;
 				flex-direction: column;
-				justify-items: center;
 				margin: 1em;
-				height: 200px;
-				padding: 10px;
-				border-radius: 15px;
+				min-height: 180px;
+				padding: 16px;
+				border-radius: 12px;
 				border: 1px solid theme.$dark-eerie;
 				cursor: pointer;
-				transition: 200ms;
+				transition: all 0.3s ease;
+				text-decoration: none;
+				color: inherit;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 
 				&:hover {
-					transform: scale(1.05);
+					transform: translateY(-4px);
 					border: 1px solid theme.$maron;
+					box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 				}
 
-				.name {
+				.card-header {
 					display: flex;
-					align-items: center;
-					flex: 1;
-					font-size: x-large;
-					margin-bottom: 0.5em;
-					color: theme.$accent;
+					justify-content: space-between;
+					align-items: flex-start;
+					margin-bottom: 12px;
 
-					svg {
-						color: theme.$msg;
-						margin-right: 0.5em;
+					.name {
+						display: flex;
+						align-items: center;
+						font-size: 1.2em;
+						font-weight: 600;
+						color: theme.$accent;
+						flex: 1;
+
+						.repo-icon {
+							color: theme.$msg;
+							margin-right: 8px;
+							font-size: 1.1em;
+						}
+
+						span {
+							margin-right: 8px;
+						}
+
+						.private-badge {
+							background-color: rgba(255, 193, 7, 0.2);
+							color: #ffc107;
+							font-size: 0.7em;
+							padding: 2px 6px;
+							border-radius: 4px;
+							border: 1px solid #ffc107;
+							margin-left: 8px;
+						}
+					}
+
+					.language-badge {
+						display: flex;
+						align-items: center;
+						background-color: rgba(255, 255, 255, 0.1);
+						padding: 4px 8px;
+						border-radius: 12px;
+						font-size: 0.8em;
+						color: theme.$accent;
+
+						.language-dot {
+							width: 8px;
+							height: 8px;
+							border-radius: 50%;
+							margin-right: 6px;
+						}
 					}
 				}
 
 				.description {
-					flex: 2;
+					flex: 1;
+					color: rgba(255, 255, 255, 0.8);
+					line-height: 1.4;
+					margin-bottom: 16px;
 					overflow-y: auto;
-					display: flex;
-					padding: 5px;
+					max-height: 60px;
+					padding-right: 4px;
+
+					&::-webkit-scrollbar {
+						width: 4px;
+					}
+
+					&::-webkit-scrollbar-track {
+						background: rgba(255, 255, 255, 0.1);
+						border-radius: 2px;
+					}
+
+					&::-webkit-scrollbar-thumb {
+						background: rgba(255, 255, 255, 0.3);
+						border-radius: 2px;
+
+						&:hover {
+							background: rgba(255, 255, 255, 0.5);
+						}
+					}
 				}
 
-				.info-container {
-					flex: 1;
+				.card-footer {
 					display: flex;
-					flex-direction: row;
+					justify-content: space-between;
 					align-items: center;
-					justify-content: space-around;
+					margin-top: auto;
+					padding-top: 12px;
+					border-top: 1px solid rgba(255, 255, 255, 0.1);
+					position: relative;
 
-					.item {
+					&::before {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: -16px;
+						right: -16px;
+						height: 1px;
+						background: linear-gradient(
+							90deg,
+							transparent,
+							rgba(255, 255, 255, 0.1) 20%,
+							rgba(255, 255, 255, 0.1) 80%,
+							transparent
+						);
+					}
+
+					.stats {
 						display: flex;
-						flex-direction: column;
-						align-items: center;
+						gap: 16px;
+
+						.stat-item {
+							display: flex;
+							align-items: center;
+							color: rgba(255, 255, 255, 0.7);
+							font-size: 0.85em;
+
+							.stat-icon {
+								margin-right: 4px;
+								font-size: 0.9em;
+							}
+
+							&:first-child .stat-icon {
+								color: #86fcf2;
+							}
+
+							&:nth-child(2) .stat-icon {
+								color: theme.$maron;
+							}
+
+							&:last-child .stat-icon {
+								color: #17a2b8;
+							}
+						}
+					}
+
+					.updated-date {
+						font-size: 0.8em;
+						color: rgba(255, 255, 255, 0.6);
 					}
 				}
 			}
@@ -206,14 +315,29 @@
 				}
 
 				.repository-container {
-					height: 100px;
+					min-height: 120px;
 
-					.name {
+					.card-header .name {
 						justify-content: center;
+						font-size: 1em;
 					}
 
 					.description {
 						display: none;
+					}
+
+					.card-footer {
+						.stats {
+							gap: 12px;
+
+							.stat-item {
+								font-size: 0.8em;
+							}
+						}
+
+						.updated-date {
+							font-size: 0.75em;
+						}
 					}
 				}
 			}
