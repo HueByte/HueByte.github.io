@@ -6,9 +6,60 @@ import amiquin from "../../../assets/amiquin.png";
 import consoleImagerImg from "../../../assets/hue2.png";
 import "./Projects.scss";
 import waver from "../../../assets/waver.svg";
+import { GiTrainCar, GiOpenBook } from "react-icons/gi";
+import { MdQueryStats } from "react-icons/md";
+import { FaServer, FaGamepad } from "react-icons/fa";
 
 const Projects = () => {
 	const projects = [
+		{
+			name: "Morpheus",
+			description:
+				"Evolving human augmentation through AI and sensors - an attempt at the closest thing to AGI possible, utilizing Reasoning ReAct, LLMs, SLMs, and sensor data collection.",
+			image: jiroImg,
+			link: "#",
+			alt: "Morpheus Image",
+		},
+		{
+			name: "Eidolon",
+			description:
+				"Immersive 3D web-based simulation of the post-apocalyptic Eidolon train network, built with Three.js and fast Rust backend. Features chunk-based world generation and multiple biome types.",
+			icon: GiTrainCar,
+			link: "#",
+			alt: "Eidolon Image",
+		},
+		{
+			name: "Eidolon Lore",
+			description:
+				"Interactive lore wiki for the Eidolon Line universe - a post-apocalyptic world where humanity survives aboard a constantly-moving train guided by evolved AI.",
+			icon: GiOpenBook,
+			link: "https://github.com/HueByte/Eidolon_Lore",
+			alt: "Eidolon Lore Image",
+		},
+		{
+			name: "ByteCraft",
+			description:
+				"Real-time market intelligence platform for Bitcraft game ecosystem with smart NPC filtering, AI-generated insights, and <1ms latency using Rust and MongoDB. Tracks 27K+ orders and 4.7K+ players.",
+			icon: MdQueryStats,
+			link: "#",
+			alt: "ByteCraft Image",
+		},
+		{
+			name: "CDN Explorer",
+			description:
+				"Lightweight, dependency-free Node.js file browser for private CDN archives with polished directory listings and direct file downloads.",
+			icon: FaServer,
+			link: "https://github.com/HueByte/CDN_Explorer",
+			alt: "CDN Explorer Image",
+		},
+		{
+			name: "VintageHue",
+			description:
+				"Curated collection of high-quality mods for Vintage Story featuring innovative gameplay mechanics, quality-of-life improvements, and new content.",
+			icon: FaGamepad,
+			link: "https://github.com/HueByte/VintageHue",
+			alt: "VintageHue Image",
+		},
 		{
 			name: "Jiro",
 			description:
@@ -36,7 +87,7 @@ const Projects = () => {
 		{
 			name: "Amiquin",
 			description:
-				"Modular and extensible discord bot designed to streamline development with configurability, logging, and dependency injection.",
+				"Your snarky, chaos-loving AI sidekick delivering witty banter and dark humor - a modular Discord bot with text-to-speech and audio streaming capabilities.",
 			image: amiquin,
 			link: "https://github.com/HueByte/Amiquin",
 			alt: "Amiquin Image",
@@ -112,7 +163,11 @@ const Projects = () => {
 							<div className="top-magic plus-bg">
 								<div className="icon-container">
 									<div className="icon">
-										<img src={project.image} alt={project.alt} loading="lazy" />
+										{project.icon ? (
+											<project.icon className="react-icon" />
+										) : (
+											<img src={project.image} alt={project.alt} loading="lazy" />
+										)}
 									</div>
 								</div>
 							</div>
