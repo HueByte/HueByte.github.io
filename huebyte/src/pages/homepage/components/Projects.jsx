@@ -6,7 +6,7 @@ import amiquin from "../../../assets/amiquin.png";
 import consoleImagerImg from "../../../assets/hue2.png";
 import "./Projects.scss";
 import waver from "../../../assets/waver.svg";
-import { GiTrainCar, GiOpenBook } from "react-icons/gi";
+import { GiRailway, GiOpenBook } from "react-icons/gi";
 import { MdQueryStats } from "react-icons/md";
 import { FaServer, FaGamepad } from "react-icons/fa";
 
@@ -24,7 +24,7 @@ const Projects = () => {
 			name: "Eidolon",
 			description:
 				"Immersive 3D web-based simulation of the post-apocalyptic Eidolon train network, built with Three.js and fast Rust backend. Features chunk-based world generation and multiple biome types.",
-			icon: GiTrainCar,
+			icon: GiRailway,
 			link: "#",
 			alt: "Eidolon Image",
 		},
