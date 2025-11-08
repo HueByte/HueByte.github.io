@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import * as THREE from "three";
 
 const PointCloudBackground = () => {
@@ -8,7 +8,6 @@ const PointCloudBackground = () => {
 	const cameraRef = useRef(null);
 	const pointsRef = useRef(null);
 	const animationFrameRef = useRef(null);
-	const [currentShape, setCurrentShape] = useState("Torus");
 
 	useEffect(() => {
 		if (!containerRef.current) return;
@@ -209,15 +208,15 @@ const PointCloudBackground = () => {
 			createSpiral(),
 		];
 
-		const shapeNames = [
-			"Torus",
-			"Helix",
-			"Cube",
-			"Wave",
-			"DNA",
-			"Knot",
-			"Spiral",
-		];
+		// const shapeNames = [
+		// 	"Torus",
+		// 	"Helix",
+		// 	"Cube",
+		// 	"Wave",
+		// 	"DNA",
+		// 	"Knot",
+		// 	"Spiral",
+		// ];
 
 		// Create colors
 		const colors = new Float32Array(particleCount * 3);
@@ -293,7 +292,7 @@ const PointCloudBackground = () => {
 				shapeTimer = 0;
 				const nextIndex = (shapeIndex + 1) % shapes.length;
 				shapeIndex = nextIndex;
-				setCurrentShape(shapeNames[nextIndex]);
+				// setCurrentShape(shapeNames[nextIndex]); // Uncomment when debug is enabled
 			}
 
 			// Morph between shapes
