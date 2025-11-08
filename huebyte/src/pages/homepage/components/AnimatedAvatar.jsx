@@ -4,7 +4,7 @@ const AnimatedAvatar = () => {
 	return (
 		<div className="avatar-pic">
 			<img src="https://github.com/huebyte.png" alt="jiro avatar" />
-			<svg
+			{/* <svg
 				viewBox="0 0 500 500"
 				xmlns="http://www.w3.org/2000/svg"
 				width="100%"
@@ -27,7 +27,7 @@ const AnimatedAvatar = () => {
                   "
 					></animate>
 				</path>
-			</svg>
+			</svg> */}
 		</div>
 	);
 };
