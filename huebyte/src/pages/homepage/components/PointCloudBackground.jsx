@@ -198,6 +198,67 @@ const PointCloudBackground = () => {
 			return positions;
 		};
 
+		const createSphere = () => {
+			const positions = new Float32Array(particleCount * 3);
+			let seed = 44444;
+			const seededRandom = () => {
+				seed = (seed * 9301 + 49297) % 233280;
+				return seed / 233280;
+			};
+
+			for (let i = 0; i < particleCount; i++) {
+				const theta = seededRandom() * Math.PI * 2;
+				const phi = seededRandom() * Math.PI;
+				const radius = 2;
+
+				positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+				positions[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
+				positions[i * 3 + 2] = radius * Math.cos(phi);
+			}
+			return positions;
+		};
+
+		const createPyramid = () => {
+			const positions = new Float32Array(particleCount * 3);
+			let seed = 55555;
+			const seededRandom = () => {
+				seed = (seed * 9301 + 49297) % 233280;
+				return seed / 233280;
+			};
+
+			for (let i = 0; i < particleCount; i++) {
+				const layer = Math.floor(Math.sqrt(i / particleCount) * 10);
+				const t = seededRandom() * Math.PI * 2;
+				const r = (10 - layer) * 0.2 + seededRandom() * 0.1;
+
+				positions[i * 3] = r * Math.cos(t);
+				positions[i * 3 + 1] = layer * 0.4 - 2;
+				positions[i * 3 + 2] = r * Math.sin(t);
+			}
+			return positions;
+		};
+
+		const createRing = () => {
+			const positions = new Float32Array(particleCount * 3);
+			let seed = 66666;
+			const seededRandom = () => {
+				seed = (seed * 9301 + 49297) % 233280;
+				return seed / 233280;
+			};
+
+			for (let i = 0; i < particleCount; i++) {
+				const theta = (i / particleCount) * Math.PI * 2;
+				const phi = seededRandom() * Math.PI * 2;
+				const majorRadius = 2.5;
+				const minorRadius = 0.3;
+
+				positions[i * 3] = majorRadius * Math.cos(theta) + minorRadius * Math.cos(phi);
+				positions[i * 3 + 1] = minorRadius * Math.sin(phi);
+				positions[i * 3 + 2] = majorRadius * Math.sin(theta);
+			}
+			return positions;
+		};
+
 		const shapes = [
 			createTorus(),
 			createHelix(),
@@ -206,6 +267,9 @@ const PointCloudBackground = () => {
 			createDNA(),
 			createKnot(),
 			createSpiral(),
+			createSphere(),
+			createPyramid(),
+			createRing(),
 		];
 
 		// const shapeNames = [
@@ -251,15 +315,15 @@ const PointCloudBackground = () => {
 		let time = 0;
 		let shapeIndex = 0;
 		let shapeTimer = 0;
-		const SHAPE_DURATION = 14; // 14 seconds stable
+		const SHAPE_DURATION = 10; // 10 seconds stable
 		const TRANSITION_DURATION = 2; // 2 seconds transition
-		const TOTAL_CYCLE = SHAPE_DURATION + TRANSITION_DURATION; // 16 seconds total
+		const TOTAL_CYCLE = SHAPE_DURATION + TRANSITION_DURATION; // 12 seconds total
 
 		// Click interaction setup
 		const handleClick = () => {
 			// Only trigger transition if not already transitioning
 			if (shapeTimer < SHAPE_DURATION) {
-				shapeTimer = SHAPE_DURATION;
+				shapeTimer = SHAPE_DURATION + 0.001; // Slight offset to ensure smooth start
 			}
 		};
 
