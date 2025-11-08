@@ -13,6 +13,9 @@ const PointCloudBackground = () => {
 	useEffect(() => {
 		if (!containerRef.current) return;
 
+		// Store container ref for cleanup
+		const container = containerRef.current;
+
 		// Scene setup
 		const scene = new THREE.Scene();
 		sceneRef.current = scene;
@@ -38,7 +41,7 @@ const PointCloudBackground = () => {
 			containerRef.current.clientHeight
 		);
 		renderer.setPixelRatio(window.devicePixelRatio);
-		containerRef.current.appendChild(renderer.domElement);
+		container.appendChild(renderer.domElement);
 		rendererRef.current = renderer;
 
 		// Create particle system
@@ -261,7 +264,7 @@ const PointCloudBackground = () => {
 			}
 		};
 
-		containerRef.current.addEventListener("click", handleClick);
+		container.addEventListener("click", handleClick);
 
 		// Animation loop
 		const animate = () => {
@@ -349,14 +352,14 @@ const PointCloudBackground = () => {
 		// Cleanup
 		return () => {
 			window.removeEventListener("resize", handleResize);
-			if (containerRef.current) {
-				containerRef.current.removeEventListener("click", handleClick);
+			if (container) {
+				container.removeEventListener("click", handleClick);
 			}
 			if (animationFrameRef.current) {
 				cancelAnimationFrame(animationFrameRef.current);
 			}
-			if (containerRef.current && renderer.domElement) {
-				containerRef.current.removeChild(renderer.domElement);
+			if (container && renderer.domElement) {
+				container.removeChild(renderer.domElement);
 			}
 			geometry.dispose();
 			material.dispose();
@@ -367,7 +370,7 @@ const PointCloudBackground = () => {
 	return (
 		<>
 			<div ref={containerRef} className="point-cloud-container" />
-			<div className="shape-debug">Current Shape: {currentShape}</div>
+			{/* <div className="shape-debug">Current Shape: {currentShape}</div> */}
 		</>
 	);
 };
