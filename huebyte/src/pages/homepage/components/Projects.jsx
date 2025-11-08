@@ -155,6 +155,7 @@ const Projects = () => {
 				<div className="projects-container">
 					{projects.map((project) => (
 						<a
+							key={project.name}
 							href={project.link}
 							target="_blank"
 							className="project-card"
