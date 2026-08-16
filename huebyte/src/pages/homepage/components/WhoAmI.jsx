@@ -77,11 +77,10 @@ const WhoAmI = () => {
 								<span className="k-word">Hue </span>or
 								<span className="k-word"> HueByte</span>, as for now
 								<span className="k-word"> {getAge()}</span> years old
-								<span className="k-word">
-									{" "}
-									Advanced Software Engineer
-								</span> &&{" "}
-								<span className="k-word">Computer Science Student</span>.
+								<span className="k-word"> Software Engineer</span> with an
+								engineering degree in{" "}
+								<span className="k-word">Computer Science</span>, specialized
+								in <span className="k-word">Artificial Intelligence</span>.
 							</strong>
 							<br />
 						</p>
@@ -90,8 +89,8 @@ const WhoAmI = () => {
 							<span className="k-word">.NET</span> as my main technology I'm
 							always open for learning and mastering new ones!
 							<br />
-							My future goal is to work with Artificial Intelligence
-							development.
+							My goal is to blend solid software engineering with Artificial
+							Intelligence and build things that feel a little bit like magic.
 						</p>
 					</div>
 				</div>

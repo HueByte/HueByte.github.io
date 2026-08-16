@@ -8,7 +8,7 @@ import UserProfile from "./components/UserProfile";
 import RepositoryList from "./components/RepositoryList";
 
 const Repositories = () => {
-  const { isFetching, repos, user } = useGitHubData();
+  const { isFetching, repos, user, error } = useGitHubData();
   
   const langs = {
     "c#": "#239120",
@@ -52,6 +52,18 @@ const Repositories = () => {
       <main>
         {isFetching ? (
           <Loader local={true} />
+        ) : error ? (
+          <div className="repositories">
+            <div className="title">HueByte@Repositories:~ $</div>
+            <div>
+              Couldn't load repositories from GitHub right now (the API may be
+              rate limited). Visit them directly at{" "}
+              <a href="https://github.com/HueByte?tab=repositories">
+                github.com/HueByte
+              </a>
+              .
+            </div>
+          </div>
         ) : (
           <>
             <UserProfile user={user} />
