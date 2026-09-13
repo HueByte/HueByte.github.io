@@ -1,0 +1,22 @@
+@use "@/styles/theme" as t;
+
+.loader {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.loader__ring {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(t.$desert, 0.15);
+  border-top-color: t.$spring;
+  border-radius: 50%;
+  animation: loader-spin 0.9s linear infinite;
+}
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

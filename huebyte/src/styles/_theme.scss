@@ -1,0 +1,22 @@
+// Design tokens: a glowing golden grassland at night with spring-green accents.
+$spring: #00fa9a; // medium spring green, the accent
+$desert: #fad5a5; // desert sand, warm text and borders
+$gold: #f5b942; // grass glow
+$night: #060d1a; // sky at the horizon, page background
+$night-deep: #02050c; // sky at the zenith
+
+// Carried over from the Mirage version, kept for continuity.
+$maron: #c62368;
+$swamp: #001220;
+
+$bg: $night;
+$text: #f4efe6;
+$text-muted: rgba(250, 213, 165, 0.7);
+
+$font-body:
+  "Inter",
+  system-ui,
+  -apple-system,
+  "Segoe UI",
+  sans-serif;
+$font-mono: "JetBrains Mono", "Ubuntu Mono", ui-monospace, monospace;

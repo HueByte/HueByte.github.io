@@ -1,0 +1,34 @@
+@use "@/styles/theme" as t;
+
+.home {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  // Shown until the WebGL scene paints, and as the fallback when WebGL is unavailable.
+  background:
+    radial-gradient(ellipse 120% 55% at 50% 100%, rgba(t.$gold, 0.35), transparent 70%),
+    linear-gradient(t.$night-deep, t.$night 60%, #1a1508);
+}
+
+.home__scene {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.home__hero {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 2rem 1rem;
+  // Pointer movement should reach the scene; only the blobs are interactive.
+  pointer-events: none;
+}

@@ -4,6 +4,10 @@ import { Suspense, useState, useEffect } from "react";
 import Loader from "./core/loader/Loader";
 import "./App.scss";
 
+// The site is served under a sub-path (see `base` in vite.config.js), so the
+// router has to be told about the same prefix. All routes stay written as "/".
+const basename = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,7 +32,7 @@ function App() {
     setIsLoading(false);
   };
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Suspense fallback={<Loader />}>
         {isLoading ? <Loader /> : <ClientRoutes />}
       </Suspense>

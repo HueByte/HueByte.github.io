@@ -2,38 +2,52 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./huebyte
-    
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
-        cache-dependency-path: './huebyte/package-lock.json'
-        
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Build
-      run: npm run build
-      
-    - name: Deploy to gh-pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./huebyte/build
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            huebyte/package-lock.json
+            Legacy/v_Mirage/package-lock.json
+
+      - name: Install dependencies (huebyte)
+        working-directory: huebyte
+        run: npm ci
+
+      - name: Install dependencies (Legacy/v_Mirage)
+        working-directory: Legacy/v_Mirage
+        run: npm ci
+
+      - name: Typecheck, lint, format check, test
+        working-directory: huebyte
+        run: npm run check
+
+      # Builds huebyte into dist/ and mounts every legacy version under dist/legacy/<name>/
+      - name: Build site
+        working-directory: huebyte
+        run: npm run build:site
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./huebyte/dist

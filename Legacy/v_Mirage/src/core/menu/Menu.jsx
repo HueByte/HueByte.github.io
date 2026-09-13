@@ -39,6 +39,10 @@ const Menu = () => {
             <NavLink to="/Repositories" className="item" onClick={ToggleMenu}>
               Repositories
             </NavLink>
+            {/* Plain anchor on purpose: leaves this sub-site for the current one at the domain root. */}
+            <a href="/" className="item" onClick={ToggleMenu}>
+              New site
+            </a>
           </div>
         </div>
       </div>
