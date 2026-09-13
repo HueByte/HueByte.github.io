@@ -1,14 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script>
-        window.location.replace("https://huebyte.github.io/");
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HueByte</title>
+    <!--
+      Single Page Apps for GitHub Pages (https://github.com/rafgraph/spa-github-pages).
+      GitHub Pages serves this file for any path that has no matching file. It re-encodes the
+      requested path as a query string ("/?/some/path") and bounces to an index.html, whose
+      inline script restores the real URL with history.replaceState before the router mounts.
+
+      Sub-sites (see scripts/build-site.mjs) ship their own index.html and router, so a deep
+      link into one must bounce to THAT sub-site root, not the main site. Keep this list in
+      sync with the mountPath values in scripts/build-site.mjs.
+    -->
+    <script type="text/javascript">
+      var subSites = ["/legacy/v_mirage"];
+
+      var l = window.location;
+      var base = "";
+      for (var i = 0; i < subSites.length; i++) {
+        if (l.pathname === subSites[i] || l.pathname.indexOf(subSites[i] + "/") === 0) {
+          base = subSites[i];
+          break;
+        }
+      }
+      var rest = l.pathname.slice(base.length).replace(/^\//, "");
+
+      l.replace(
+        l.protocol +
+          "//" +
+          l.host +
+          base +
+          "/?/" +
+          rest.replace(/&/g, "~and~") +
+          (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+          l.hash,
+      );
     </script>
-</head>
-<body>
-</body>
+  </head>
+  <body></body>
 </html>
