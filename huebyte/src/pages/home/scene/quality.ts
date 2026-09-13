@@ -5,7 +5,8 @@ export interface Quality {
   galaxy: number;
   fireflies: number;
   groundSegments: number;
-  pixelRatio: number;
+  /** Render scale (canvas pixels per CSS pixel) the frame starts at, and the range it may adapt in. */
+  pixelRatio: { start: number; min: number; max: number };
   /** MSAA samples for the render target (0 disables). */
   msaa: number;
 }
@@ -16,6 +17,7 @@ export function detectQuality(): Quality {
   const small = Math.min(window.innerWidth, window.innerHeight) < 700;
   const coarse = window.matchMedia("(pointer: coarse)").matches;
   const low = small || coarse || cores <= 4;
+  const dpr = window.devicePixelRatio || 1;
 
   if (low) {
     return {
@@ -24,7 +26,7 @@ export function detectQuality(): Quality {
       galaxy: 1100,
       fireflies: 60,
       groundSegments: 96,
-      pixelRatio: Math.min(window.devicePixelRatio || 1, 1.25),
+      pixelRatio: { start: Math.min(dpr, 0.8), min: 0.5, max: Math.min(dpr, 1) },
       msaa: 0,
     };
   }
@@ -35,7 +37,7 @@ export function detectQuality(): Quality {
     galaxy: 2200,
     fireflies: 140,
     groundSegments: 160,
-    pixelRatio: Math.min(window.devicePixelRatio || 1, 1.5),
+    pixelRatio: { start: Math.min(dpr, 1.25), min: 0.6, max: Math.min(dpr, 1.5) },
     msaa: 4,
   };
 }
