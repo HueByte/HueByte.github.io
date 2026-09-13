@@ -8,6 +8,7 @@ import { createGalaxy } from "./galaxy";
 import { createGrass } from "./grass";
 import { createGround } from "./ground";
 import { createMountains } from "./mountains";
+import { createPlanet } from "./planet";
 import { detectQuality } from "./quality";
 import { CAMERA_XZ, createSharedUniforms, terrainHeight, type SceneObject } from "./shaders";
 import { createSky } from "./sky";
@@ -76,6 +77,7 @@ export function createDreamScene(
   const uniforms = createSharedUniforms(quality.pixelRatio);
   const parts: SceneObject[] = [
     createSky(quality.stars, uniforms),
+    createPlanet(uniforms),
     createGalaxy(quality.galaxy, uniforms),
     createMountains(uniforms),
     createGround(quality.groundSegments, uniforms),
