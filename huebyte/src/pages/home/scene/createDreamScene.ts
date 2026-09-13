@@ -60,7 +60,8 @@ export function createDreamScene(
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 0.9;
 
-  // Camera stands in the field, a little above the grass tops, looking slightly down at the horizon.
+  // The camera stands in the field a little above the grass tops, looking slightly down at
+  // the horizon.
   const eye = new THREE.Vector3(
     CAMERA_XZ.x,
     terrainHeight(CAMERA_XZ.x, CAMERA_XZ.z) + EYE_HEIGHT,

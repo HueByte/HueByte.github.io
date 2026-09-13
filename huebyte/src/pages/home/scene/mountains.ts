@@ -53,7 +53,7 @@ function ridgeTop(x: number, layer: Ridge): number {
   return layer.minHeight + ridge(x, layer.seed) * (layer.maxHeight - layer.minHeight);
 }
 
-/** Distance scale: 1 at the near layer, about 2 at the far one, so effects keep their on-screen size. */
+/** Distance scale: 1 at the near layer, about 2 at the far one; effects keep their screen size. */
 function depthScale(layer: Ridge): number {
   return 1 + (-layer.z - 195) / 105;
 }

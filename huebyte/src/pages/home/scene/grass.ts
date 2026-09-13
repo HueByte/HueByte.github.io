@@ -7,13 +7,27 @@ import { createTuftTexture } from "./tuftTexture";
 // carries the blades, so a handful of cards read as dozens of soft overlapping leaves.
 
 const FIELD_DEPTH = 150; // how far in front of the camera clumps are planted
-const NEAREST = 5; // nearest clump, just in front of the camera (which sits at z = 8) so the bottom edge is tips, not roots
+// Nearest clump, just in front of the camera (which sits at z = 8), so the bottom edge of the
+// frame shows blade tips rather than roots.
+const NEAREST = 5;
 // The planted wedge must cover the widest viewport plus pointer parallax. A 55° vertical FOV
 // on a 21:9 screen sees about 1.25 units sideways per unit of depth; this leaves headroom.
 const WEDGE_BASE = 8;
 const WEDGE_SLOPE = 1.5;
 const CARDS = 9; // textured cards per clump
-const CARD_HEIGHT = 0.7; // of the card width; taller than the 2:1 texture, which stretches the blades softly
+// Card height as a fraction of its width. Taller than the 2:1 texture, which stretches the
+// blades a little and softens them.
+const CARD_HEIGHT = 0.7;
+// Alpha below which a texel is discarded. With alpha-to-coverage the soft edge does the rest.
+const CUTOFF_SOFT = 0.22;
+const CUTOFF_HARD = 0.45;
+
+const COLORS = {
+  root: "#2b1410",
+  mid: "#b8781f",
+  tip: "#ffd97a",
+  tipAlt: "#d2e394", // a spring tint some clumps lean toward
+};
 
 export interface GrassOptions {
   /** Texture anisotropy supported by the renderer. */
@@ -108,14 +122,13 @@ void main() {
   // flash reads as a light flickering through the field, not as a spark.
   col *= 1.0 + 0.06 * sin(uTime * 0.3 + vSeed * 6.2831);
 
-  // The far field lifts toward gold, but only in its darker parts: bright sub-pixel tips at a
-  // distance would tip over the bloom threshold and flash as they alias frame to frame.
+  // The far field lifts toward gold in its darker parts, then dissolves into the haze.
   float far = smoothstep(15.0, 110.0, vDist);
   col += uMidColor * far * 0.14 * (1.0 - y * y);
-  float fog = smoothstep(uFogNear, uFogFar, vDist);
-  col = mix(col, uFogColor, fog);
-  // Never let a blade reach the bloom threshold (0.85): the glow belongs to the moon and the
-  // ridges, and a single bright grass pixel blooming reads as a flash.
+  col = mix(col, uFogColor, smoothstep(uFogNear, uFogFar, vDist));
+
+  // Never let a blade reach the bloom threshold (0.85). Sub-pixel tips that cross it bloom
+  // for a frame at a time and read as flashes all over the field.
   col = min(col, vec3(0.8));
 
   #if SOFT_EDGES
@@ -144,9 +157,8 @@ function buildClump(): THREE.BufferGeometry {
 
   for (let k = 0; k < CARDS; k++) {
     const yaw = (k / CARDS) * Math.PI + (rand() - 0.5) * 0.3;
-    const size = 0.85 + rand() * 0.3;
-    const width = size;
-    const height = CARD_HEIGHT * size;
+    const width = 0.85 + rand() * 0.3;
+    const height = CARD_HEIGHT * width;
     const shift = (rand() - 0.5) * 0.3; // slide along the card
     const push = (rand() - 0.5) * 0.4; // offset along the card's normal
     const lean = (0.2 + rand() * 0.3) * Math.sign(push || 1); // top leans away from the centre
@@ -174,11 +186,37 @@ function buildClump(): THREE.BufferGeometry {
 interface Clump {
   x: number;
   z: number;
-  depth: number;
   scale: number;
   yaw: number;
   seed: number;
   tint: number;
+}
+
+/**
+ * Where the clumps stand: denser near the camera, thinning with distance, in a wedge that
+ * widens to fill the view. Returned nearest first so the front of the field fills the depth
+ * buffer and most fragments of the clumps behind it are rejected before they are shaded.
+ */
+function plantClumps(count: number): Clump[] {
+  const rand = mulberry32(1337);
+  const clumps: Clump[] = [];
+
+  for (let i = 0; i < count; i++) {
+    const depth = Math.pow(rand(), 1.4) * FIELD_DEPTH;
+    const t = depth / FIELD_DEPTH;
+    const halfWidth = WEDGE_BASE + depth * WEDGE_SLOPE;
+    clumps.push({
+      x: (rand() * 2 - 1) * halfWidth,
+      z: NEAREST - depth,
+      // Far clumps are much larger so the field stays dense at a distance.
+      scale: (1 + rand() * 0.6) * (1 + t * 3.2),
+      yaw: rand() * Math.PI,
+      seed: rand(),
+      tint: rand(),
+    });
+  }
+
+  return clumps.sort((a, b) => b.z - a.z);
 }
 
 /** The field around the camera: soft clumps, denser up close, larger further out. */
@@ -193,40 +231,12 @@ export function createGrass(
   geometry.setAttribute("position", clump.getAttribute("position"));
   geometry.setAttribute("uv", clump.getAttribute("uv"));
 
-  const rand = mulberry32(1337);
-  const clumps: Clump[] = [];
-  for (let i = 0; i < count; i++) {
-    // Denser near the camera, thinning with distance; wider wedge further out to fill the view.
-    const depth = Math.pow(rand(), 1.4) * FIELD_DEPTH;
-    const t = depth / FIELD_DEPTH;
-    const halfWidth = WEDGE_BASE + depth * WEDGE_SLOPE;
-    clumps.push({
-      x: (rand() * 2 - 1) * halfWidth,
-      z: NEAREST - depth,
-      depth,
-      // Far clumps are much larger so the field stays dense at a distance.
-      scale: (1.0 + rand() * 0.6) * (1 + t * 3.2),
-      yaw: rand() * Math.PI,
-      seed: rand(),
-      tint: rand(),
-    });
-  }
-  // Nearest first: the front of the field fills the depth buffer, and most fragments of the
-  // far clumps behind it are rejected before they are shaded.
-  clumps.sort((a, b) => a.depth - b.depth);
-
   const roots = new Float32Array(count * 3);
   const params = new Float32Array(count * 4);
-  clumps.forEach((c, i) => {
-    roots[i * 3] = c.x;
-    roots[i * 3 + 1] = terrainHeight(c.x, c.z) - 0.05;
-    roots[i * 3 + 2] = c.z;
-    params[i * 4] = c.scale;
-    params[i * 4 + 1] = c.yaw;
-    params[i * 4 + 2] = c.seed;
-    params[i * 4 + 3] = c.tint;
+  plantClumps(count).forEach((c, i) => {
+    roots.set([c.x, terrainHeight(c.x, c.z) - 0.05, c.z], i * 3);
+    params.set([c.scale, c.yaw, c.seed, c.tint], i * 4);
   });
-
   geometry.setAttribute("aRoot", new THREE.InstancedBufferAttribute(roots, 3));
   geometry.setAttribute("aClump", new THREE.InstancedBufferAttribute(params, 4));
   geometry.instanceCount = count;
@@ -237,11 +247,11 @@ export function createGrass(
     uniforms: {
       ...shared,
       uTuft: { value: tuft },
-      uCutoff: { value: softEdges ? 0.22 : 0.45 },
-      uRootColor: { value: new THREE.Color("#2b1410") },
-      uMidColor: { value: new THREE.Color("#b8781f") },
-      uTipColor: { value: new THREE.Color("#ffd97a") },
-      uTipAltColor: { value: new THREE.Color("#d2e394") },
+      uCutoff: { value: softEdges ? CUTOFF_SOFT : CUTOFF_HARD },
+      uRootColor: { value: new THREE.Color(COLORS.root) },
+      uMidColor: { value: new THREE.Color(COLORS.mid) },
+      uTipColor: { value: new THREE.Color(COLORS.tip) },
+      uTipAltColor: { value: new THREE.Color(COLORS.tipAlt) },
     },
     vertexShader,
     fragmentShader,

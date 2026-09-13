@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { createDreamScene } from "../scene/createDreamScene";
+import { readSceneDebugParams } from "../scene/debugParams";
 
 interface DreamSceneProps {
   className?: string;
@@ -14,16 +15,9 @@ export default function DreamScene({ className }: DreamSceneProps) {
     if (!canvas) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    // Debug hooks: `?still=12` renders one frame at t = 12 s so two loads can be diffed;
-    // `?a2c=0`, `?bloom=0`, `?fireflies=0` switch those parts off to isolate an artefact.
-    const params = new URLSearchParams(window.location.search);
-    const stillParam = params.get("still");
-    const stillTime = stillParam === null ? undefined : Number(stillParam);
-    const flag = (name: string) => (params.has(name) ? params.get(name) !== "0" : undefined);
     const handle = createDreamScene(canvas, {
       reducedMotion,
-      stillTime: Number.isFinite(stillTime) ? stillTime : undefined,
-      debug: { softEdges: flag("a2c"), bloom: flag("bloom"), fireflies: flag("fireflies") },
+      ...readSceneDebugParams(window.location.search),
     });
     return () => handle?.dispose();
   }, []);
