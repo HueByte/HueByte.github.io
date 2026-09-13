@@ -2,9 +2,10 @@ import * as THREE from "three";
 import { CAMERA_XZ, mulberry32, type SceneObject, type SharedUniforms } from "./shaders";
 
 const DISTANCE = 440;
-const DIRECTION = new THREE.Vector3(-0.42, 0.26, -0.87).normalize();
+// Left of centre and clear of the corner blob that holds the menu.
+const DIRECTION = new THREE.Vector3(-0.3, 0.27, -0.91).normalize();
 const TILT = 0.55; // radians away from face-on, so the spiral reads as a disc
-const RADIUS = 135;
+const RADIUS = 110;
 const BRANCHES = 3;
 const SPIN = 2.2; // how far the arms wind from core to rim
 const SPIN_SPEED = 0.012; // radians per second the whole galaxy turns
@@ -21,7 +22,7 @@ varying float vAlpha;
 void main() {
   vColor = aColor;
   float twinkle = 0.7 + 0.3 * sin(uTime * (0.5 + aPhase) + aPhase * 40.0);
-  vAlpha = twinkle;
+  vAlpha = twinkle * 0.2; // a faint smudge of light, noticed second, never first
   gl_PointSize = aSize * uPixelRatio * twinkle;
   gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }
@@ -75,7 +76,7 @@ export function createGalaxy(count: number, shared: SharedUniforms): SceneObject
     colors.set([c.r, c.g, c.b], i * 3);
 
     const bright = rand();
-    sizes[i] = (1.2 + bright * bright * 3.4) * (t < 0.15 ? 1.4 : 1);
+    sizes[i] = (0.7 + bright * bright * 1.6) * (t < 0.15 ? 1.15 : 1);
     phases[i] = rand();
   }
 

@@ -12,6 +12,7 @@ export default function Home() {
       <Suspense fallback={null}>
         <DreamScene className="home__scene" />
       </Suspense>
+      <p className="home__wip">Work in progress</p>
       <div className="home__hero">
         <h1 className="visually-hidden">{siteConfig.name}</h1>
         <AvatarOrbit />

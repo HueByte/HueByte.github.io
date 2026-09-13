@@ -1,8 +1,6 @@
 export interface Quality {
-  /** Blades in the field around the camera. */
-  blades: number;
-  /** Large, sparse blades along the mountain ridges (the far LOD). */
-  ridgeBlades: number;
+  /** Grass clumps in the field around the camera. */
+  clumps: number;
   stars: number;
   galaxy: number;
   fireflies: number;
@@ -21,10 +19,9 @@ export function detectQuality(): Quality {
 
   if (low) {
     return {
-      blades: 16000,
-      ridgeBlades: 500,
+      clumps: 3200,
       stars: 1400,
-      galaxy: 2500,
+      galaxy: 1100,
       fireflies: 60,
       groundSegments: 96,
       pixelRatio: Math.min(window.devicePixelRatio || 1, 1.25),
@@ -33,10 +30,9 @@ export function detectQuality(): Quality {
   }
 
   return {
-    blades: 40000,
-    ridgeBlades: 1100,
+    clumps: 8000,
     stars: 3000,
-    galaxy: 6000,
+    galaxy: 2200,
     fireflies: 140,
     groundSegments: 160,
     pixelRatio: Math.min(window.devicePixelRatio || 1, 1.5),

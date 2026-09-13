@@ -1,11 +1,10 @@
 import * as THREE from "three";
-import { NOISE_GLSL, TERRAIN_GLSL, type SceneObject, type SharedUniforms } from "./shaders";
+import { TERRAIN_GLSL, type SceneObject, type SharedUniforms } from "./shaders";
 
 const vertexShader = /* glsl */ `
 uniform vec2 uCamXZ;
 varying float vDist;
 
-${NOISE_GLSL}
 ${TERRAIN_GLSL}
 
 void main() {
@@ -25,7 +24,7 @@ uniform float uFogFar;
 varying float vDist;
 
 void main() {
-  // Dark soil between the blades up close; the distant dunes glow like the grass on them.
+  // Dark plum soil between the blades up close, warming toward magenta before the haze takes it.
   vec3 col = mix(uNearColor, uFarColor, smoothstep(10.0, 120.0, vDist));
   col = mix(col, uFogColor, smoothstep(uFogNear, uFogFar, vDist));
   gl_FragColor = vec4(col, 1.0);
@@ -33,14 +32,15 @@ void main() {
 `;
 
 export function createGround(segments: number, shared: SharedUniforms): SceneObject {
-  const geometry = new THREE.PlaneGeometry(800, 800, segments, segments);
+  // Wide enough that its edge never shows under the mountains, even with parallax.
+  const geometry = new THREE.PlaneGeometry(1400, 800, segments, segments);
   geometry.rotateX(-Math.PI / 2);
 
   const material = new THREE.ShaderMaterial({
     uniforms: {
       ...shared,
-      uNearColor: { value: new THREE.Color("#1c1206") },
-      uFarColor: { value: new THREE.Color("#6a4712") },
+      uNearColor: { value: new THREE.Color("#1c0a20") },
+      uFarColor: { value: new THREE.Color("#4a1a48") },
     },
     vertexShader,
     fragmentShader,

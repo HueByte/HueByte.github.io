@@ -87,13 +87,16 @@ void main() {
 }
 `;
 
-// A burgundy moon: a mottled disc lit from the upper left with a soft halo, kept dim enough
-// that it never competes with the field.
+// A burgundy dream moon: slowly flowing marbled bands with luminous veins, a lit rim on
+// the upper left and a soft halo. Kept dim enough that it never competes with the field.
 const moonFragment = /* glsl */ `
+uniform float uTime;
 uniform vec3 uDark;
 uniform vec3 uBase;
 uniform vec3 uRim;
 uniform vec3 uGlow;
+uniform vec3 uVein;
+uniform vec3 uThread;
 varying vec2 vUv;
 
 ${NOISE_GLSL}
@@ -103,16 +106,28 @@ void main() {
   float r = length(p);
   float disc = 1.0 - smoothstep(0.58, 0.6, r);
 
+  // Domain-warped noise: bands that bend and flow like marble or gas clouds.
+  // Low frequencies on purpose: the moon is small on screen, fine detail turns to speckle.
+  vec2 q = p * 1.5;
+  float t = uTime * 0.04;
+  float warp = snoise(q * 1.1 + vec2(1.7, t));
+  float warp2 = snoise(q * 1.7 + vec2(-4.2 + warp, -t * 0.7));
+  vec2 wq = q + vec2(warp, warp2) * 0.8;
+
+  float bands = sin(wq.y * 3.2 + snoise(wq * 1.4) * 2.5);
+  float pools = smoothstep(-0.2, 0.6, snoise(wq * 1.0 + 9.0));
+  float veins = smoothstep(0.55, 0.95, bands);
+  float threads = smoothstep(0.9, 0.99, sin(wq.x * 4.5 + warp * 3.0));
+
+  vec3 body = mix(uDark, uBase, 0.35 + 0.65 * pools);
+  body = mix(body, uBase * 1.5, smoothstep(0.0, 0.9, bands) * 0.35);
+  body += uVein * veins * 0.55;
+  body += uThread * threads * 0.3;
+
+  // Lit from the upper left, darker toward the limb.
   float lit = dot(p / max(r, 0.001), normalize(vec2(-0.6, 0.5)));
-  float day = smoothstep(-1.1, 0.9, lit * r + 0.2);
-
-  // Soft marbling rather than craters: this is a dream moon, not a rock.
-  float mottle = 0.5 + 0.5 * snoise(p * 2.2 + 3.0);
-  float grain = 0.5 + 0.5 * snoise(p * 6.0 - 1.0);
-  vec3 body = mix(uDark, uBase, day);
-  body = mix(body, uBase * 1.18, mottle * 0.22 * day);
-  body -= grain * 0.025;
-
+  body *= 0.75 + 0.25 * lit;
+  body *= 1.0 - smoothstep(0.35, 0.6, r) * 0.4;
   float rim = smoothstep(0.46, 0.6, r) * disc * max(lit, 0.0);
   body += uRim * rim * 0.45;
 
@@ -225,14 +240,17 @@ function createStars(count: number, shared: SharedUniforms): SceneObject {
   };
 }
 
-function createMoon(): SceneObject {
+function createMoon(shared: SharedUniforms): SceneObject {
   const geometry = new THREE.PlaneGeometry(MOON_SIZE, MOON_SIZE);
   const material = new THREE.ShaderMaterial({
     uniforms: {
+      uTime: shared.uTime,
       uDark: { value: new THREE.Color("#23081a") },
       uBase: { value: new THREE.Color("#581634") },
       uRim: { value: new THREE.Color("#c62368") },
       uGlow: { value: new THREE.Color("#5a1634") },
+      uVein: { value: new THREE.Color("#e2a978") }, // desert-sand veins
+      uThread: { value: new THREE.Color("#00fa9a") }, // thin spring-green threads
     },
     vertexShader: moonVertex,
     fragmentShader: moonFragment,
@@ -255,7 +273,7 @@ function createMoon(): SceneObject {
 }
 
 export function createSky(starCount: number, shared: SharedUniforms): SceneObject {
-  const parts = [createDome(), createStars(starCount, shared), createMoon()];
+  const parts = [createDome(), createStars(starCount, shared), createMoon(shared)];
   const group = new THREE.Group();
   for (const part of parts) group.add(part.object);
   return {

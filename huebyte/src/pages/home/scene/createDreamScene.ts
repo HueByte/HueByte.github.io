@@ -5,16 +5,26 @@ import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 import { createFireflies } from "./fireflies";
 import { createGalaxy } from "./galaxy";
-import { createFieldGrass, createRidgeGrass } from "./grass";
+import { createGrass } from "./grass";
 import { createGround } from "./ground";
 import { createMountains } from "./mountains";
 import { detectQuality } from "./quality";
-import { CAMERA_XZ, createSharedUniforms, terrainBase, type SceneObject } from "./shaders";
+import { CAMERA_XZ, createSharedUniforms, terrainHeight, type SceneObject } from "./shaders";
 import { createSky } from "./sky";
 
 export interface DreamSceneOptions {
   /** Render a single still frame instead of animating. */
   reducedMotion: boolean;
+  /** Debug: freeze the scene at this many seconds (`?still=12` on the URL). */
+  stillTime?: number;
+  /** Debug: switch parts off to isolate an artefact (`?a2c=0`, `?bloom=0`, `?fireflies=0`). */
+  debug?: DreamSceneDebug;
+}
+
+export interface DreamSceneDebug {
+  softEdges?: boolean;
+  bloom?: boolean;
+  fireflies?: boolean;
 }
 
 export interface DreamSceneHandle {
@@ -30,8 +40,9 @@ const STILL_FRAME_TIME = 14; // a moment of the animation that looks good frozen
  */
 export function createDreamScene(
   canvas: HTMLCanvasElement,
-  { reducedMotion }: DreamSceneOptions,
+  { reducedMotion, stillTime, debug = {} }: DreamSceneOptions,
 ): DreamSceneHandle | null {
+  const still = reducedMotion || stillTime !== undefined;
   let renderer: THREE.WebGLRenderer;
   try {
     renderer = new THREE.WebGLRenderer({
@@ -52,7 +63,7 @@ export function createDreamScene(
   // Camera stands in the field, a little above the grass tops, looking slightly down at the horizon.
   const eye = new THREE.Vector3(
     CAMERA_XZ.x,
-    terrainBase(CAMERA_XZ.x, CAMERA_XZ.z) + EYE_HEIGHT,
+    terrainHeight(CAMERA_XZ.x, CAMERA_XZ.z) + EYE_HEIGHT,
     CAMERA_XZ.z,
   );
   const lookTarget = new THREE.Vector3(0, eye.y - 2, -60);
@@ -66,11 +77,13 @@ export function createDreamScene(
     createSky(quality.stars, uniforms),
     createGalaxy(quality.galaxy, uniforms),
     createMountains(uniforms),
-    createRidgeGrass(quality.ridgeBlades, uniforms),
     createGround(quality.groundSegments, uniforms),
-    createFieldGrass(quality.blades, uniforms),
-    createFireflies(quality.fireflies, uniforms),
+    createGrass(quality.clumps, uniforms, {
+      anisotropy: renderer.capabilities.getMaxAnisotropy(),
+      softEdges: (debug.softEdges ?? true) && quality.msaa > 0,
+    }),
   ];
+  if (debug.fireflies ?? true) parts.push(createFireflies(quality.fireflies, uniforms));
   for (const part of parts) scene.add(part.object);
 
   // Post: render -> bloom (the "glow") -> tone mapping + sRGB output.
@@ -82,14 +95,14 @@ export function createDreamScene(
   composer.setPixelRatio(quality.pixelRatio);
   const bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.35, 0.5, 0.85);
   composer.addPass(new RenderPass(scene, camera));
-  composer.addPass(bloom);
+  if (debug.bloom ?? true) composer.addPass(bloom);
   composer.addPass(new OutputPass());
 
   // Gentle parallax from the pointer plus a slow idle drift, so the frame never sits still.
   const pointerTarget = new THREE.Vector2();
   const pointer = new THREE.Vector2();
   const clock = new THREE.Clock();
-  let elapsed = reducedMotion ? STILL_FRAME_TIME : 0;
+  let elapsed = stillTime ?? (reducedMotion ? STILL_FRAME_TIME : 0);
 
   const renderFrame = (dt: number) => {
     elapsed += dt;
@@ -106,7 +119,7 @@ export function createDreamScene(
   };
 
   const start = () => {
-    if (reducedMotion) return;
+    if (still) return;
     clock.getDelta(); // drop the time spent paused
     renderer.setAnimationLoop(() => renderFrame(Math.min(clock.getDelta(), 0.1)));
   };
@@ -119,7 +132,7 @@ export function createDreamScene(
     composer.setSize(width, height);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
-    if (reducedMotion) renderFrame(0);
+    if (still) renderFrame(0);
   };
 
   const onPointerMove = (event: PointerEvent) => {

@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { mulberry32, terrainBase, type SceneObject, type SharedUniforms } from "./shaders";
+import { mulberry32, terrainHeight, type SceneObject, type SharedUniforms } from "./shaders";
 
 const vertexShader = /* glsl */ `
 uniform float uTime;
@@ -19,8 +19,8 @@ void main() {
   p.y += sin(uTime * 0.50 + s * 1.5) * 0.5;
   p.z += cos(uTime * 0.25 + s * 0.7) * 1.2;
 
-  float pulse = 0.5 + 0.5 * sin(uTime * (1.2 + aSeed * 1.6) + s * 3.0);
-  vAlpha = 0.35 + 0.65 * pulse * pulse;
+  float pulse = 0.5 + 0.5 * sin(uTime * (0.35 + aSeed * 0.5) + s * 3.0);
+  vAlpha = 0.25 + 0.55 * pulse * pulse;
 
   vec4 mv = modelViewMatrix * vec4(p, 1.0);
   gl_PointSize = (5.0 + aSeed * 9.0) * uPixelRatio * (24.0 / max(-mv.z, 1.0)) * (0.7 + 0.3 * pulse);
@@ -50,7 +50,9 @@ export function createFireflies(count: number, shared: SharedUniforms): SceneObj
   for (let i = 0; i < count; i++) {
     const x = (rand() * 2 - 1) * 28;
     const z = 2 - rand() * 48;
-    const y = terrainBase(x, z) + 0.6 + rand() * 3.2;
+    // Above the grass tops: a firefly drifting inside the clumps pops in and out behind the
+    // blades, which reads as sparks flickering through the field.
+    const y = terrainHeight(x, z) + 1.6 + rand() * 1.2 + (2 - z) * 0.02; // far clumps are taller
     positions.set([x, y, z], i * 3);
     seeds[i] = rand();
     const c = rand() < 0.78 ? green : gold;

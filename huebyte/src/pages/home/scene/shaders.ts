@@ -1,9 +1,9 @@
 import * as THREE from "three";
 
-// GLSL chunks shared by the scene's materials, plus the JS twin of the terrain's base
-// shape so the camera and fireflies can sit on the same ground the shaders draw.
+// GLSL chunks shared by the scene's materials, plus the JS twin of the terrain so the camera,
+// fireflies and grass roots can sit on the same ground the shaders draw.
 
-/** Where the camera stands on the XZ plane. Baked into the terrain so the ground is calm around it. */
+/** Where the camera stands on the XZ plane. */
 export const CAMERA_XZ = { x: 0, z: 8 } as const;
 
 /** 2D simplex noise (Ashima Arts / Stefan Gustavson, MIT). */
@@ -37,25 +37,19 @@ float snoise(vec2 v) {
 `;
 
 /**
- * Rolling dunes. `terrainBase` is smooth sines (mirrored in JS below); `terrainHeight` adds
- * noise detail that fades out around the camera so the eye never sits inside a bump.
+ * Rolling dunes: smooth sines only, no noise. Cheap in every vertex shader that needs it, and
+ * it keeps the JS twin below exact, which the grass relies on to plant its roots on the ground.
  */
 export const TERRAIN_GLSL = /* glsl */ `
-float terrainBase(vec2 p) {
+float terrainHeight(vec2 p) {
   return sin(p.x * 0.045 + p.y * 0.02) * 1.6
        + sin(p.y * 0.06 - p.x * 0.03 + 1.7) * 1.1
        + sin((p.x + p.y) * 0.025 + 0.6) * 0.9;
 }
-
-float terrainHeight(vec2 p) {
-  float detail = snoise(p * 0.03) * 1.8 + snoise(p * 0.09 + 3.1) * 0.45;
-  float away = smoothstep(6.0, 40.0, length(p - vec2(${CAMERA_XZ.x.toFixed(1)}, ${CAMERA_XZ.z.toFixed(1)})));
-  return terrainBase(p) + detail * away;
-}
 `;
 
-/** JS twin of the GLSL `terrainBase`. Keep the two in sync. */
-export function terrainBase(x: number, z: number): number {
+/** JS twin of the GLSL `terrainHeight`. Keep the two in sync. */
+export function terrainHeight(x: number, z: number): number {
   return (
     Math.sin(x * 0.045 + z * 0.02) * 1.6 +
     Math.sin(z * 0.06 - x * 0.03 + 1.7) * 1.1 +

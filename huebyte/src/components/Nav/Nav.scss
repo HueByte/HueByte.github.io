@@ -1,43 +1,101 @@
 @use "@/styles/theme" as t;
 
 $menu-width: 400px;
+$blob-width: 170px;
+$blob-height: 130px;
 
-.nav__toggle,
-.nav__close {
+// ── Corner blob: a dark organic shape pinned to the top-left, holding the toggle and sparks.
+.nav__corner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 899;
+  width: $blob-width;
+  height: $blob-height;
+  pointer-events: none;
+  transition:
+    opacity 300ms ease,
+    translate 450ms ease-in-out;
+
+  &--hidden {
+    opacity: 0;
+    translate: -20% -20%;
+  }
+}
+
+// The edge drifts very slowly between three shapes with the same path structure.
+.nav__blob {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 18% 18%, #0b0f1c, #03050a 70%);
+  clip-path: path(
+    "M0 0H124C138 10 128 24 134 34C142 48 118 54 124 68C130 82 108 88 100 98C90 110 76 106 64 116C52 126 36 118 24 128C14 134 6 128 0 130Z"
+  );
+  animation: blob-drift 26s ease-in-out infinite alternate;
+}
+
+@keyframes blob-drift {
+  0% {
+    clip-path: path(
+      "M0 0H124C138 10 128 24 134 34C142 48 118 54 124 68C130 82 108 88 100 98C90 110 76 106 64 116C52 126 36 118 24 128C14 134 6 128 0 130Z"
+    );
+  }
+
+  50% {
+    clip-path: path(
+      "M0 0H130C140 12 124 26 132 38C140 50 114 56 122 70C128 84 104 86 98 100C88 112 74 104 62 114C50 124 34 122 22 128C12 134 6 130 0 130Z"
+    );
+  }
+
+  100% {
+    clip-path: path(
+      "M0 0H120C134 8 130 22 138 32C146 46 120 52 126 66C132 80 110 92 102 100C92 112 78 108 66 118C54 128 38 116 26 126C16 134 6 126 0 130Z"
+    );
+  }
+}
+
+.nav__sparks {
+  position: absolute;
+  inset: 0;
+}
+
+.nav__spark {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: var(--color);
+  border-radius: 50%;
+  box-shadow: 0 0 calc(var(--size) * 2) var(--color);
+  opacity: 0.4;
+  animation: spark-twinkle var(--duration) var(--delay) ease-in-out infinite;
+}
+
+.nav__toggle {
+  position: absolute;
+  top: 12px;
+  left: 14px;
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   padding: 0;
   font-size: 2rem;
   color: t.$desert;
-  background: rgba(t.$night, 0.35);
+  background: transparent;
   border: 0;
-  border-radius: 50%;
-  backdrop-filter: blur(2px);
   cursor: pointer;
+  pointer-events: auto;
   transition: 200ms ease-in-out;
 
   &:hover,
   &:focus-visible {
     color: t.$spring;
-    transform: scale(1.25);
+    transform: scale(1.15);
     outline: none;
   }
 }
 
-.nav__toggle {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  z-index: 999;
-
-  &--hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-}
-
+// ── Slide-in panel
 .nav__backdrop {
   position: fixed;
   inset: 0;
@@ -71,6 +129,25 @@ $menu-width: 400px;
   position: absolute;
   top: 15px;
   right: 15px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 2rem;
+  color: t.$desert;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 200ms ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    color: t.$spring;
+    transform: scale(1.25);
+    outline: none;
+  }
 }
 
 .nav__items {
@@ -113,6 +190,26 @@ $menu-width: 400px;
   }
 }
 
+@keyframes spark-twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    scale: 0.8;
+  }
+
+  50% {
+    opacity: 1;
+    scale: 1.25;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .nav__corner {
+    scale: 0.85;
+    transform-origin: top left;
+  }
+}
+
 @media screen and (max-width: $menu-width) {
   .nav {
     width: 100%;
@@ -141,9 +238,19 @@ $menu-width: 400px;
 
 @media (prefers-reduced-motion: reduce) {
   .nav,
+  .nav__corner,
   .nav__toggle,
   .nav__close,
   .nav__item {
     transition: none;
+  }
+
+  .nav__spark {
+    animation: none;
+    opacity: 0.7;
+  }
+
+  .nav__blob {
+    animation: none;
   }
 }
