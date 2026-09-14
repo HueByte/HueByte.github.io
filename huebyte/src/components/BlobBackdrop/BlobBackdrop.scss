@@ -2,8 +2,8 @@
 
 $blob-width: 170px;
 $blob-height: 130px;
-$expand: 1100ms;
-$retract: 900ms;
+// Durations come from BLOB_EXPAND_MS / BLOB_RETRACT_MS in BlobBackdrop.tsx as --blob-expand and
+// --blob-retract, so the layout can hold the outgoing page for exactly as long.
 $ease: cubic-bezier(0.7, 0, 0.3, 1);
 
 // Sits above page content (so the retract plays over the landing) but below the menu, whose
@@ -18,7 +18,7 @@ $ease: cubic-bezier(0.7, 0, 0.3, 1);
 }
 
 // Same box, fill and outline as the menu's blob, scaled from the corner until its edge leaves the
-// viewport. --cover is set from the viewport size.
+// viewport. --cover is set from the viewport size on the parent.
 // Collapsing: the blob pulls back into the corner while the sky and sparks fade out with it.
 .blob-backdrop__blob {
   position: absolute;
@@ -30,11 +30,11 @@ $ease: cubic-bezier(0.7, 0, 0.3, 1);
   clip-path: path(t.$blob-path);
   transform-origin: 0 0;
   scale: 1;
-  transition: scale $retract $ease;
+  transition: scale var(--blob-retract) $ease;
 
   .blob-backdrop--expanded & {
     scale: var(--cover);
-    transition-duration: $expand;
+    transition-duration: var(--blob-expand);
   }
 }
 

@@ -21,7 +21,8 @@
   flex-direction: column;
   width: 100%;
   max-width: 46rem;
-  animation: about-rise 900ms 650ms ease-out both;
+  // Delayed until the expanding blob has covered the middle of the page (see BlobBackdrop).
+  animation: about-rise 900ms 750ms ease-out both;
 }
 
 @keyframes about-rise {

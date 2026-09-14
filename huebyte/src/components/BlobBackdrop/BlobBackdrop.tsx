@@ -4,6 +4,11 @@ import Sparks from "@/components/Sparks/Sparks";
 import { isBlobPage } from "@/lib/site";
 import "./BlobBackdrop.scss";
 
+/** How long the blob takes to spread over the page. The layout holds the page being left this long. */
+export const BLOB_EXPAND_MS = 1100;
+/** How long it takes to pull back into the corner. */
+export const BLOB_RETRACT_MS = 900;
+
 // The blob outline (see $blob-path) keeps at least this many px between the corner and its edge,
 // so scaling it by (viewport diagonal / this) guarantees it covers the whole page.
 const BLOB_INNER_RADIUS = 100;
@@ -45,9 +50,16 @@ export default function BlobBackdrop() {
   return (
     <div
       className={"blob-backdrop" + (expanded ? " blob-backdrop--expanded" : "")}
+      style={
+        {
+          "--cover": cover,
+          "--blob-expand": BLOB_EXPAND_MS + "ms",
+          "--blob-retract": BLOB_RETRACT_MS + "ms",
+        } as CSSProperties
+      }
       aria-hidden="true"
     >
-      <div className="blob-backdrop__blob" style={{ "--cover": cover } as CSSProperties} />
+      <div className="blob-backdrop__blob" />
       <div className="blob-backdrop__sky" />
       <Sparks className="blob-backdrop__sparks" count={140} seed={2026} />
     </div>

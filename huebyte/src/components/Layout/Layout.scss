@@ -1,0 +1,24 @@
+// A page being left while the BlobBackdrop spreads over it or pulls back off it. It is lifted
+// out of the flow so the incoming page can take its place underneath.
+.app-page--held {
+  position: fixed;
+  inset: 0;
+  // Below the BlobBackdrop (z-index 2): the blob covers or uncovers it.
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+// A page that lived on top of the blob (About) cannot be uncovered by it; it fades out over the
+// retracting blob instead.
+.app-page--held-over {
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 350ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-page--held-over {
+    transition: none;
+  }
+}
