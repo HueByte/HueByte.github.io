@@ -1,1 +1,0 @@
-import{c as e,d as t,s as n,u as r}from"./index-DP2J0-Sz.js";t();var i=e(),a=()=>(0,i.jsx)(i.Fragment,{children:(0,i.jsxs)(`div`,{className:`main-container`,children:[(0,i.jsx)(`main`,{children:(0,i.jsx)(r,{})}),(0,i.jsx)(n,{})]})});export{a as default};
