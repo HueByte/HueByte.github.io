@@ -1,1 +1,0 @@
-import{n as e,r as t}from"./index-CI0Y4EfJ.js";var n=e();function r(){return(0,n.jsxs)(`section`,{className:`not-found`,children:[(0,n.jsx)(`h1`,{children:`404`}),(0,n.jsx)(`p`,{children:`There is nothing here.`}),(0,n.jsx)(t,{to:`/`,children:`Back home`})]})}export{r as default};
