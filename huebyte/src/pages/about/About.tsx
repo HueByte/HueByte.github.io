@@ -26,7 +26,7 @@ const sections: { id: string; title: string; paragraphs: ReactNode[] }[] = [
     id: "who",
     title: "Who I am",
     paragraphs: [
-      "I'm Hue, a Polish software engineer and independent builder. I've been making things with code for most of my life, and at some point that turned into a company, a handful of open-source projects, and a running list of ideas I'll probably never fully clear. I'm fine with that — the list is half the fun.",
+      "I'm Hue, a Polish software engineer and independent builder. I've been making things with code for a longer while, and at some point it turns into a company, a handful of open-source projects, and a running list of ideas I'll probably never fully clear. I'm fine with that — the list is half the fun.",
       "I think in systems. Not just software systems, but the shape of things: how pieces depend on each other, what emerges when you connect them, what breaks when you scale them. That habit spills into everything, from how I design infrastructure to how I read philosophy. Engineering, cognition, and the question of what intelligence actually is all feel like one subject to me, just approached from different doors.",
     ],
   },
@@ -55,8 +55,8 @@ const sections: { id: string; title: string; paragraphs: ReactNode[] }[] = [
     id: "else",
     title: "Everything else",
     paragraphs: [
-      "Away from the keyboard I play guitar (classical training, now mostly fingerstyle) and read far too much science — physics, cognition, anything that explains why the world behaves the way it does. Music, science and programming are the three things I never get tired of, usually in some combination well past midnight.",
-      "I also have a real weakness for silly and unhinged things: dumb jokes, cursed experiments, projects that exist purely because someone said they shouldn't. I've been building the same sci-fi universe in my head for years and sometimes let bits of it out. Longer term I'd like a small house in a forest somewhere in Poland, a workshop for making pipes and forging knives — hobbies where you can't ctrl-z — a lighter work week, and enough space to keep building things because I want to, not because I have to.",
+      "Away from the keyboard I play guitar (classical training, now mostly fingerstyle) and read far too much science — physics, cognition, anything that explains the silly questions I have. Music, science and programming are the three things I never get tired of, usually in some combination with my insomnia.",
+      "I also have a real weakness for silly and unhinged things, cursed experiments, projects just to mess around with friends. Longer term I'd like a house in a forest somewhere, a workshop for making pipes and forging knives — hobbies where you can't ctrl-z — a lighter work week, and enough space to keep building things because I want to, not because I have to.",
     ],
   },
 ];
@@ -72,9 +72,7 @@ export default function About() {
           <div className="about__intro">
             <p className="about__eyebrow">About me</p>
             <h1 className="about__name">{siteConfig.name}</h1>
-            <p className="about__tagline">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-            </p>
+            <p className="about__tagline">Software Engineer · Wizard of arcane nonsense</p>
           </div>
         </header>
 
