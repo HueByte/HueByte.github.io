@@ -38,10 +38,126 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
       rel="stylesheet"
     />
+    <!-- Boot screen. Inline on purpose: it paints from the first bytes of the document, long
+         before the bundle arrives, and src/lib/boot.ts fades it out once the scene has drawn
+         its first frame. Its background matches .home, so the fade reveals a finished picture. -->
+    <style>
+      #boot {
+        position: fixed;
+        inset: 0;
+        z-index: 1000; /* above the side menu, which sits at 899-901 */
+        display: grid;
+        place-content: center;
+        justify-items: center;
+        gap: 26px;
+        background:
+          radial-gradient(ellipse 120% 55% at 50% 100%, rgba(245, 185, 66, 0.35), transparent 70%),
+          linear-gradient(#02050c, #060d1a 60%, #1a1508);
+        opacity: 1;
+        transition: opacity 500ms ease;
+      }
+      #boot.is-done {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .boot__mark {
+        position: relative;
+        width: 116px;
+        height: 116px;
+      }
+      .boot__blob {
+        position: absolute;
+        inset: 31px;
+        background: linear-gradient(140deg, #00fa9a, #fad5a5);
+        border-radius: 46% 54% 52% 48% / 52% 46% 54% 48%;
+        box-shadow: 0 0 26px rgba(0, 250, 154, 0.3);
+        animation:
+          boot-morph 2.6s ease-in-out infinite alternate,
+          boot-breathe 1.9s ease-in-out infinite;
+      }
+      .boot__orbit {
+        position: absolute;
+        inset: 0;
+        animation: boot-spin 2.6s linear infinite;
+      }
+      .boot__orbit i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 7px;
+        height: 7px;
+        margin: -3.5px;
+        border-radius: 50%;
+        background: #fad5a5;
+      }
+      .boot__orbit i:nth-child(1) {
+        transform: rotate(0deg) translateX(52px);
+      }
+      .boot__orbit i:nth-child(2) {
+        transform: rotate(120deg) translateX(52px);
+        opacity: 0.66;
+      }
+      .boot__orbit i:nth-child(3) {
+        transform: rotate(240deg) translateX(52px);
+        opacity: 0.4;
+      }
+      .boot__text {
+        margin: 0;
+        font:
+          400 0.72rem/1 ui-monospace,
+          "JetBrains Mono",
+          "SFMono-Regular",
+          Menlo,
+          Consolas,
+          monospace;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(250, 213, 165, 0.55);
+      }
+      @keyframes boot-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes boot-morph {
+        50% {
+          border-radius: 54% 46% 44% 56% / 46% 56% 44% 54%;
+        }
+        100% {
+          border-radius: 48% 52% 56% 44% / 56% 48% 52% 44%;
+        }
+      }
+      @keyframes boot-breathe {
+        50% {
+          transform: scale(0.92);
+          box-shadow: 0 0 34px rgba(0, 250, 154, 0.42);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .boot__blob,
+        .boot__orbit {
+          animation: none;
+        }
+      }
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <style>
+        #boot {
+          display: none;
+        }
+      </style>
+      You need to enable JavaScript to run this app.
+    </noscript>
     <div id="root"></div>
+    <div id="boot" role="status" aria-label="Loading">
+      <div class="boot__mark">
+        <span class="boot__blob"></span>
+        <span class="boot__orbit"><i></i><i></i><i></i></span>
+      </div>
+      <p class="boot__text">Loading</p>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

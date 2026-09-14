@@ -1,9 +1,9 @@
 import type { CSSProperties } from "react";
 import type { IconType } from "react-icons";
 import { AiFillGithub } from "react-icons/ai";
-import { BiMailSend } from "react-icons/bi";
 import { FaDiscord } from "react-icons/fa";
-import { RiHistoryLine } from "react-icons/ri";
+import { HiUser } from "react-icons/hi";
+import { Link } from "react-router-dom";
 import avatar from "@/assets/avatar.png";
 import { siteConfig, type HeroIcon } from "@/lib/site";
 import "./AvatarOrbit.scss";
@@ -11,8 +11,7 @@ import "./AvatarOrbit.scss";
 const icons: Record<HeroIcon, IconType> = {
   github: AiFillGithub,
   discord: FaDiscord,
-  mail: BiMailSend,
-  mirage: RiHistoryLine,
+  about: HiUser,
 };
 
 /** The avatar in a morphing blob, with link blobs orbiting it. */
@@ -37,16 +36,27 @@ export default function AvatarOrbit() {
           const Icon = icons[link.icon];
           return (
             <li key={link.id} className="orbit__slot" style={{ "--i": index } as CSSProperties}>
-              <a
-                className="orbit__link"
-                href={link.href}
-                title={link.label}
-                aria-label={link.label}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noreferrer" : undefined}
-              >
-                <Icon aria-hidden="true" />
-              </a>
+              {link.external ? (
+                <a
+                  className="orbit__link"
+                  href={link.href}
+                  title={link.label}
+                  aria-label={link.label}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Icon aria-hidden="true" />
+                </a>
+              ) : (
+                <Link
+                  className="orbit__link"
+                  to={link.href}
+                  title={link.label}
+                  aria-label={link.label}
+                >
+                  <Icon aria-hidden="true" />
+                </Link>
+              )}
             </li>
           );
         })}

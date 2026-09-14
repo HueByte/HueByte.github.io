@@ -1,0 +1,36 @@
+.sparks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sparks__spark {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: var(--color);
+  border-radius: 50%;
+  box-shadow: 0 0 calc(var(--size) * 2) var(--color);
+  opacity: 0.4;
+  animation: spark-twinkle var(--duration) var(--delay) ease-in-out infinite;
+}
+
+@keyframes spark-twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    scale: 0.8;
+  }
+
+  50% {
+    opacity: 1;
+    scale: 1.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparks__spark {
+    animation: none;
+    opacity: 0.7;
+  }
+}

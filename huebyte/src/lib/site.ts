@@ -5,18 +5,12 @@ export const siteConfig = {
   // Side menu entries. "route" is an in-app link, "page" a full navigation on this domain.
   navLinks: [
     { label: "Home", href: "/", kind: "route" },
+    { label: "About me", href: "/about", kind: "route" },
     { label: "GitHub", href: "https://github.com/HueByte", kind: "external" },
     { label: "Mirage (2022-2026)", href: "/legacy/v_mirage/", kind: "page" },
   ],
   // Blobs orbiting the avatar on the landing page, in orbit order.
   heroLinks: [
-    {
-      id: "github",
-      label: "GitHub",
-      href: "https://github.com/HueByte",
-      icon: "github",
-      external: true,
-    },
     {
       id: "discord",
       label: "Discord",
@@ -25,17 +19,17 @@ export const siteConfig = {
       external: true,
     },
     {
-      id: "mail",
-      label: "Email",
-      href: "mailto:ihuebyte@gmail.com",
-      icon: "mail",
-      external: false,
+      id: "github",
+      label: "GitHub",
+      href: "https://github.com/HueByte",
+      icon: "github",
+      external: true,
     },
     {
-      id: "mirage",
-      label: "Previous site (Mirage, 2022-2026)",
-      href: "/legacy/v_mirage/",
-      icon: "mirage",
+      id: "about",
+      label: "About me",
+      href: "/about",
+      icon: "about",
       external: false,
     },
   ],

@@ -28,17 +28,13 @@ $blob-height: 130px;
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 18% 18%, #0b0f1c, #03050a 70%);
-  clip-path: path(
-    "M0 0H124C138 10 128 24 134 34C142 48 118 54 124 68C130 82 108 88 100 98C90 110 76 106 64 116C52 126 36 118 24 128C14 134 6 128 0 130Z"
-  );
+  clip-path: path(t.$blob-path);
   animation: blob-drift 26s ease-in-out infinite alternate;
 }
 
 @keyframes blob-drift {
   0% {
-    clip-path: path(
-      "M0 0H124C138 10 128 24 134 34C142 48 118 54 124 68C130 82 108 88 100 98C90 110 76 106 64 116C52 126 36 118 24 128C14 134 6 128 0 130Z"
-    );
+    clip-path: path(t.$blob-path);
   }
 
   50% {
@@ -52,22 +48,6 @@ $blob-height: 130px;
       "M0 0H120C134 8 130 22 138 32C146 46 120 52 126 66C132 80 110 92 102 100C92 112 78 108 66 118C54 128 38 116 26 126C16 134 6 126 0 130Z"
     );
   }
-}
-
-.nav__sparks {
-  position: absolute;
-  inset: 0;
-}
-
-.nav__spark {
-  position: absolute;
-  width: var(--size);
-  height: var(--size);
-  background: var(--color);
-  border-radius: 50%;
-  box-shadow: 0 0 calc(var(--size) * 2) var(--color);
-  opacity: 0.4;
-  animation: spark-twinkle var(--duration) var(--delay) ease-in-out infinite;
 }
 
 .nav__toggle {
@@ -178,28 +158,20 @@ $blob-height: 130px;
     outline: none;
   }
 
+  // The current page is filled solid. On hover it must keep that fill: the generic hover rule
+  // above has the same specificity and would otherwise swap it for the faint gradient, leaving
+  // dark text on a near-transparent background.
   &--active {
     color: t.$night;
     background-image: linear-gradient(to right, t.$spring, transparent 90%);
+    cursor: default;
 
     &:hover,
     &:focus-visible {
       color: t.$night;
+      background-image: linear-gradient(to right, t.$spring, transparent 90%);
       border-left: 1px solid transparent;
     }
-  }
-}
-
-@keyframes spark-twinkle {
-  0%,
-  100% {
-    opacity: 0.25;
-    scale: 0.8;
-  }
-
-  50% {
-    opacity: 1;
-    scale: 1.25;
   }
 }
 
@@ -230,8 +202,11 @@ $blob-height: 130px;
       background-color: rgba(t.$spring, 0.12);
     }
 
-    &--active {
+    &--active,
+    &--active:hover,
+    &--active:focus-visible {
       color: t.$spring;
+      background-color: rgba(t.$spring, 0.2);
     }
   }
 }
@@ -243,11 +218,6 @@ $blob-height: 130px;
   .nav__close,
   .nav__item {
     transition: none;
-  }
-
-  .nav__spark {
-    animation: none;
-    opacity: 0.7;
   }
 
   .nav__blob {

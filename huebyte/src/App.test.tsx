@@ -11,9 +11,17 @@ describe("App", () => {
     expect(screen.getByRole("heading", { level: 1, name: "HueByte" })).toBeInTheDocument();
   });
 
-  it("links to the previous version of the site", () => {
+  it("keeps the previous version of the site reachable from the menu", () => {
     render(<App />);
-    const link = screen.getByRole("link", { name: /previous site/i });
+    const link = screen.getByRole("link", { name: /mirage/i });
     expect(link).toHaveAttribute("href", "/legacy/v_mirage/");
+  });
+
+  it("orbits Discord, GitHub and About me around the avatar", () => {
+    render(<App />);
+    const links = screen.getByRole("list", { name: "Links" });
+    const names = Array.from(links.querySelectorAll("a")).map((a) => a.getAttribute("aria-label"));
+    expect(names).toEqual(["Discord", "GitHub", "About me"]);
+    expect(screen.getAllByRole("link", { name: "About me" })[0]).toHaveAttribute("href", "/about");
   });
 });

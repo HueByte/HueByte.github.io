@@ -5,6 +5,7 @@ import Layout from "@/components/Layout/Layout";
 import Home from "@/pages/home/Home";
 
 // Everything else is lazy: each page becomes its own chunk, loaded on first visit.
+const About = lazy(() => import("@/pages/about/About"));
 const NotFound = lazy(() => import("@/pages/not-found/NotFound"));
 
 export default function AppRoutes() {
@@ -12,6 +13,7 @@ export default function AppRoutes() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

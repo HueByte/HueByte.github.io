@@ -1,40 +1,17 @@
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useState } from "react";
 import { HiMenu, HiOutlineX } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
-import { mulberry32 } from "@/lib/random";
+import Sparks from "@/components/Sparks/Sparks";
 import { siteConfig } from "@/lib/site";
 import "./Nav.scss";
 
-const SPARK_COUNT = 16;
-const SPARK_COLORS = ["#ffe9c4", "#ffe9c4", "#ffe9c4", "#fff6e6", "#c62368", "#00fa9a"];
-
-interface Spark {
-  x: number;
-  y: number;
-  size: number;
-  color: string;
-  delay: number;
-  duration: number;
-}
-
-/** Twinkling dots scattered inside the corner blob. Deterministic, so it never reshuffles. */
-function makeSparks(): Spark[] {
-  const rand = mulberry32(77);
-  return Array.from({ length: SPARK_COUNT }, () => ({
-    x: 4 + rand() * 70,
-    y: 4 + rand() * 82,
-    size: 1.5 + rand() * rand() * 2.5,
-    color: SPARK_COLORS[Math.floor(rand() * SPARK_COLORS.length)] ?? "#ffe9c4",
-    delay: -rand() * 6,
-    duration: 2.4 + rand() * 3.2,
-  }));
-}
+// Keeps the sparks away from the blob's curved edge.
+const SPARK_AREA = { x: [4, 74] as [number, number], y: [4, 86] as [number, number] };
 
 /** Corner blob with the menu toggle and a slide-in side menu, in the spirit of the Mirage site. */
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
-  const sparks = useMemo(() => makeSparks(), []);
 
   useEffect(() => {
     if (!open) return;
@@ -49,24 +26,7 @@ export default function Nav() {
     <>
       <div className={"nav__corner" + (open ? " nav__corner--hidden" : "")}>
         <div className="nav__blob">
-          <div className="nav__sparks" aria-hidden="true">
-            {sparks.map((spark, i) => (
-              <span
-                key={i}
-                className="nav__spark"
-                style={
-                  {
-                    left: spark.x + "%",
-                    top: spark.y + "%",
-                    "--size": spark.size + "px",
-                    "--color": spark.color,
-                    "--delay": spark.delay + "s",
-                    "--duration": spark.duration + "s",
-                  } as CSSProperties
-                }
-              />
-            ))}
-          </div>
+          <Sparks count={16} seed={77} area={SPARK_AREA} />
           <button
             type="button"
             className="nav__toggle"

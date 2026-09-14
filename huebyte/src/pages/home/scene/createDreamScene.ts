@@ -18,6 +18,8 @@ import { createStatsOverlay } from "./statsOverlay";
 export interface DreamSceneOptions {
   /** Render a single still frame instead of animating. */
   reducedMotion: boolean;
+  /** Called once the first frame has been rendered. */
+  onReady?: () => void;
   /** Debug: freeze the scene at this many seconds (`?still=12` on the URL). */
   stillTime?: number;
   /** Debug: switch parts off or pin settings to isolate an artefact. */
@@ -52,7 +54,7 @@ const PIXELATE_BELOW = 0.75;
  */
 export function createDreamScene(
   canvas: HTMLCanvasElement,
-  { reducedMotion, stillTime, debug = {} }: DreamSceneOptions,
+  { reducedMotion, stillTime, onReady, debug = {} }: DreamSceneOptions,
 ): DreamSceneHandle | null {
   const still = reducedMotion || stillTime !== undefined;
   let renderer: THREE.WebGLRenderer;
@@ -136,6 +138,7 @@ export function createDreamScene(
   const pointer = new THREE.Vector2();
   let elapsed = stillTime ?? (reducedMotion ? STILL_FRAME_TIME : 0);
   let lastFrameAt: number | null = null; // animation-loop timestamp of the last rendered frame
+  let painted = false; // whether the first frame has reached the canvas
   const stats = debug.stats ? createStatsOverlay(canvas.parentElement ?? document.body) : null;
 
   const renderFrame = (dt: number) => {
@@ -150,6 +153,11 @@ export function createDreamScene(
     );
     camera.lookAt(lookTarget);
     composer.render();
+
+    if (!painted) {
+      painted = true;
+      onReady?.(); // the boot screen may fade now: there is a finished picture behind it
+    }
   };
 
   const tick = (time: number) => {

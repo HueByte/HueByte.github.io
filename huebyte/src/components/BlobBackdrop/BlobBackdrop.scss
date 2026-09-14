@@ -1,0 +1,71 @@
+@use "@/styles/theme" as t;
+
+$blob-width: 170px;
+$blob-height: 130px;
+$expand: 1100ms;
+$ease: cubic-bezier(0.7, 0, 0.3, 1);
+
+// Sits above page content (so the retract plays over the landing) but below the menu, whose
+// corner blob hides the collapsed state exactly. Pages that live on top of it (About) raise their
+// content above z-index 2.
+.blob-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+// Same box, fill and outline as the menu's blob, scaled from the corner until its edge leaves the
+// viewport. --cover is set from the viewport size.
+// Collapsing: the sky and sparks fade first, then the blob pulls back into the corner.
+.blob-backdrop__blob {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $blob-width;
+  height: $blob-height;
+  background: radial-gradient(circle at 18% 18%, #0b0f1c, #03050a 70%);
+  clip-path: path(t.$blob-path);
+  transform-origin: 0 0;
+  scale: 1;
+  transition: scale $expand $ease 250ms;
+
+  .blob-backdrop--expanded & {
+    scale: var(--cover);
+    transition-delay: 0ms;
+  }
+}
+
+// Scaled up, the blob's small gradient reads as one flat colour. Once it has spread, the same
+// gradient at page size fades in over it, so the sky is shaded exactly like the menu blob.
+.blob-backdrop__sky {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 18% 18%, #0b0f1c, #03050a 70%);
+}
+
+.blob-backdrop__sky,
+.blob-backdrop__sparks {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 450ms ease,
+    visibility 0s linear 450ms;
+
+  .blob-backdrop--expanded & {
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity 1400ms ease 450ms,
+      visibility 0s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob-backdrop__blob,
+  .blob-backdrop__sky,
+  .blob-backdrop__sparks {
+    transition: none;
+  }
+}

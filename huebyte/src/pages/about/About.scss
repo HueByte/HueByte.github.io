@@ -1,0 +1,144 @@
+@use "@/styles/theme" as t;
+
+// The page: the layout's BlobBackdrop spreads out of the menu corner until it is the background,
+// the stars fill the sky, and the content rises up in the middle.
+.about {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  // Top padding clears the corner blob that the menu pins to the top-left.
+  padding: 8rem 1.5rem 4rem;
+}
+
+// ── Content
+.about__content {
+  position: relative;
+  // Above the BlobBackdrop (z-index 2), below the menu.
+  z-index: 3;
+  width: 100%;
+  max-width: 46rem;
+  animation: about-rise 900ms 650ms ease-out both;
+}
+
+@keyframes about-rise {
+  from {
+    opacity: 0;
+    translate: 0 22px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+.about__hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  margin: 0 0 3.5rem;
+}
+
+.about__avatar {
+  flex: none;
+  padding: 3px;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  background: linear-gradient(135deg, t.$spring, t.$desert 55%, t.$gold);
+  box-shadow:
+    0 0 28px rgba(t.$spring, 0.25),
+    0 0 60px rgba(t.$gold, 0.15);
+
+  img {
+    display: block;
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: inherit;
+    background: t.$desert;
+  }
+}
+
+.about__intro {
+  flex: 1 1 18rem;
+}
+
+.about__eyebrow {
+  margin: 0 0 0.4rem;
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(t.$desert, 0.6);
+}
+
+.about__name {
+  margin: 0;
+  font-family: t.$font-mono;
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: t.$desert;
+  text-shadow: 0 0 24px rgba(t.$spring, 0.25);
+}
+
+.about__tagline {
+  margin: 0.8rem 0 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: t.$text-muted;
+}
+
+.about__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.about__section {
+  padding-left: 1.25rem;
+  border-left: 2px solid rgba(t.$spring, 0.35);
+}
+
+.about__heading {
+  margin: 0 0 0.9rem;
+  font-family: t.$font-mono;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: t.$spring;
+}
+
+.about__text {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: t.$text;
+  // Lifts the copy off the stars behind it.
+  text-shadow: 0 0 12px rgba(#03050a, 0.9);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about__hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .about__avatar img {
+    width: 128px;
+    height: 128px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__content {
+    animation: none;
+  }
+}
