@@ -48,6 +48,7 @@ Legacy app (`cd Legacy/v_Mirage`): `npm run dev` serves `http://localhost:3001/l
 - Preserve behaviour and look exactly. Touch it only for build or hosting fixes.
 - `base` in `vite.config.js` is `/legacy/v_mirage/`; `src/App.jsx` derives the router `basename` from `import.meta.env.BASE_URL`. All routes and links inside stay written as if the app lived at `/`.
 - The menu has one addition over the original: a plain `<a href="/">New site</a>` that leaves the sub-site.
+- `build.assetsInlineLimit` is 0 in `vite.config.js`. The original source writes imported SVGs into inline styles as `url(${svg}` (no quotes, no closing paren), which only works while the import is a file path; Vite's default inlining of small SVGs as data URIs broke every layer. Keep assets as files rather than touching the source.
 - The GitHub API is called unauthenticated (60 req/hour/IP); `useGitHubData` caches in sessionStorage for 30 minutes and surfaces an `error` state. Preserve both.
 
 ## GitHub Pages deployment

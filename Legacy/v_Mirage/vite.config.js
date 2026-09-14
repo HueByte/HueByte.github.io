@@ -7,6 +7,12 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   base: "/legacy/v_mirage/",
   plugins: [react()],
+  build: {
+    // Keep every asset as a file, as the original CRA build did. Vite would inline the small
+    // SVG layers as data URIs, and the untouched source writes them into `url(...)` without
+    // quotes, which a data URI cannot survive.
+    assetsInlineLimit: 0,
+  },
   css: {
     preprocessorOptions: {
       scss: {
