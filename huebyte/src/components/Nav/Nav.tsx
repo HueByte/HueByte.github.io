@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { HiMenu, HiOutlineX } from "react-icons/hi";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import Sparks from "@/components/Sparks/Sparks";
-import { siteConfig } from "@/lib/site";
+import { isBlobPage, siteConfig } from "@/lib/site";
 import "./Nav.scss";
 
 // Keeps the sparks away from the blob's curved edge.
@@ -12,6 +12,9 @@ const SPARK_AREA = { x: [4, 74] as [number, number], y: [4, 86] as [number, numb
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
+  // On pages where the blob has spread out (see BlobBackdrop) the corner copy drops its fill,
+  // so the toggle and sparks sit directly on the page-wide version.
+  const merged = isBlobPage(useLocation().pathname);
 
   useEffect(() => {
     if (!open) return;
@@ -25,7 +28,7 @@ export default function Nav() {
   return (
     <>
       <div className={"nav__corner" + (open ? " nav__corner--hidden" : "")}>
-        <div className="nav__blob">
+        <div className={"nav__blob" + (merged ? " nav__blob--merged" : "")}>
           <Sparks count={16} seed={77} area={SPARK_AREA} />
           <button
             type="button"

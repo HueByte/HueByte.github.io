@@ -1,34 +1,65 @@
+import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 import avatar from "@/assets/avatar.png";
 import { siteConfig } from "@/lib/site";
 import "./About.scss";
 
+// Projects named in the copy below. Kept here rather than in site.ts: they are page copy,
+// not site-wide config.
+const projects = {
+  auriondocs: "https://github.com/AurionDocs",
+  echohub: "https://github.com/RedWizardsLab/EchoHub",
+  whodat: "https://github.com/HueByte/whodat",
+};
+
+function Project({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a className="about__link" href={href} target="_blank" rel="noreferrer">
+      {children}
+    </a>
+  );
+}
+
 // Placeholder copy until the real draft lands. Only the layout matters for now.
-const sections = [
+const sections: { id: string; title: string; paragraphs: ReactNode[] }[] = [
   {
     id: "who",
     title: "Who I am",
     paragraphs: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "I'm Hue, a Polish software engineer and independent builder. I've been making things with code for most of my life, and at some point that turned into a company, a handful of open-source projects, and a running list of ideas I'll probably never fully clear. I'm fine with that — the list is half the fun.",
+      "I think in systems. Not just software systems, but the shape of things: how pieces depend on each other, what emerges when you connect them, what breaks when you scale them. That habit spills into everything, from how I design infrastructure to how I read philosophy. Engineering, cognition, and the question of what intelligence actually is all feel like one subject to me, just approached from different doors.",
     ],
   },
   {
     id: "what",
     title: "What I do",
     paragraphs: [
-      "Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida.",
-      "Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam.",
+      <>
+        Right now most of my time goes into <Project href={projects.auriondocs}>AurionDocs</Project>
+        , an AI-driven documentation engine for engineering teams that runs inside their own
+        infrastructure. It's the kind of problem I like — agents, retrieval, distributed systems,
+        and the very human question of how knowledge about a codebase stays alive instead of quietly
+        rotting. I build it mostly in .NET and Rust, with React on top and Kubernetes underneath.
+      </>,
+      <>
+        Around that, I keep a few side projects alive under the HueByte name:{" "}
+        <Project href={projects.echohub}>EchoHub</Project>, a self-hosted chat server;{" "}
+        <Project href={projects.whodat}>whodat</Project>, a small CLI for keeping track of who you
+        are across a hundred terminals; and various experiments in agent architectures and personal
+        AI tooling. The thread connecting them is a belief that AI should expand what people can
+        think and do, not replace them or farm them.
+      </>,
     ],
   },
   {
     id: "else",
     title: "Everything else",
     paragraphs: [
-      "Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien, sed malesuada diam lacus eget erat.",
+      "Away from the keyboard I play guitar (classical training, now mostly fingerstyle) and read far too much science — physics, cognition, anything that explains why the world behaves the way it does. Music, science and programming are the three things I never get tired of, usually in some combination well past midnight.",
+      "I also have a real weakness for silly and unhinged things: dumb jokes, cursed experiments, projects that exist purely because someone said they shouldn't. I've been building the same sci-fi universe in my head for years and sometimes let bits of it out. Longer term I'd like a small house in a forest somewhere in Poland, a workshop for making pipes and forging knives — hobbies where you can't ctrl-z — a lighter work week, and enough space to keep building things because I want to, not because I have to.",
     ],
   },
 ];
-
 // The background is the layout's BlobBackdrop, which spreads out of the menu corner on this route.
 export default function About() {
   return (
@@ -61,6 +92,10 @@ export default function About() {
             </section>
           ))}
         </div>
+
+        <Link to="/" className="about__back">
+          <span aria-hidden="true">&larr;</span> back
+        </Link>
       </div>
     </article>
   );

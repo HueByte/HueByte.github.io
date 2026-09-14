@@ -33,6 +33,8 @@ export const siteConfig = {
       external: false,
     },
   ],
+  // Routes where the menu's corner blob spreads out to become the page background.
+  blobPages: ["/about"],
   // Previous versions of the site. Each is a standalone app under ../Legacy/v_<Name>,
   // mounted by scripts/build-site.mjs. The URL must match that app's Vite base.
   legacySites: [{ id: "mirage", label: "Mirage (2022-2026)", url: "/legacy/v_mirage/" }],
@@ -40,3 +42,9 @@ export const siteConfig = {
 
 export type HeroLink = (typeof siteConfig.heroLinks)[number];
 export type HeroIcon = HeroLink["icon"];
+
+/** True when the menu's corner blob is the page background on this route. */
+export function isBlobPage(pathname: string): boolean {
+  const path = pathname.replace(/\/+$/, "") || "/";
+  return (siteConfig.blobPages as readonly string[]).includes(path);
+}

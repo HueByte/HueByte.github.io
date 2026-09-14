@@ -17,6 +17,19 @@
   display: block;
   width: 100%;
   height: 100%;
+  // Hidden until the first frame has been drawn, then faded in over the CSS sky.
+  opacity: 0;
+  transition: opacity 1200ms ease;
+
+  &--ready {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home__scene {
+    transition: none;
+  }
 }
 
 // Small, quiet note pinned to the top centre of the landing.

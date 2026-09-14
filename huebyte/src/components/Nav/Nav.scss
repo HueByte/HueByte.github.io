@@ -27,9 +27,24 @@ $blob-height: 130px;
 .nav__blob {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 18% 18%, #0b0f1c, #03050a 70%);
   clip-path: path(t.$blob-path);
   animation: blob-drift 26s ease-in-out infinite alternate;
+
+  // The fill. It fades out once BlobBackdrop has grown out from under it (same colours), and
+  // fades back in as that one retracts, so the corner shape is never seen against the page.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 18% 18%, #0b0f1c, #03050a 70%);
+    // Retract lasts 900ms; the fill returns as the big blob settles into the corner.
+    transition: opacity 400ms ease 600ms;
+  }
+
+  &--merged::before {
+    opacity: 0;
+    transition-delay: 250ms;
+  }
 }
 
 @keyframes blob-drift {
@@ -222,5 +237,9 @@ $blob-height: 130px;
 
   .nav__blob {
     animation: none;
+
+    &::before {
+      transition: none;
+    }
   }
 }

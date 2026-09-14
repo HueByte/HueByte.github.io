@@ -11,6 +11,7 @@ describe("About page", () => {
     render(<App />);
     expect(await screen.findByRole("heading", { level: 1, name: "HueByte" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: "Who I am" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "back" })).toHaveAttribute("href", "/");
   });
 
   it("is reachable from the side menu", () => {

@@ -17,6 +17,8 @@
   position: relative;
   // Above the BlobBackdrop (z-index 2), below the menu.
   z-index: 3;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 46rem;
   animation: about-rise 900ms 650ms ease-out both;
@@ -121,6 +123,63 @@
 
   &:last-child {
     margin-bottom: 0;
+  }
+}
+
+// Inline project links inside the copy.
+.about__link {
+  color: t.$spring;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(t.$spring, 0.4);
+  transition:
+    color 200ms ease,
+    border-color 200ms ease,
+    text-shadow 200ms ease;
+
+  &:hover,
+  &:focus-visible {
+    color: t.$gold;
+    border-color: rgba(t.$gold, 0.8);
+    text-shadow: 0 0 14px rgba(t.$gold, 0.45);
+    outline: none;
+  }
+}
+
+// Small mono pill centred under the text, back to the landing.
+.about__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 3.5rem auto 0;
+  padding: 0.55rem 1.2rem;
+  font-family: t.$font-mono;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: t.$desert;
+  text-decoration: none;
+  background: rgba(t.$night, 0.6);
+  border: 1px solid rgba(t.$spring, 0.35);
+  border-radius: 999px;
+  transition:
+    color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    translate 200ms ease;
+
+  span {
+    transition: translate 200ms ease;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: t.$spring;
+    border-color: rgba(t.$spring, 0.7);
+    box-shadow: 0 0 18px rgba(t.$spring, 0.3);
+    outline: none;
+
+    span {
+      translate: -3px 0;
+    }
   }
 }
 

@@ -1,10 +1,8 @@
 import { useEffect, useState, type CSSProperties } from "react";
 import { useLocation } from "react-router-dom";
 import Sparks from "@/components/Sparks/Sparks";
+import { isBlobPage } from "@/lib/site";
 import "./BlobBackdrop.scss";
-
-// Pages where the menu's corner blob spreads out to become the background.
-const BLOB_PAGES = ["/about"];
 
 // The blob outline (see $blob-path) keeps at least this many px between the corner and its edge,
 // so scaling it by (viewport diagonal / this) guarantees it covers the whole page.
@@ -35,7 +33,7 @@ function useCoverScale() {
 export default function BlobBackdrop() {
   const { pathname } = useLocation();
   const cover = useCoverScale();
-  const wantExpanded = BLOB_PAGES.includes(pathname.replace(/\/+$/, "") || "/");
+  const wantExpanded = isBlobPage(pathname);
 
   // Start collapsed and flip after the first paint so a direct visit to /about still animates.
   const [expanded, setExpanded] = useState(false);
