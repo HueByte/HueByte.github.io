@@ -1,1 +1,0 @@
-import{a as e,i as t}from"./index-BsGxpde_.js";var n=t();function r(){return(0,n.jsxs)(`section`,{className:`not-found`,children:[(0,n.jsx)(`h1`,{children:`404`}),(0,n.jsx)(`p`,{children:`There is nothing here.`}),(0,n.jsx)(e,{to:`/`,children:`Back home`})]})}export{r as default};
