@@ -4,6 +4,7 @@ import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import { getArticle } from "@/lib/articles";
 import ArticleMeta from "./ArticleMeta";
+import CodeWindow from "./CodeWindow";
 import "./Articles.scss";
 
 const remarkPlugins = [remarkGfm];
@@ -12,6 +13,8 @@ const rehypePlugins = [rehypeHighlight];
 // Links written in markdown: off-site ones open in a new tab, on-site ones stay in the router
 // instead of reloading the whole app.
 const components: Components = {
+  // Fenced code is framed as a small window rather than a bare panel.
+  pre: CodeWindow,
   a({ href, title, children }) {
     if (href?.startsWith("/")) {
       return (

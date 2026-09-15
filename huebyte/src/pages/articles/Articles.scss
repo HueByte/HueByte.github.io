@@ -1,5 +1,18 @@
 @use "@/styles/theme" as t;
 
+// Article chrome is glass over the night sky rather than green-tinted panels: a warm
+// translucent fill, a hairline edge, and nothing else.
+//
+// Medium spring green is kept to two jobs. Small recurring marks in the reading rhythm (links,
+// list bullets, tag words, the spine of a card) and anything you can act on (hover, focus).
+// It never outlines a box, fills a panel, or colours a heading: that is what drained it.
+$glass: rgba(t.$desert, 0.06);
+$edge: rgba(t.$desert, 0.16);
+$rule: rgba(t.$desert, 0.11);
+// The spine of a card at rest. Its hover goes to full spring, so this reads as the same
+// colour arriving rather than a change of hue.
+$spine: rgba(t.$spring, 0.3);
+
 // Shared shell for the article index and the reader. Same geometry and timing as the About
 // page: the layout's BlobBackdrop spreads out of the menu corner until it is the background,
 // and the content rises into it once the middle of the page is covered.
@@ -97,9 +110,10 @@ a.blob-page__eyebrow {
   letter-spacing: 0.08em;
   color: t.$desert;
   text-decoration: none;
-  background: rgba(t.$night, 0.6);
-  border: 1px solid rgba(t.$spring, 0.35);
+  background: rgba(t.$night, 0.5);
+  border: 1px solid $edge;
   border-radius: 999px;
+  backdrop-filter: blur(8px);
   transition:
     color 200ms ease,
     border-color 200ms ease,
@@ -140,7 +154,7 @@ a.blob-page__eyebrow {
 .articles__card {
   position: relative;
   padding-left: 1.25rem;
-  border-left: 2px solid rgba(t.$spring, 0.35);
+  border-left: 2px solid $spine;
   transition:
     border-color 200ms ease,
     translate 200ms ease;
@@ -162,7 +176,7 @@ a.blob-page__eyebrow {
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: t.$spring;
+  color: t.$desert;
   text-decoration: none;
   transition:
     color 200ms ease,
@@ -177,8 +191,8 @@ a.blob-page__eyebrow {
 
   &:hover,
   &:focus-visible {
-    color: t.$gold;
-    text-shadow: 0 0 14px rgba(t.$gold, 0.4);
+    color: t.$spring;
+    text-shadow: 0 0 14px rgba(t.$spring, 0.35);
     outline: none;
   }
 }
@@ -197,7 +211,7 @@ a.blob-page__eyebrow {
   font-size: 1.05rem;
   line-height: 1.75;
   color: t.$text-muted;
-  border-left: 2px solid rgba(t.$spring, 0.35);
+  border-left: 2px solid $spine;
 }
 
 // ── Meta row: date, reading time, tags. Shared by the cards and the reader header.
@@ -230,9 +244,9 @@ a.blob-page__eyebrow {
 .meta__tag {
   padding: 0.15em 0.6em;
   letter-spacing: 0.08em;
-  color: rgba(t.$spring, 0.85);
-  background: rgba(t.$spring, 0.08);
-  border: 1px solid rgba(t.$spring, 0.25);
+  color: rgba(t.$spring, 0.78);
+  background: $glass;
+  border: 1px solid $edge;
   border-radius: 999px;
 }
 
@@ -240,7 +254,7 @@ a.blob-page__eyebrow {
 .article__head {
   margin: 0 0 2.5rem;
   padding-bottom: 1.75rem;
-  border-bottom: 1px solid rgba(t.$spring, 0.2);
+  border-bottom: 1px solid $rule;
 }
 
 .article__meta {
@@ -271,21 +285,22 @@ a.blob-page__eyebrow {
     font-weight: 600;
     letter-spacing: 0.04em;
     line-height: 1.3;
-    color: t.$spring;
+    color: t.$desert;
   }
 
   h2 {
     font-size: 1.35rem;
+    text-shadow: 0 0 18px rgba(t.$gold, 0.18);
   }
 
   h3 {
     font-size: 1.15rem;
-    color: t.$desert;
+    color: rgba(t.$desert, 0.82);
   }
 
   h4 {
     font-size: 1rem;
-    color: rgba(t.$desert, 0.85);
+    color: rgba(t.$desert, 0.66);
   }
 
   p {
@@ -320,7 +335,7 @@ a.blob-page__eyebrow {
     margin: 0 0 0.45rem;
 
     &::marker {
-      color: rgba(t.$spring, 0.7);
+      color: rgba(t.$spring, 0.6);
     }
   }
 
@@ -336,7 +351,7 @@ a.blob-page__eyebrow {
     margin: 2.5rem 0;
     height: 0;
     border: 0;
-    border-top: 1px solid rgba(t.$spring, 0.2);
+    border-top: 1px solid $rule;
   }
 
   img {
@@ -344,38 +359,50 @@ a.blob-page__eyebrow {
     max-width: 100%;
     height: auto;
     margin: 1.75rem auto;
-    border: 1px solid rgba(t.$spring, 0.2);
+    border: 1px solid $edge;
     border-radius: 12px;
   }
 
   // Inline code. The `pre` rule below undoes this for blocks.
+  //
+  // No border: an outline turns every `word` into a chip and chops the line into boxes. The
+  // fill is a breath, the blur does the rest. Horizontal padding stays tight so a following
+  // comma does not end up floating away from the word.
   code {
-    padding: 0.15em 0.4em;
+    padding: 0.12em 0.22em;
     font-family: t.$font-mono;
     font-size: 0.9em;
-    color: t.$gold;
-    background: rgba(t.$spring, 0.07);
-    border: 1px solid rgba(t.$spring, 0.18);
-    border-radius: 5px;
+    color: rgba(t.$desert, 0.92);
+    // Genuinely transparent. The mark is made by lifting what is already behind the word
+    // rather than by laying a panel over it, so it never reads as a chip and there is no
+    // edge to leave a gap before a following comma.
+    background: transparent;
+    border: 0;
+    border-radius: 4px;
+    backdrop-filter: blur(10px) brightness(1.6);
   }
 
   pre {
-    margin: 1.5rem 0;
-    padding: 1rem 1.15rem;
+    margin: 0;
+    // Less on top: the header strip is already breathing room above the first line.
+    padding: 0.55rem 1.15rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.65;
     // Long lines scroll inside the block rather than widening the page.
     overflow-x: auto;
     text-shadow: none;
-    background: rgba(#03050a, 0.75);
-    border: 1px solid rgba(t.$spring, 0.2);
-    border-radius: 10px;
+    background: none;
+    border: 0;
 
     code {
       padding: 0;
-      font-size: 0.875rem;
-      line-height: 1.65;
+      font-size: inherit;
+      line-height: inherit;
       color: t.$text;
       background: none;
       border: 0;
+      border-radius: 0;
+      backdrop-filter: none;
     }
   }
 
@@ -392,14 +419,14 @@ a.blob-page__eyebrow {
   td {
     padding: 0.5rem 0.9rem;
     text-align: left;
-    border: 1px solid rgba(t.$spring, 0.2);
+    border: 1px solid $rule;
   }
 
   th {
     font-family: t.$font-mono;
     font-weight: 600;
     color: t.$desert;
-    background: rgba(t.$spring, 0.07);
+    background: $glass;
   }
 
   // GitHub-flavoured task lists.
@@ -411,18 +438,26 @@ a.blob-page__eyebrow {
 
 // Syntax highlighting. rehype-highlight emits these classes; colouring them from the site
 // tokens keeps code blocks in palette instead of pulling in a stock highlight.js theme.
+// Keywords are violet rather than spring green: they are the most common token in most
+// snippets, and green on every other word is what drained the accent in the first place.
+// Green is left to types and built-ins, where it shows up a few times a block.
+$code-keyword: #b79bff;
+$code-title: #7fd4ff;
+$code-number: #ff9f6e;
+
 .md {
   .hljs-comment,
   .hljs-quote {
     font-style: italic;
-    color: rgba(t.$desert, 0.4);
+    color: rgba(t.$desert, 0.38);
   }
 
   .hljs-keyword,
   .hljs-selector-tag,
   .hljs-literal,
   .hljs-doctag {
-    color: t.$spring;
+    font-style: italic;
+    color: $code-keyword;
   }
 
   .hljs-string,
@@ -436,7 +471,7 @@ a.blob-page__eyebrow {
   .hljs-symbol,
   .hljs-bullet,
   .hljs-link {
-    color: #ff9f6e;
+    color: $code-number;
   }
 
   .hljs-title,
@@ -444,13 +479,13 @@ a.blob-page__eyebrow {
   .hljs-name,
   .hljs-selector-id,
   .hljs-selector-class {
-    color: #7fd4ff;
+    color: $code-title;
   }
 
   .hljs-type,
   .hljs-built_in,
   .hljs-builtin-name {
-    color: t.$desert;
+    color: t.$spring;
   }
 
   .hljs-attr,
@@ -460,7 +495,10 @@ a.blob-page__eyebrow {
     color: rgba(t.$text, 0.9);
   }
 
-  .hljs-meta,
+  .hljs-meta {
+    color: rgba(t.$desert, 0.45);
+  }
+
   .hljs-deletion {
     color: t.$maron;
   }
@@ -480,6 +518,99 @@ a.blob-page__eyebrow {
   }
 
   .articles__card {
+    transition: none;
+  }
+}
+
+// ── Code window
+//
+// A fenced block is a dark well cut into the page, not a panel laid on top of it: a low-alpha
+// black wash over a blurred backdrop, so the stars behind stay faintly visible. The header
+// carries only what is worth having on every block, a language badge and a copy button, plus
+// the file name when a fence names one. See CodeWindow.tsx.
+.code-window {
+  position: relative;
+  margin: 1.75rem 0;
+  // Clips the code surface to the rounded corners.
+  overflow: hidden;
+  background: rgba(#000, 0.38);
+  border: 1px solid rgba(t.$desert, 0.09);
+  border-radius: 10px;
+  backdrop-filter: blur(16px);
+}
+
+// No fill and no divider: the header is the same surface as the code, just the strip above it.
+.code-window__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 1.9rem;
+  padding: 0.5rem 0.6rem 0 0.95rem;
+}
+
+.code-window__name {
+  min-width: 0;
+  overflow: hidden;
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: rgba(t.$desert, 0.5);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.code-window__tools {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0.45rem;
+  // Pushed right whether or not there is a file name on the left.
+  margin-left: auto;
+}
+
+.code-window__lang {
+  padding: 0.14em 0.45em;
+  font-family: t.$font-mono;
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  color: rgba(t.$gold, 0.7);
+  border: 1px solid rgba(t.$gold, 0.2);
+  border-radius: 4px;
+}
+
+.code-window__copy {
+  display: grid;
+  place-items: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  padding: 0;
+  font-size: 0.95rem;
+  color: rgba(t.$desert, 0.45);
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition:
+    color 200ms ease,
+    background-color 200ms ease;
+
+  &:hover,
+  &:focus-visible {
+    color: t.$desert;
+    background: rgba(#fff, 0.06);
+    outline: none;
+  }
+
+  &--done,
+  &--done:hover {
+    color: t.$spring;
+    background: transparent;
+    cursor: default;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .code-window__copy {
     transition: none;
   }
 }

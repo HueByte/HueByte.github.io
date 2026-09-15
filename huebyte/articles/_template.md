@@ -9,6 +9,11 @@ tags: [tag, another-tag]
 The body is plain GitHub-flavoured markdown: headings, lists, tables, task lists, images,
 `inline code` and fenced code blocks with syntax highlighting.
 
+A fenced block gets a language badge and a copy button. Name the language after the backticks
+for the badge, and add a file name after it if the block is worth naming: ```ts, or
+```ts App.tsx, or ```ts title="App.tsx" if the name has spaces in it. The file name is optional
+and most blocks do not need one.
+
 ## A heading
 
 Copy this file to `articles/<name>.md` and start writing. The file name becomes the URL, with

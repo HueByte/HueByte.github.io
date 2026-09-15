@@ -57,7 +57,7 @@ Body text sits at a comfortable measure with **bold**, *italic*, `inline code` a
 
 Code blocks are highlighted in the same palette as the rest of the site:
 
-```ts
+```ts readingMinutes.ts
 export function readingMinutes(markdown: string): number {
   const words = markdown.split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.round(words / 220));

@@ -41,6 +41,19 @@ describe("Articles", () => {
     expect(screen.getByRole("link", { name: "all articles" })).toHaveAttribute("href", "/articles");
   });
 
+  it.skipIf(!first?.body.includes("```"))("frames fenced code as a window", async () => {
+    window.history.pushState({}, "", "/articles/" + first?.slug);
+    render(<App />);
+    await screen.findByRole("heading", { level: 1, name: first?.title });
+
+    const windows = document.querySelectorAll(".code-window");
+    expect(windows.length).toBeGreaterThan(0);
+    expect(windows[0]?.querySelector("pre code")).toBeInTheDocument();
+    // A language badge on a fence that names one, and a copy button on every block.
+    expect(windows[0]?.querySelector(".code-window__lang")?.textContent).toBeTruthy();
+    expect(screen.getAllByRole("button", { name: "Copy code" }).length).toBe(windows.length);
+  });
+
   it("says so when the slug does not exist", async () => {
     window.history.pushState({}, "", "/articles/not-a-real-article");
     render(<App />);

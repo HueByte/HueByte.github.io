@@ -60,6 +60,8 @@ The body is GitHub-flavoured markdown, with syntax-highlighted code blocks.
   `articles/_template.md` is a copyable starting point.
 - No frontmatter key is required. Without `title` the slug is used, and without `summary` the
   first paragraph is.
+- Fenced code gets a language badge and a copy button. A fence of `ts` sets the badge; adding
+  `ts App.tsx` (or `ts title="App.tsx"`) also shows a file name, which is optional.
 - `articles/` is excluded from prettier, so `npm run check` will not reformat your prose.
 - No em dashes or en dashes. Use a comma, a colon, a semicolon, or two sentences. `npm run check`
   fails and names the file and line if one gets in, drafts included.
