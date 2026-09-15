@@ -121,7 +121,7 @@ export function createDreamScene(
     uniforms.uPixelRatio.value = scale; // point sizes are in device pixels
     canvas.style.imageRendering = scale < PIXELATE_BELOW ? "pixelated" : "auto";
   };
-  const resize = () => {
+  const applySize = () => {
     const width = canvas.clientWidth || 1;
     const height = canvas.clientHeight || 1;
     renderer.setSize(width, height, false);
@@ -131,7 +131,13 @@ export function createDreamScene(
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
     for (const part of parts) part.resize?.(camera);
-    if (still) renderFrame(0);
+  };
+  // Viewport changes: redraw at once. Setting the drawing buffer size wipes the canvas, and the
+  // resize observer fires after this frame's animation callback, so waiting for the next tick
+  // would show one blank frame.
+  const resize = () => {
+    applySize();
+    renderFrame(0);
   };
 
   // Gentle parallax from the pointer plus a slow idle drift, so the frame never sits still.
@@ -173,7 +179,7 @@ export function createDreamScene(
       const scale = governor.sample(since);
       if (scale !== null) {
         setScale(scale);
-        resize();
+        applySize(); // the frame below redraws
       }
     }
     renderFrame(Math.min(since, 0.1)); // a long pause is not a long step

@@ -2,7 +2,14 @@
 // out of the flow so the incoming page can take its place underneath.
 .app-page--held {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  // 100vw, not inset: 0. The incoming page is usually taller than the viewport, so a scrollbar
+  // appears the moment it mounts; "inset: 0" would then shrink the held page by the scrollbar's
+  // width, resizing the landing canvas and blanking it for a frame.
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   // Below the BlobBackdrop (z-index 2): the blob covers or uncovers it.
   z-index: 1;
   overflow: hidden;
