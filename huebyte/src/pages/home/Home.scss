@@ -32,25 +32,6 @@
   }
 }
 
-// Small, quiet note pinned to the top centre of the landing.
-.home__wip {
-  position: absolute;
-  top: 14px;
-  left: 50%;
-  z-index: 2;
-  margin: 0;
-  translate: -50% 0;
-  font-family: t.$font-mono;
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(t.$desert, 0.55);
-  text-shadow: 0 0 10px rgba(t.$night, 0.8);
-  pointer-events: none;
-  user-select: none;
-}
-
 .home__hero {
   position: relative;
   z-index: 1;
