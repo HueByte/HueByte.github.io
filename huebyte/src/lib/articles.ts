@@ -19,11 +19,13 @@ const sources = import.meta.glob("../../articles/*.md", {
 }) as Record<string, string>;
 
 export interface Article {
-  /** URL segment, from the file name minus any leading date and the extension. */
+  /** URL segment: the file name without its extension, unless frontmatter overrides it. */
   slug: string;
   title: string;
-  /** ISO `YYYY-MM-DD`, from frontmatter or the file name prefix. Empty if neither has one. */
+  /** ISO `YYYY-MM-DD` the article was published. The only thing the list is ordered by. */
   date: string;
+  /** ISO `YYYY-MM-DD` of the last meaningful edit, if the file declares one. */
+  updated: string;
   summary: string;
   tags: string[];
   /** The markdown below the frontmatter. */
@@ -34,7 +36,6 @@ export interface Article {
 /** Average adult prose speed; close enough for a "5 min read" badge. */
 const WORDS_PER_MINUTE = 220;
 const FILE_NAME = /([^/]+)\.md$/;
-const DATE_PREFIX = /^(\d{4}-\d{2}-\d{2})[-_]?/;
 
 function asText(value: FrontmatterValue | undefined): string {
   if (typeof value === "string") return value;
@@ -72,14 +73,13 @@ function toArticle(path: string, source: string): Article | null {
   if (fileName.startsWith("_")) return null;
 
   const { data, body } = parseFrontmatter(source);
-  const prefix = DATE_PREFIX.exec(fileName);
-  const slug = asText(data.slug) || fileName.slice(prefix?.[0].length ?? 0);
-  if (!slug) return null;
+  const slug = asText(data.slug) || fileName;
 
   return {
     slug,
     title: asText(data.title) || slug,
-    date: asText(data.date) || prefix?.[1] || "",
+    date: asText(data.date),
+    updated: asText(data.updated),
     summary: asText(data.summary) || firstParagraph(body),
     tags: asList(data.tags),
     body,
@@ -87,11 +87,22 @@ function toArticle(path: string, source: string): Article | null {
   };
 }
 
-/** Every article, newest first. Undated files sort last, then alphabetically by title. */
+/**
+ * Every article, newest published first, with undated files last and ties broken by title.
+ *
+ * Ordering is by `date`, never by `updated`: fixing a typo in a two-year-old post should not
+ * throw it back to the top of the list, and a reader who has seen the list before should find
+ * it in the same order. `updated` is shown on the article instead. This is what most blogs do.
+ */
 export const articles: Article[] = Object.entries(sources)
   .map(([path, source]) => toArticle(path, source))
   .filter((article): article is Article => article !== null)
-  .sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title));
+  .sort(
+    (a, b) =>
+      Number(!a.date) - Number(!b.date) ||
+      b.date.localeCompare(a.date) ||
+      a.title.localeCompare(b.title),
+  );
 
 export function getArticle(slug: string | undefined): Article | undefined {
   return articles.find((article) => article.slug === slug);

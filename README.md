@@ -41,6 +41,7 @@ workflow publishes it. There is nothing else to update.
 ---
 title: Hello, world
 date: 2026-09-15
+updated: 2026-09-20
 summary: One or two sentences for the list page. Optional.
 tags: [meta, rust]
 ---
@@ -48,9 +49,13 @@ tags: [meta, rust]
 The body is GitHub-flavoured markdown, with syntax-highlighted code blocks.
 ```
 
-- The file name becomes the URL: `articles/2026-09-15-hello-world.md` is served at
-  `/articles/hello-world`. A leading `YYYY-MM-DD` is stripped from the slug and used as the date
-  when the frontmatter has none.
+- The file name becomes the URL and holds no date: `articles/hello-world.md` is served at
+  `/articles/hello-world`.
+- `date` is the one required key. The list is ordered by it, newest first, and `npm run check`
+  fails if an article is missing it. File modification times cannot stand in: a CI checkout
+  resets them all to the moment it cloned.
+- `updated` is optional. It shows on the article as "updated ..." and does not affect the order,
+  so fixing a typo in an old post leaves the list where readers last saw it.
 - A file name starting with `_` is a draft: it stays in the repo and off the site.
   `articles/_template.md` is a copyable starting point.
 - No frontmatter key is required. Without `title` the slug is used, and without `summary` the

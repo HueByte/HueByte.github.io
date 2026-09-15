@@ -8,6 +8,8 @@ const sources = import.meta.glob("../../articles/*.md", {
   eager: true,
 }) as Record<string, string>;
 
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+
 /** Characters banned from article prose, with what to write instead. */
 const banned = [
   { name: "em dash", char: "—", instead: "a comma, a colon, a semicolon, or two sentences" },
@@ -33,10 +35,29 @@ describe("article markdown", () => {
     });
   }
 
-  it("gives every article a title and a slug", () => {
+  it("gives every article a title", () => {
     for (const article of articles) {
-      expect(article.slug, "an article needs a slug").not.toBe("");
       expect(article.title, article.slug + " needs a title").not.toBe("");
     }
+  });
+
+  // File names carry no date, and a CI checkout resets every file's mtime, so the frontmatter
+  // is the only thing that can order the list. An article without one sorts to the bottom.
+  it("dates every article", () => {
+    const undated = articles.filter((article) => !ISO_DATE.test(article.date));
+    expect(
+      undated.map((article) => article.slug),
+      "date: YYYY-MM-DD is required",
+    ).toEqual([]);
+  });
+
+  it("does not put an updated date before the published one", () => {
+    const backwards = articles.filter(
+      (article) => article.updated && article.updated < article.date,
+    );
+    expect(
+      backwards.map((article) => article.slug),
+      "updated precedes date",
+    ).toEqual([]);
   });
 });

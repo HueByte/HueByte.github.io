@@ -1,4 +1,4 @@
-import { HiCalendar, HiClock, HiTag } from "react-icons/hi";
+import { HiCalendar, HiClock, HiRefresh, HiTag } from "react-icons/hi";
 import { formatArticleDate, type Article } from "@/lib/articles";
 
 /** Date, reading time and tags. Used on the index cards and in the reader header. */
@@ -10,6 +10,8 @@ export default function ArticleMeta({
   className?: string;
 }) {
   const date = formatArticleDate(article.date);
+  // Only worth showing when it says something the published date does not.
+  const updated = article.updated === article.date ? "" : formatArticleDate(article.updated);
 
   return (
     <ul className={"meta" + (className ? " " + className : "")}>
@@ -17,6 +19,12 @@ export default function ArticleMeta({
         <li className="meta__item">
           <HiCalendar className="meta__icon" aria-hidden="true" />
           <time dateTime={article.date}>{date}</time>
+        </li>
+      )}
+      {updated && (
+        <li className="meta__item">
+          <HiRefresh className="meta__icon" aria-hidden="true" />
+          updated <time dateTime={article.updated}>{updated}</time>
         </li>
       )}
       <li className="meta__item">

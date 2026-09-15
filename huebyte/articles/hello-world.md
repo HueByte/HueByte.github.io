@@ -16,10 +16,14 @@ frontmatter:
 ---
 title: How this section works
 date: 2026-09-15
+updated: 2026-09-16
 summary: A short blurb for the list.
 tags: [meta]
 ---
 ```
+
+`date` is required and orders the list. `updated` is optional and only shows on the article,
+so correcting an old post does not shove it back to the top.
 
 Vite reads the folder at build time, so publishing is a push to `master`, and the deploy
 workflow does the rest. Nothing is fetched at runtime, so there is no API to rate-limit and no
@@ -27,9 +31,9 @@ spinner before the text appears.
 
 ## Conventions
 
-The file name becomes the URL. A leading `YYYY-MM-DD` sets the date and is stripped from the
-slug, so `2026-09-15-hello-world.md` is served at `/articles/hello-world`. A file name starting
-with an underscore stays in the repo and off the site, which is how drafts work.
+The file name becomes the URL and carries no date: `hello-world.md` is served at
+`/articles/hello-world`. A file name starting with an underscore stays in the repo and off the
+site, which is how drafts work.
 
 The body is GitHub-flavoured markdown: headings, lists, tables, task lists, images, quotes,
 `inline code` and fenced code blocks with syntax highlighting.
