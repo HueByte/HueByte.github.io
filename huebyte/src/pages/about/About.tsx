@@ -26,7 +26,7 @@ const sections: { id: string; title: string; paragraphs: ReactNode[] }[] = [
     id: "who",
     title: "Who I am",
     paragraphs: [
-      "I'm Hue, a Polish software engineer and independent builder. I've been making things with code for a longer while, and at some point it turns into a company, a handful of open-source projects, and a running list of ideas I'll probably never fully clear. I'm fine with that — the list is half the fun.",
+      "I'm Hue, a Polish software engineer and independent builder. I've been making things with code for a longer while, and at some point it turns into a company, a handful of open-source projects, and a running list of ideas I'll probably never fully clear. I'm fine with that; the list is half the fun.",
       "I think in systems. Not just software systems, but the shape of things: how pieces depend on each other, what emerges when you connect them, what breaks when you scale them. That habit spills into everything, from how I design infrastructure to how I read philosophy. Engineering, cognition, and the question of what intelligence actually is all feel like one subject to me, just approached from different doors.",
     ],
   },
@@ -37,8 +37,8 @@ const sections: { id: string; title: string; paragraphs: ReactNode[] }[] = [
       <>
         Right now most of my time goes into <Project href={projects.auriondocs}>AurionDocs</Project>
         , an AI-driven documentation engine for engineering teams that runs inside their own
-        infrastructure. It's the kind of problem I like — agents, retrieval, distributed systems,
-        and the very human question of how knowledge about a codebase stays alive instead of quietly
+        infrastructure. It's the kind of problem I like: agents, retrieval, distributed systems, and
+        the very human question of how knowledge about a codebase stays alive instead of quietly
         rotting. I build it mostly in .NET and Rust, with React on top and Kubernetes underneath.
       </>,
       <>
@@ -55,8 +55,8 @@ const sections: { id: string; title: string; paragraphs: ReactNode[] }[] = [
     id: "else",
     title: "Everything else",
     paragraphs: [
-      "Away from the keyboard I play guitar (classical training, now mostly fingerstyle) and read far too much science — physics, cognition, anything that explains the silly questions I have. Music, science and programming are the three things I never get tired of, usually in some combination with my insomnia.",
-      "I also have a real weakness for silly and unhinged things, cursed experiments, projects just to mess around with friends. Longer term I'd like a house in a forest somewhere, a workshop for making pipes and forging knives — hobbies where you can't ctrl-z — a lighter work week, and enough space to keep building things because I want to, not because I have to.",
+      "Away from the keyboard I play guitar (classical training, now mostly fingerstyle) and read far too much science: physics, cognition, anything that explains the silly questions I have. Music, science and programming are the three things I never get tired of, usually in some combination with my insomnia.",
+      "I also have a real weakness for silly and unhinged things, cursed experiments, projects just to mess around with friends. Longer term I'd like a house in a forest somewhere, a workshop for making pipes and forging knives (hobbies where you can't ctrl-z), a lighter work week, and enough space to keep building things because I want to, not because I have to.",
     ],
   },
 ];

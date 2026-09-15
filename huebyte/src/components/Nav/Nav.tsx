@@ -2,11 +2,23 @@ import { useEffect, useState } from "react";
 import { HiMenu, HiOutlineX } from "react-icons/hi";
 import { NavLink, useLocation } from "react-router-dom";
 import Sparks from "@/components/Sparks/Sparks";
-import { isBlobPage, siteConfig } from "@/lib/site";
+import { siteIcons } from "@/lib/icons";
+import { isBlobPage, siteConfig, type NavLink as NavLinkItem } from "@/lib/site";
 import "./Nav.scss";
 
 // Keeps the sparks away from the blob's curved edge.
 const SPARK_AREA = { x: [4, 74] as [number, number], y: [4, 86] as [number, number] };
+
+/** Icon plus label, the shared inside of every menu entry. */
+function Entry({ link }: { link: NavLinkItem }) {
+  const Icon = siteIcons[link.icon];
+  return (
+    <>
+      <Icon className="nav__icon" aria-hidden="true" />
+      <span className="nav__label">{link.label}</span>
+    </>
+  );
+}
 
 /** Corner blob with the menu toggle and a slide-in side menu, in the spirit of the Mirage site. */
 export default function Nav() {
@@ -58,11 +70,11 @@ export default function Nav() {
               <NavLink
                 key={link.href}
                 to={link.href}
-                end
+                end={link.href === "/"}
                 className={({ isActive }) => "nav__item" + (isActive ? " nav__item--active" : "")}
                 onClick={close}
               >
-                {link.label}
+                <Entry link={link} />
               </NavLink>
             ) : (
               <a
@@ -73,7 +85,7 @@ export default function Nav() {
                 target={link.kind === "external" ? "_blank" : undefined}
                 rel={link.kind === "external" ? "noreferrer" : undefined}
               >
-                {link.label}
+                <Entry link={link} />
               </a>
             ),
           )}

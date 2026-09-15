@@ -32,6 +32,33 @@ npm run dev        # http://localhost:3000
 | `npm run format`     | Format the project with prettier                                |
 | `npm run deploy`     | `build:site` then push `dist/` to the `gh-pages` branch         |
 
+## Writing an article
+
+Articles are markdown files in `huebyte/articles/`. Add one, push to `master`, and the deploy
+workflow publishes it. There is nothing else to update.
+
+```markdown
+---
+title: Hello, world
+date: 2026-09-15
+summary: One or two sentences for the list page. Optional.
+tags: [meta, rust]
+---
+
+The body is GitHub-flavoured markdown, with syntax-highlighted code blocks.
+```
+
+- The file name becomes the URL: `articles/2026-09-15-hello-world.md` is served at
+  `/articles/hello-world`. A leading `YYYY-MM-DD` is stripped from the slug and used as the date
+  when the frontmatter has none.
+- A file name starting with `_` is a draft: it stays in the repo and off the site.
+  `articles/_template.md` is a copyable starting point.
+- No frontmatter key is required. Without `title` the slug is used, and without `summary` the
+  first paragraph is.
+- `articles/` is excluded from prettier, so `npm run check` will not reformat your prose.
+- No em dashes or en dashes. Use a comma, a colon, a semicolon, or two sentences. `npm run check`
+  fails and names the file and line if one gets in, drafts included.
+
 ## Working on a legacy version
 
 ```sh

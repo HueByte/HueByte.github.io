@@ -21,8 +21,14 @@
   flex-direction: column;
   width: 100%;
   max-width: 46rem;
-  // Delayed until the expanding blob has covered the middle of the page (see BlobBackdrop).
-  animation: about-rise 900ms 750ms ease-out both;
+  animation: about-rise 900ms ease-out both;
+}
+
+// Arriving from a page without the blob, the content waits for the blob to cover the middle of
+// the page (see BlobBackdrop). Moving between two blob pages it is already there, so it rises
+// straight away.
+.app-page--covered .about__content {
+  animation-delay: 750ms;
 }
 
 @keyframes about-rise {

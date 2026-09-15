@@ -2,3 +2,6 @@ dist
 node_modules
 coverage
 package-lock.json
+
+# Article markdown is content, not code: it should not have to satisfy the formatter.
+articles

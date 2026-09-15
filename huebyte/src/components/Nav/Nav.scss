@@ -153,6 +153,9 @@ $blob-height: 130px;
 }
 
 .nav__item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
   margin: 0.5rem;
   padding: 10px 14px;
   font-family: t.$font-mono;
@@ -190,6 +193,20 @@ $blob-height: 130px;
   }
 }
 
+// Sized off the label so the two stay in proportion, and dimmed so the word still leads.
+.nav__icon {
+  flex: none;
+  font-size: 1.15em;
+  opacity: 0.75;
+  transition: opacity 200ms ease-in-out;
+}
+
+.nav__item:hover .nav__icon,
+.nav__item:focus-visible .nav__icon,
+.nav__item--active .nav__icon {
+  opacity: 1;
+}
+
 @media screen and (max-width: 480px) {
   .nav__corner {
     scale: 0.85;
@@ -203,6 +220,7 @@ $blob-height: 130px;
   }
 
   .nav__item {
+    justify-content: center;
     margin: 0.5rem 0;
     padding: 15px;
     text-align: center;
@@ -231,7 +249,8 @@ $blob-height: 130px;
   .nav__corner,
   .nav__toggle,
   .nav__close,
-  .nav__item {
+  .nav__item,
+  .nav__icon {
     transition: none;
   }
 

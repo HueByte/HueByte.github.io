@@ -23,6 +23,14 @@ interface HeldPage {
 interface Pages {
   current: Location;
   held: HeldPage | null;
+  /** True when the blob has to spread over this page before it can be seen. */
+  covered: boolean;
+}
+
+/** True when arriving here means waiting for the blob to spread out first. */
+function isCovered(from: string | null, to: string): boolean {
+  // On a first load the blob starts in the corner and expands, so a blob page is covered too.
+  return isBlobPage(to) && (from === null || !isBlobPage(from));
 }
 
 /** How long to keep the page being left on screen, if the blob has to cover or uncover it. */
@@ -42,7 +50,11 @@ function holdFor(from: string, to: string): number {
  */
 export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
-  const [pages, setPages] = useState<Pages>(() => ({ current: location, held: null }));
+  const [pages, setPages] = useState<Pages>(() => ({
+    current: location,
+    held: null,
+    covered: isCovered(null, location.pathname),
+  }));
 
   // Decided during render, never in an effect: the old page must not unmount for even a frame.
   if (pages.current.pathname !== location.pathname) {
@@ -50,10 +62,11 @@ export default function Layout({ children }: LayoutProps) {
     setPages({
       current: location,
       held: ms > 0 ? { location: pages.current, scrollY: window.scrollY, ms } : null,
+      covered: isCovered(pages.current.pathname, location.pathname),
     });
   }
 
-  const { current, held } = pages;
+  const { current, held, covered } = pages;
 
   useEffect(() => {
     if (!held) return;
@@ -103,7 +116,7 @@ export default function Layout({ children }: LayoutProps) {
               {children(slot.location)}
             </div>
           ) : (
-            <div key={slot.key} className="app-page">
+            <div key={slot.key} className={"app-page" + (covered ? " app-page--covered" : "")}>
               {children(slot.location)}
             </div>
           ),
