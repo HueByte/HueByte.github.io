@@ -13,21 +13,26 @@ export const BLOB_RETRACT_MS = 900;
 // so scaling it by (viewport diagonal / this) guarantees it covers the whole page.
 const BLOB_INNER_RADIUS = 100;
 
-function measureCover() {
-  return Math.hypot(window.innerWidth, window.innerHeight) / BLOB_INNER_RADIUS + 1;
+// Star density: one spark per this many CSS pixels of viewport, within these bounds. A flat
+// count packed a phone screen as tightly as a desktop one.
+const PX_PER_SPARK = 14000;
+const MIN_SPARKS = 24;
+const MAX_SPARKS = 180;
+
+function measureViewport() {
+  return { width: window.innerWidth, height: window.innerHeight };
 }
 
-/** Scale factor that grows the 170x130 corner blob until it covers the viewport. */
-function useCoverScale() {
-  const [scale, setScale] = useState(measureCover);
+function useViewport() {
+  const [size, setSize] = useState(measureViewport);
 
   useEffect(() => {
-    const update = () => setScale(measureCover());
+    const update = () => setSize(measureViewport());
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  return scale;
+  return size;
 }
 
 /**
@@ -37,7 +42,13 @@ function useCoverScale() {
  */
 export default function BlobBackdrop() {
   const { pathname } = useLocation();
-  const cover = useCoverScale();
+  const { width, height } = useViewport();
+  // Scale factor that grows the 170x130 corner blob until it covers the viewport.
+  const cover = Math.hypot(width, height) / BLOB_INNER_RADIUS + 1;
+  const sparkCount = Math.min(
+    MAX_SPARKS,
+    Math.max(MIN_SPARKS, Math.round((width * height) / PX_PER_SPARK)),
+  );
   const wantExpanded = isBlobPage(pathname);
 
   // Start collapsed and flip after the first paint so a direct visit to /about still animates.
@@ -61,7 +72,7 @@ export default function BlobBackdrop() {
     >
       <div className="blob-backdrop__blob" />
       <div className="blob-backdrop__sky" />
-      <Sparks className="blob-backdrop__sparks" count={140} seed={2026} />
+      <Sparks className="blob-backdrop__sparks" count={sparkCount} seed={2026} />
     </div>
   );
 }

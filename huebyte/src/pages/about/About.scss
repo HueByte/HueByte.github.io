@@ -191,6 +191,11 @@
     gap: 1.5rem;
   }
 
+  // In a column the 18rem basis would become a height and open a gap under the tagline.
+  .about__intro {
+    flex: none;
+  }
+
   .about__avatar img {
     width: 128px;
     height: 128px;
