@@ -89,6 +89,8 @@ export interface SceneObject {
   object: THREE.Object3D;
   /** Per-frame hook for objects that move on the CPU side. */
   update?(elapsed: number, dt: number): void;
+  /** Called after the viewport (and so the camera's projection) changes. */
+  resize?(camera: THREE.PerspectiveCamera): void;
   dispose(): void;
 }
 

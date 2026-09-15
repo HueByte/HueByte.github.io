@@ -1,16 +1,12 @@
 import * as THREE from "three";
-import {
-  CAMERA_XZ,
-  mulberry32,
-  NOISE_GLSL,
-  type SceneObject,
-  type SharedUniforms,
-} from "./shaders";
+import { mulberry32, NOISE_GLSL, type SceneObject, type SharedUniforms } from "./shaders";
 
 // A burgundy dream planet low over the ridges: slowly flowing marbled bands with luminous
 // veins, a lit rim on the upper left, a soft halo, and a tilted ring of white dust.
 
-const DIRECTION = new THREE.Vector3(0.36, 0.3, -0.88).normalize();
+// Where the planet sits on screen, in clip space (-1..1 on each axis): upper right, whatever
+// the aspect ratio. A fixed world direction put it off the right edge on portrait phones.
+const ANCHOR = new THREE.Vector2(0.44, 0.68);
 const DISTANCE = 470; // just inside the star shell
 const SIZE = 78; // width of the quad the body is drawn on
 const DISC_RADIUS = SIZE * 0.3; // the body fills 60% of the quad; the rest is halo
@@ -223,11 +219,20 @@ export function createPlanet(shared: SharedUniforms): SceneObject {
   // Everything hangs off one group that faces the camera; the camera barely moves.
   const group = new THREE.Group();
   group.add(halo, body, ring.object);
-  group.position.copy(DIRECTION).multiplyScalar(DISTANCE);
-  group.lookAt(CAMERA_XZ.x, 0, CAMERA_XZ.z);
+
+  // Placed on every resize: the anchor is cast out from the camera to the star shell, so the
+  // planet keeps its spot on screen as the projection changes with the viewport.
+  const direction = new THREE.Vector3();
+  const place = (camera: THREE.PerspectiveCamera) => {
+    camera.updateMatrixWorld();
+    direction.set(ANCHOR.x, ANCHOR.y, 0.5).unproject(camera).sub(camera.position).normalize();
+    group.position.copy(camera.position).addScaledVector(direction, DISTANCE);
+    group.lookAt(camera.position);
+  };
 
   return {
     object: group,
+    resize: place,
     dispose() {
       geometry.dispose();
       haloMaterial.dispose();

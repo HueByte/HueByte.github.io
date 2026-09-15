@@ -130,6 +130,7 @@ export function createDreamScene(
     bloom.setSize(width * bloomScale, height * bloomScale);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
+    for (const part of parts) part.resize?.(camera);
     if (still) renderFrame(0);
   };
 
