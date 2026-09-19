@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import avatar from "@/assets/avatar.png";
+import Avatar from "@/components/Avatar/Avatar";
 import { siteIcons } from "@/lib/icons";
 import { siteConfig } from "@/lib/site";
 import "./AvatarOrbit.scss";
@@ -14,12 +14,7 @@ export default function AvatarOrbit() {
       <div className="orbit__halo" aria-hidden="true" />
 
       <div className="orbit__avatar">
-        <img
-          src={avatar}
-          alt="HueByte's avatar: a cat wizard in a green hat"
-          width={600}
-          height={600}
-        />
+        <Avatar size={260} alt="HueByte's avatar: a cat wizard in a green hat" />
       </div>
 
       <ul className="orbit__ring" aria-label="Links">

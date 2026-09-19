@@ -18,6 +18,13 @@ describe("App", () => {
     expect(link).toHaveAttribute("href", "/legacy/v_mirage/");
   });
 
+  it("takes the avatar from GitHub, so it follows the profile picture", () => {
+    render(<App />);
+    const avatar = screen.getByRole("img", { name: /avatar/i });
+    expect(avatar.getAttribute("src")).toContain("avatars.githubusercontent.com/HueByte");
+    expect(avatar).toHaveAttribute("srcSet", expect.stringContaining(" 2x"));
+  });
+
   it("orbits every hero link around the avatar, in configured order", () => {
     render(<App />);
     const links = screen.getByRole("list", { name: "Links" });

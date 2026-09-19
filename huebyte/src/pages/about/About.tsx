@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import avatar from "@/assets/avatar.png";
+import Avatar from "@/components/Avatar/Avatar";
 import { siteConfig } from "@/lib/site";
 import "./About.scss";
 
@@ -67,7 +67,7 @@ export default function About() {
       <div className="about__content">
         <header className="about__hero">
           <div className="about__avatar">
-            <img src={avatar} alt="" width={160} height={160} />
+            <Avatar size={160} alt="" />
           </div>
           <div className="about__intro">
             <p className="about__eyebrow">About me</p>

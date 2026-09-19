@@ -53,6 +53,15 @@ export const siteConfig = {
 export type NavLink = (typeof siteConfig.navLinks)[number];
 export type HeroLink = (typeof siteConfig.heroLinks)[number];
 
+/**
+ * The GitHub profile picture at a given CSS size, straight from GitHub so it always shows
+ * whatever is set there. Used through `components/Avatar`, which falls back to the bundled
+ * copy when the request fails.
+ */
+export function avatarUrl(size: number): string {
+  return `https://avatars.githubusercontent.com/${siteConfig.githubUser}?s=${size}`;
+}
+
 /** True when the menu's corner blob is the page background on this route. */
 export function isBlobPage(pathname: string): boolean {
   const path = pathname.replace(/\/+$/, "") || "/";

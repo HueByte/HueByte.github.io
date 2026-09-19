@@ -19,5 +19,9 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./src/test/setup.ts"],
     css: false,
+    // Above the asyncUtilTimeout in src/test/setup.ts. Lower, and a slow lazy-route import
+    // fails as an opaque vitest timeout instead of the Testing Library error that says what
+    // it was waiting for.
+    testTimeout: 15000,
   },
 });
