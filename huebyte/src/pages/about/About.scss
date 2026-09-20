@@ -5,11 +5,20 @@
 .about {
   position: relative;
   display: grid;
+  // See .blob-page in Articles.scss: an auto track is grown by its item's max-content, so a
+  // single wide child would push the whole page past the viewport on a phone.
+  grid-template-columns: minmax(0, 1fr);
   place-items: center;
   min-height: 100vh;
   min-height: 100dvh;
   // Top padding clears the corner blob that the menu pins to the top-left.
   padding: 8rem 1.5rem 4rem;
+}
+
+@media (max-width: 30rem) {
+  .about {
+    padding: 6.5rem 1rem 3rem;
+  }
 }
 
 // ── Content
@@ -20,6 +29,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-width: 0;
   max-width: 46rem;
   animation: about-rise 900ms ease-out both;
 }

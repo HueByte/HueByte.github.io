@@ -19,11 +19,23 @@ $spine: rgba(t.$spring, 0.3);
 .blob-page {
   position: relative;
   display: grid;
+  // minmax(0, 1fr), not the implicit auto track: an auto track is grown by its item's max-content,
+  // and a wide code block or table would drag the whole page past the viewport on a phone even
+  // though it scrolls inside itself. The 0 minimum lets those children be narrower than their
+  // content, which is what makes their own overflow-x do the scrolling.
+  grid-template-columns: minmax(0, 1fr);
   place-items: center;
   min-height: 100vh;
   min-height: 100dvh;
   // Top padding clears the corner blob that the menu pins to the top-left.
   padding: 8rem 1.5rem 4rem;
+}
+
+// Phone: the corner blob is smaller relative to the screen, and the gutter buys back measure.
+@media (max-width: 30rem) {
+  .blob-page {
+    padding: 6.5rem 1rem 3rem;
+  }
 }
 
 .blob-page__content {
@@ -33,6 +45,8 @@ $spine: rgba(t.$spring, 0.3);
   display: flex;
   flex-direction: column;
   width: 100%;
+  // Never wider than the column it sits in, whatever a code block inside would like to be.
+  min-width: 0;
   max-width: 46rem;
   animation: blob-page-rise 900ms ease-out both;
 }
@@ -268,6 +282,8 @@ a.blob-page__eyebrow {
   color: t.$text;
   // Lifts the copy off the stars behind it.
   text-shadow: 0 0 12px rgba(#03050a, 0.9);
+  // A bare URL or a long identifier in prose wraps instead of running off a phone screen.
+  overflow-wrap: break-word;
 
   > :first-child {
     margin-top: 0;
@@ -406,9 +422,12 @@ a.blob-page__eyebrow {
     }
   }
 
+  // display: block so the table itself is the scroll container; the inner table keeps its own
+  // width so cells are not squeezed into unreadable columns on a phone.
   table {
     display: block;
-    width: 100%;
+    width: max-content;
+    max-width: 100%;
     margin: 1.5rem 0;
     overflow-x: auto;
     font-size: 0.95rem;
@@ -419,6 +438,9 @@ a.blob-page__eyebrow {
   td {
     padding: 0.5rem 0.9rem;
     text-align: left;
+    // Cells keep their line rather than being crushed into one word per row; the table
+    // scrolls instead.
+    white-space: nowrap;
     border: 1px solid $rule;
   }
 
