@@ -3,6 +3,7 @@ export interface Quality {
   clumps: number;
   stars: number;
   galaxy: number;
+  /** Sparks climbing out of the grass. Many are mid-fade at any moment, so plant generously. */
   fireflies: number;
   groundSegments: number;
   /** Render scale (canvas pixels per CSS pixel) the frame starts at, and the range it may adapt in. */
@@ -24,7 +25,7 @@ export function detectQuality(): Quality {
       clumps: 3200,
       stars: 1400,
       galaxy: 1100,
-      fireflies: 60,
+      fireflies: 110,
       groundSegments: 96,
       pixelRatio: { start: Math.min(dpr, 0.8), min: 0.5, max: Math.min(dpr, 1) },
       msaa: 0,
@@ -35,7 +36,7 @@ export function detectQuality(): Quality {
     clumps: 8000,
     stars: 3000,
     galaxy: 2200,
-    fireflies: 140,
+    fireflies: 260,
     groundSegments: 160,
     pixelRatio: { start: Math.min(dpr, 1.25), min: 0.6, max: Math.min(dpr, 1.5) },
     msaa: 4,
