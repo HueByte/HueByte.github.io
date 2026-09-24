@@ -1,4 +1,4 @@
-import{c as e,d as t,i as n,n as r,s as i}from"./index-CxsHM_Wa.js";var a=`---
+import{c as e,d as t,i as n,n as r,s as i}from"./index-DY7o92NL.js";var a=`---
 title: Title of the article
 date: 2026-01-01
 updated: 2026-01-02
